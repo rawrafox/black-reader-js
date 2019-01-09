@@ -23,6 +23,10 @@ export function float(reader) {
   return reader.readF32()
 }
 
+export function matrix(reader) {
+  return [vector4(reader), vector4(reader), vector4(reader), vector4(reader)]
+}
+
 export function object(reader, id = null) {
   let context = reader.context
 
@@ -55,6 +59,8 @@ export function object(reader, id = null) {
     let propertyName = objectReader.readStringU16()
 
     if (properties.has(propertyName)) {
+      console.log(propertyName)
+      
       result[propertyName] = properties.get(propertyName)(objectReader)
     } else {
       throw `unknown property ${propertyName} for ${type}`
@@ -68,6 +74,10 @@ export function object(reader, id = null) {
 
 export function path(reader) {
   return reader.readStringU16()
+}
+
+export function rawObject(reader) {
+  return object(reader, null)
 }
 
 export function string(reader) {
@@ -86,7 +96,24 @@ export function vector4(reader) {
   return [reader.readF32(), reader.readF32(), reader.readF32(), reader.readF32()]
 }
 
-// With Callbacks
+// Complicated
+
+export function indexBuffer(reader) {
+  let count = reader.readU32()
+  let byteSize = reader.readU16()
+  
+  if (byteSize == 4) {
+    return reader.readU32Array(count)
+  } else {
+    throw "unsupported for now"
+  }
+}
+
+export function struct(struct) {
+  return function(reader) {
+    return struct.readStruct(reader)
+  }
+}
 
 export function structList(struct) {
   return function(reader) {
