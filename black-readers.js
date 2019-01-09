@@ -24,29 +24,25 @@ export function float(reader) {
 }
 
 export function object(reader, id = null) {
+  let context = reader.context
+
   if (arguments.length == 1) {
     id = reader.readU32()
 
     if (id == 0) {
       return null
-    } else if (reader.references.has(id)) {
-      return reader.references.get(id)
+    } else if (context.references.has(id)) {
+      return context.references.get(id)
     }
   }
 
   let objectReader = reader.readBinaryReader(reader.readU32())
   let type = objectReader.readStringU16()
 
-  let result = null
-  if (objectReader.constructors.has(type)) {
-    result = new objectReader.constructors.get(type)()
-  } else {
-    result = new objectReader.defaultConstructor()
-    result._type = type
-  }
+  let result = context.constructType(type)
 
   if (arguments.length == 1) {
-    reader.references.set(id, result)
+    context.references.set(id, result)
   }
 
   if (!classes.has(type)) {
@@ -92,7 +88,7 @@ export function vector4(reader) {
 
 // With Callbacks
 
-export function structList(callback) {
+export function structList(struct) {
   return function(reader) {
     let count = reader.readU32()
     let byteSize = reader.readU16()
@@ -100,7 +96,7 @@ export function structList(callback) {
 
     for (let i = 0; i < count; i++) {
       let structReader = reader.readBinaryReader(byteSize)
-      result[i] = callback(structReader)
+      result[i] = struct.readStruct(structReader)
       structReader.expectEnd("struct read to end")
     }
 

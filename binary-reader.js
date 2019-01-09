@@ -8,14 +8,12 @@ function expect(actual, expected, message) {
 }
 
 export default class BinaryReader {
-  constructor(view) {
+  constructor(view, context, strings = null) {
     this.view = view
-    this.offset = 0
+    this.context = context
+    this.strings = strings
 
-    this.constructors = null
-    this.defaultConstructor = null
-    this.references = null
-    this.strings = null
+    this.offset = 0
   }
 
   get length() {
@@ -27,14 +25,7 @@ export default class BinaryReader {
   }
 
   readBinaryReader(n) {
-    let reader = new BinaryReader(this.readDataView(n))
-
-    reader.constructors = this.constructors
-    reader.defaultConstructor = this.defaultConstructor
-    reader.references = this.references
-    reader.strings = this.strings
-
-    return reader
+    return new BinaryReader(this.readDataView(n), this.context, this.strings)
   }
 
   readCString() {

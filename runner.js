@@ -6,10 +6,11 @@ let black = require("./black.js")
 let fs = require("fs")
 
 let arguments = process.argv.slice(2)
+let context = new black.Context(new Map())
 
 for (let i = 0; i < arguments.length; i++) {
   let buffer = fs.readFileSync(arguments[i])
   let view = new DataView(buffer.buffer, buffer.byteOffset, buffer.byteLength)
 
-  console.log(black.read(view))
+  console.log(black.read(view, context))
 }

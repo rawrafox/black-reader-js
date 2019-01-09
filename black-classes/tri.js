@@ -33,8 +33,7 @@ export default function(map) {
     ["value", r.float]
   ]))
 
-  map.set('TriGeometryRes', new Map([
-  ]))
+  map.set('TriGeometryRes', new Map())
 
   map.set('TriMatrix', new Map([
     ["_11", r.float],
