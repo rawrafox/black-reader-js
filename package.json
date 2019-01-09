@@ -1,0 +1,15 @@
+{
+  "name": "black-reader",
+  "version": "0.1.0",
+  "description": "Reader for .black files from EVE: Online",
+  "main": "index.js",
+  "module": "black.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "aurora",
+  "license": "MIT",
+  "dependencies": {
+    "esm": "^3.0.84"
+  }
+}
