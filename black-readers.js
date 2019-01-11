@@ -93,6 +93,12 @@ export function uint(reader) {
   return reader.readU32()
 }
 
+export function vector2(reader, result = new Float32Array(2)) {
+  result[0] = reader.readF32()
+  result[1] = reader.readF32()
+  return result
+}
+
 export function vector3(reader, result = new Float32Array(3)) {
   result[0] = reader.readF32()
   result[1] = reader.readF32()

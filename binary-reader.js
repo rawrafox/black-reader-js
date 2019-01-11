@@ -104,6 +104,19 @@ export default class BinaryReader {
     return value
   }
 
+  readU32Array(n) {
+    if (n < 0) { throw `n should be positive: got ${n}` }
+
+    let value = new Uint32Array(n)
+
+    for (let i = 0; i < n; i++) {
+      value[i] = this.readU32()
+    }
+
+    return value
+    
+  }
+
   expectEnd(message) {
     if (this.length != 0) {
       throw `${message}: expected 0 bytes remaining, got ${this.length}`
