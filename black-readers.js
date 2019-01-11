@@ -24,7 +24,14 @@ export function float(reader) {
 }
 
 export function matrix(reader) {
-  return [vector4(reader), vector4(reader), vector4(reader), vector4(reader)]
+  var buffer = new ArrayBuffer(64)
+
+  return [
+    vector4(reader, new Float32Array(buffer, 0, 4)),
+    vector4(reader, new Float32Array(buffer, 16, 4)),
+    vector4(reader, new Float32Array(buffer, 32, 4)),
+    vector4(reader, new Float32Array(buffer, 48, 4))
+  ]
 }
 
 export function object(reader, id = null) {
@@ -59,8 +66,6 @@ export function object(reader, id = null) {
     let propertyName = objectReader.readStringU16()
 
     if (properties.has(propertyName)) {
-      console.log(propertyName)
-      
       result[propertyName] = properties.get(propertyName)(objectReader)
     } else {
       throw `unknown property ${propertyName} for ${type}`
@@ -88,12 +93,19 @@ export function uint(reader) {
   return reader.readU32()
 }
 
-export function vector3(reader) {
-  return [reader.readF32(), reader.readF32(), reader.readF32()]
+export function vector3(reader, result = new Float32Array(3)) {
+  result[0] = reader.readF32()
+  result[1] = reader.readF32()
+  result[2] = reader.readF32()
+  return result
 }
 
-export function vector4(reader) {
-  return [reader.readF32(), reader.readF32(), reader.readF32(), reader.readF32()]
+export function vector4(reader, result = new Float32Array(4)) {
+  result[0] = reader.readF32()
+  result[1] = reader.readF32()
+  result[2] = reader.readF32()
+  result[3] = reader.readF32()
+  return result
 }
 
 // Complicated
