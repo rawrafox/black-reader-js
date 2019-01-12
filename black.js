@@ -38,13 +38,20 @@ export function read(view, context) {
 
   reader.strings = strings
 
+  let result = {}
+
   let commentReader = reader.readBinaryReader(reader.readU32())
-  let comment = commentReader.readCWString()
+  let commentCount = commentReader.readU16()
+  let comments = []
+
+  for (let i = 0; i < commentCount; i++) {
+    comments[i] = commentReader.readCWString()
+  }
 
   commentReader.expectEnd()
 
   return {
-    comment: comment,
+    comments: comments,
     object: object(reader)
   }
 }

@@ -98,6 +98,18 @@ export default class BinaryReader {
     return value
   }
 
+  readU16Array(n) {
+    if (n < 0) { throw `n should be positive: got ${n}` }
+
+    let value = new Uint16Array(n)
+
+    for (let i = 0; i < n; i++) {
+      value[i] = this.readU16()
+    }
+
+    return value
+  }
+
   readU32() {
     let value = this.view.getUint32(this.offset, true)
     this.offset += 4
@@ -114,11 +126,11 @@ export default class BinaryReader {
     }
 
     return value
-    
   }
 
   expectEnd(message) {
     if (this.length != 0) {
+      console.trace()
       throw `${message}: expected 0 bytes remaining, got ${this.length}`
     }
   }

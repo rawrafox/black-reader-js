@@ -19,6 +19,22 @@ class ConstantParameter {
   }
 }
 
+class Key {
+  static readStruct(reader) {
+    let result = new Key()
+
+    result.time = reader.readF32()
+    result.value = reader.readF32()
+    result.startTangent = reader.readF32()
+    result.endTangent = reader.readF32()
+    result.index = reader.readU16()
+    result.interpolation = reader.readU8()
+    result.extrapolation = reader.readU8()
+
+    return result
+  }
+}
+
 class ParticleType {
   constructor(name) {
     this.name = name
@@ -170,9 +186,9 @@ export default function(map) {
     ["name", r.string],
     ["timeOffset", r.float],
     ["timeScale", r.float],
-    ["extrapolationAfter", r.u32],
-    ["extrapolationBefore", r.u32],
-    ["keys", r.unknown]
+    ["extrapolationAfter", r.uint],
+    ["extrapolationBefore", r.uint],
+    ["keys", r.structList(Key)]
   ]))
 
   map.set('Tr2CurveVector3', new Map([ 

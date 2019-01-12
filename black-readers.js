@@ -89,6 +89,10 @@ export function string(reader) {
   return reader.readStringU16()
 }
 
+export function ushort(reader) {
+  return reader.readU16()
+}
+
 export function uint(reader) {
   return reader.readU32()
 }
