@@ -90,6 +90,7 @@ export default function(map) {
     ["symHaloScale", r.float],
     ["trailColor", r.vector4],
     ["trailSize", r.vector4],
+    ["volumetric", r.boolean],
     ["warpGlowColor", r.vector4],
     ["warpHalpColor", r.vector4],
     ["warpShape0", r.object],
@@ -106,6 +107,7 @@ export default function(map) {
   ]))
 
   map.set('EveSOFDataFaction', new Map([
+    ["areas", r.array],
     ["areaTypes", r.object],
     ["colorSet", r.object],
     ["children", r.array],
@@ -121,6 +123,7 @@ export default function(map) {
     ["planeSets", r.array],
     ["resPathInsert", r.string],
     ["spotlightSets", r.array],
+    ["spriteSets", r.array],
     ["visibilityGroupSet", r.object],
   ]))
 
@@ -160,10 +163,22 @@ export default function(map) {
     ["isVisible", r.boolean],
   ]))
 
+  map.set("EveSOFDataFactionHullArea", new Map([
+      ["name", r.string],
+      ["groupIndex", r.uint],
+      ["parameters", r.array]
+  ]))
+
   map.set('EveSOFDataFactionPlaneSet', new Map([
     ["color", r.vector4],
     ["groupIndex", r.uint],
     ["name", r.string],
+  ]))
+
+  map.set("EveSOFDataFactionSpriteSet", new Map([
+      ["color", r.vector4],
+      ["groupIndex", r.uint],
+      ["name", r.string]
   ]))
 
   map.set('EveSOFDataFactionVisibilityGroupSet', new Map([
@@ -178,6 +193,7 @@ export default function(map) {
     ["decalShaders", r.array],
     ["damage", r.object],
     ["genericWreckMaterial", r.object],
+    ["hullAreas", r.array],
     ["hullDamage", r.object],
     ["materialPrefixes", r.array],
     ["patternMaterialPrefixes", r.array],
@@ -244,6 +260,7 @@ export default function(map) {
     ["doGenerateDepthArea", r.boolean],
     ["parameters", r.array],
     ["shader", r.string],
+    ["textures", r.array],
     ["transparencyTextureName", r.string],
   ]))
 
@@ -287,6 +304,7 @@ export default function(map) {
     ["controllers", r.array],
     ["decalAreas", r.array],
     ["defaultPattern", r.object],
+    ["depthAreas", r.array],
     ["description", r.string],
     ["distortionAreas", r.array],
     ["enableDynamicBoundingSphere", r.boolean],
@@ -360,6 +378,7 @@ export default function(map) {
 
   map.set('EveSOFDataHullChild', new Map([
     ["groupIndex", r.uint],
+    ["id", r.uint],
     ["lowestLodVisible", r.uint],
     ["name", r.string],
     ["redFilePath", r.string],
@@ -422,6 +441,7 @@ export default function(map) {
     ["layer2MapResPath", r.string],
     ["maskMapResPath", r.string],
     ["name", r.string],
+    ["planeData", r.vector4],
     ["skinned", r.boolean],
     ["usage", r.uint],
   ]))
@@ -474,6 +494,7 @@ export default function(map) {
     ["boneIndex", r.uint],
     ["colorType", r.uint],
     ["falloff", r.float],
+    ["groupIndex", r.uint],
     ["intensity", r.float],
     ["isCircle", r.boolean],
     ["maxScale", r.float],
@@ -497,6 +518,7 @@ export default function(map) {
     ["boneIndex", r.uint],
     ["colorType", r.uint],
     ["falloff", r.float],
+    ["groupIndex", r.uint],
     ["intensity", r.float],
     ["maxScale", r.float],
     ["minScale", r.float],
@@ -505,6 +527,7 @@ export default function(map) {
 
   map.set('EveSOFDataInstancedMesh', new Map([
     ["geometryResPath", r.string],
+    ["instanceGeometryResPath", r.string],
     ["instances", r.structList(Instance)],
     ["lowestLodVisible", r.uint],
     ["name", r.string],
@@ -524,9 +547,18 @@ export default function(map) {
 
   map.set('EveSOFDataPattern', new Map([
     ["name", r.string],
+    ["areas", r.array],
+    ["isTargetMtl1", r.boolean],
+    ["isTargetMtl2", r.boolean],
+    ["isTargetMtl3", r.boolean],
+    ["isTargetMtl4", r.boolean],
     ["layer1", r.object],
     ["layer2", r.object],
+    ["materialSource" , r.uint],
+    ["patternTextures", r.array],
     ["projections", r.array],
+    ["projectionTypeU", r.uint],
+    ["projectionTypeV", r.uint],
   ]))
 
   map.set('EveSOFDataPatternLayer', new Map([
@@ -557,6 +589,7 @@ export default function(map) {
   map.set('EveSOFDataRace', new Map([
     ["booster", r.object],
     ["damage", r.object],
+    ["hullAreas", r.array],
     ["hullDamage", r.object],
     ["name", r.string],
   ]))
