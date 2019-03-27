@@ -639,8 +639,6 @@ export default function(map) {
   map.set("EveSOFDataRace", new Map([
     ["booster", r.object],
     ["damage", r.object],
-    ["hullAreas", r.array],
-    ["hullDamage", r.object],
     ["name", r.string],
   ]))
 
