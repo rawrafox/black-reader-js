@@ -155,21 +155,6 @@ export default function(map) {
     ["Yellow", r.vector4],
   ]))
 
-  map.set("EveSOFDataFactionDecal", new Map([
-    ["groupIndex", r.uint],
-    ["name", r.string],
-    ["parameters", r.array],
-    ["shader", r.string],
-    ["textures", r.array],
-    ["isVisible", r.boolean],
-  ]))
-
-  map.set("EveSOFDataFactionHullArea", new Map([
-      ["name", r.string],
-      ["groupIndex", r.uint],
-      ["parameters", r.array]
-  ]))
-
   map.set("EveSOFDataLogo", new Map([
       ["textures", r.array]
   ]))
@@ -186,12 +171,6 @@ export default function(map) {
     ["color", r.vector4],
     ["groupIndex", r.uint],
     ["name", r.string],
-  ]))
-
-  map.set("EveSOFDataFactionSpriteSet", new Map([
-      ["color", r.vector4],
-      ["groupIndex", r.uint],
-      ["name", r.string]
   ]))
 
   map.set("EveSOFDataFactionVisibilityGroupSet", new Map([
@@ -403,22 +382,6 @@ export default function(map) {
 
   map.set("EveSOFDataHullController", new Map([
     ["path", r.string],
-  ]))
-
-  map.set("EveSOFDataHullDecal", new Map([
-    ["boneIndex", r.uint],
-    ["glowColorType", r.uint],
-    ["groupIndex", r.uint],
-    ["indexBuffer", r.indexBuffer],
-    ["meshIndex", r.uint],
-    ["name", r.string],
-    ["parameters", r.array],
-    ["position", r.vector3],
-    ["rotation", r.vector4],
-    ["scaling", r.vector3],
-    ["shader", r.string],
-    ["textures", r.array],
-    ["usage", r.uint],
   ]))
 
   map.set("EveSOFDataHullDecalSet", new Map([
