@@ -112,7 +112,6 @@ export default function(map) {
     ["areaTypes", r.object],
     ["colorSet", r.object],
     ["children", r.array],
-    ["decals", r.array],
     ["defaultPattern", r.object],
     ["defaultPatternLayer1MaterialName", r.string],
     ["description", r.string],
@@ -245,7 +244,6 @@ export default function(map) {
   ]))
 
   map.set("EveSOFDataGenericDecalShader", new Map([
-    ["defaultParameters", r.array],
     ["defaultTextures", r.array],
     ["parameters", r.array],
     ["parentTextures", r.array],
@@ -274,7 +272,6 @@ export default function(map) {
     ["doGenerateDepthArea", r.boolean],
     ["parameters", r.array],
     ["shader", r.string],
-    ["textures", r.array],
     ["transparencyTextureName", r.string],
   ]))
 
@@ -586,7 +583,6 @@ export default function(map) {
 
   map.set("EveSOFDataInstancedMesh", new Map([
     ["geometryResPath", r.string],
-    ["instanceGeometryResPath", r.string],
     ["instances", r.structList(Instance)],
     ["lowestLodVisible", r.uint],
     ["name", r.string],
