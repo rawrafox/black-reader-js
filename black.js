@@ -12,7 +12,7 @@ export class Context {
   constructType(type) {
     if (this.constructors.has(type)) {
       return new this.constructors.get(type)()
-    }else {
+    } else {
       let result = new this.defaultConstructor()
       result._type = type
       return result
@@ -35,10 +35,7 @@ export function read(view, context) {
   }
 
   stringsReader.expectEnd()
-
   reader.strings = strings
-
-  let result = {}
 
   let commentReader = reader.readBinaryReader(reader.readU32())
   let commentCount = commentReader.readU16()

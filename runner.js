@@ -10,10 +10,8 @@ let inputArgs = process.argv.slice(2)
 
 function processPath(p) {
   if (fs.statSync(p).isDirectory()) {
-    fs.readdirSync(p).forEach((file) => {
-      processPath(path.join(p, file))
-    })
-  }else {
+    fs.readdirSync(p).forEach(file => processPath(path.join(p, file)))
+  } else {
     if (path.extname(p) === ".black") {
       let buffer = fs.readFileSync(p)
       let view = new DataView(buffer.buffer, buffer.byteOffset, buffer.byteLength)

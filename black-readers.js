@@ -46,7 +46,7 @@ export function object(reader, id = null) {
 
     if (id === 0) {
       return null
-    }else if (context.references.has(id)) {
+    } else if (context.references.has(id)) {
       return context.references.get(id)
     }
   }
@@ -71,7 +71,7 @@ export function object(reader, id = null) {
 
     if (properties.has(propertyName)) {
       result[propertyName] = properties.get(propertyName)(objectReader)
-    }else {
+    } else {
       throw `unknown property ${propertyName} for ${type}`
     }
   }
@@ -130,7 +130,7 @@ export function indexBuffer(reader) {
 
   if (byteSize === 4) {
     return reader.readU32Array(count)
-  }else {
+  } else {
     throw "unsupported for now"
   }
 }
