@@ -1,11 +1,11 @@
-import * as r from '../black-readers.js'
+import * as r from "../black-readers.js"
 
 class ConstantParameter {
   constructor(name, value) {
     this.name = name
     this.value = value
   }
-  
+
   static readStruct(reader) {
     let name = r.string(reader)
 
@@ -39,88 +39,98 @@ class ParticleType {
   constructor(name) {
     this.name = name
   }
-  
+
   static readStruct(reader) {
     let value = reader.readU32()
     let name = null
 
-    if (value == 0) { name = "LIFETIME" }
-    else if (value == 1) { name = "POSITION" }
-    else if (value == 2) { name = "VELOCITY" }
-    else if (value == 3) { name = "MASS" }
-    else { throw `unknown particle type ${value}`}
+    if (value == 0) {
+      name = "LIFETIME"
+    }
+    else if (value == 1) {
+      name = "POSITION"
+    }
+    else if (value == 2) {
+      name = "VELOCITY"
+    }
+    else if (value == 3) {
+      name = "MASS"
+    }
+    else {
+      throw `unknown particle type ${value}`
+    }
 
     return new ParticleType(name)
   }
 }
 
 export default function(map) {
-  map.set('Tr2ActionAnimateCurveSet', new Map([
+  map.set("Tr2ActionAnimateCurveSet", new Map([
     ["curveSet", r.object],
     ["value", r.string],
   ]))
 
-  map.set('Tr2ActionAnimateValue', new Map([
+  map.set("Tr2ActionAnimateValue", new Map([
     ["attribute", r.string],
     ["curve", r.object],
     ["path", r.string],
     ["value", r.string],
   ]))
 
-  map.set('Tr2ActionChildEffect', new Map([
+  map.set("Tr2ActionChildEffect", new Map([
     ["childName", r.string],
     ["path", r.string],
     ["removeOnStop", r.boolean],
   ]))
 
-  map.set('Tr2ActionOverlay', new Map([
+  map.set("Tr2ActionOverlay", new Map([
     ["path", r.string],
   ]))
 
-  map.set('Tr2ActionPlayCurveSet', new Map([
+  map.set("Tr2ActionPlayCurveSet", new Map([
     ["curveSetName", r.string],
     ["rangeName", r.string],
     ["syncToRange", r.boolean],
   ]))
 
-  map.set('Tr2ActionPlayMeshAnimation', new Map([
+  map.set("Tr2ActionPlayMeshAnimation", new Map([
     ["animation", r.string],
     ["loops", r.uint],
     ["mask", r.string],
   ]))
 
-  map.set('Tr2ActionResetClipSphereCenter', new Map())
+  map.set("Tr2ActionResetClipSphereCenter", new Map())
 
-  map.set('Tr2ActionSetValue', new Map([
+  map.set("Tr2ActionSetValue", new Map([
     ["attribute", r.string],
     ["path", r.string],
     ["value", r.string],
   ]))
 
-  map.set('Tr2TranslationAdapter', new Map([
+  map.set("Tr2TranslationAdapter", new Map([
     ["curve", r.object],
     ["value", r.vector3],
   ]))
 
-  map.set('Tr2RotationAdapter', new Map([
+  map.set("Tr2RotationAdapter", new Map([
     ["curve", r.object],
     ["value", r.vector4],
   ]))
 
-  map.set('Tr2RandomIntegerAttributeGenerator', new Map([
+  map.set("Tr2RandomIntegerAttributeGenerator", new Map([
     ["customName", r.string],
     ["minRange", r.vector4],
     ["maxRange", r.vector4],
   ]))
 
-  map.set('Tr2RandomUniformAttributeGenerator', new Map([
+  map.set("Tr2RandomUniformAttributeGenerator", new Map([
     ["customName", r.string],
     ["elementType", r.struct(ParticleType)],
     ["minRange", r.vector4],
     ["maxRange", r.vector4]
   ]))
 
-  map.set('Tr2SphereShapeAttributeGenerator', new Map([
+  map.set("Tr2SphereShapeAttributeGenerator", new Map([
     ["customName", r.string],
     ["distributionExponent", r.float],
     ["maxPhi", r.float],
@@ -136,33 +146,33 @@ export default function(map) {
     ["rotation", r.vector4],
   ]))
 
-  map.set('Tr2PlaneConstraint', new Map([ 
+  map.set("Tr2PlaneConstraint", new Map([
     ["reflectionNoise", r.float],
     ["generators", r.array],
   ]))
 
-  map.set('Tr2Controller', new Map([
+  map.set("Tr2Controller", new Map([
     ["isShared", r.boolean],
     ["stateMachines", r.array],
     ["name", r.string],
     ["variables", r.array],
   ]))
 
-  map.set('Tr2ControllerReference', new Map([
+  map.set("Tr2ControllerReference", new Map([
     ["path", r.string],
   ]))
 
-  map.set('Tr2ControllerFloatVariable', new Map([
+  map.set("Tr2ControllerFloatVariable", new Map([
     ["name", r.string],
     ["defaultValue", r.float],
     ["variableType", r.uint],
   ]))
 
-  map.set('Tr2BoneMatrixCurve', new Map([ 
+  map.set("Tr2BoneMatrixCurve", new Map([
     ["name", r.string],
   ]))
 
-  map.set('Tr2CurveColor', new Map([ 
+  map.set("Tr2CurveColor", new Map([
     ["name", r.string],
     ["r", r.rawObject],
     ["g", r.rawObject],
@@ -170,19 +180,19 @@ export default function(map) {
     ["a", r.rawObject]
   ]))
 
-  map.set('Tr2CurveConstant', new Map([ 
+  map.set("Tr2CurveConstant", new Map([
     ["name", r.string],
     ["value", r.vector4],
   ]))
 
-  map.set('Tr2CurveEulerRotation', new Map([ 
+  map.set("Tr2CurveEulerRotation", new Map([
     ["name", r.string],
     ["pitch", r.rawObject],
     ["roll", r.rawObject],
     ["yaw", r.rawObject]
   ]))
 
-  map.set('Tr2CurveScalar', new Map([ 
+  map.set("Tr2CurveScalar", new Map([
     ["name", r.string],
     ["timeOffset", r.float],
     ["timeScale", r.float],
@@ -191,14 +201,14 @@ export default function(map) {
     ["keys", r.structList(Key)]
   ]))
 
-  map.set('Tr2CurveVector3', new Map([ 
+  map.set("Tr2CurveVector3", new Map([
     ["name", r.string],
     ["x", r.rawObject],
     ["y", r.rawObject],
     ["z", r.rawObject]
   ]))
 
-  map.set('Tr2CurveEulerRotationExpression', new Map([
+  map.set("Tr2CurveEulerRotationExpression", new Map([
     ["inputs", r.array],
     ["name", r.string],
     ["expressionYaw", r.string],
@@ -206,7 +216,7 @@ export default function(map) {
     ["expressionRoll", r.string],
   ]))
 
-  map.set('Tr2CurveScalarExpression', new Map([
+  map.set("Tr2CurveScalarExpression", new Map([
     ["inputs", r.array],
     ["name", r.string],
     ["expression", r.string],
@@ -215,7 +225,7 @@ export default function(map) {
     ["input3", r.float],
   ]))
 
-  map.set('Tr2ScalarExprKey', new Map([
+  map.set("Tr2ScalarExprKey", new Map([
     ["input1", r.float],
     ["input2", r.float],
     ["input3", r.float],
@@ -227,13 +237,13 @@ export default function(map) {
     ["value", r.float],
   ]))
 
-  map.set('Tr2ScalarExprKeyCurve', new Map([
+  map.set("Tr2ScalarExprKeyCurve", new Map([
     ["interpolation", r.uint],
     ["keys", r.array],
     ["name", r.string],
   ]))
 
-  map.set('Tr2CurveVector3Expression', new Map([
+  map.set("Tr2CurveVector3Expression", new Map([
     ["inputs", r.array],
     ["name", r.string],
     ["expressionX", r.string],
@@ -241,30 +251,34 @@ export default function(map) {
     ["expressionZ", r.string],
   ]))
 
-  map.set('Tr2CurveSetRange', new Map([
+  map.set("Tr2CurveSetRange", new Map([
     ["endTime", r.float],
     ["looped", r.boolean],
     ["name", r.string],
     ["startTime", r.float],
   ]))
 
-  map.set('Tr2DistanceTracker', new Map([
+  map.set("Tr2DistanceTracker", new Map([
     ["name", r.string],
     ["direction", r.vector3],
     ["targetPosition", r.vector3],
   ]))
 
-  map.set('Tr2Effect', new Map([
-    ['effectFilePath', r.path],
-    ['name', r.string],
-    ['parameters', r.array],
-    ['resources', r.array],
-    ['constParameters', r.structList(ConstantParameter)],
-    ['options', (reader) => { throw "lulz" }],
-    ['samplerOverrides', (reader) => { throw "lulz" }]
+  map.set("Tr2Effect", new Map([
+    ["effectFilePath", r.path],
+    ["name", r.string],
+    ["parameters", r.array],
+    ["resources", r.array],
+    ["constParameters", r.structList(ConstantParameter)],
+    ["options", (reader) => {
+      throw "lulz"
+    }],
+    ["samplerOverrides", (reader) => {
+      throw "lulz"
+    }]
   ]))
-  
-  map.set('Tr2DynamicEmitter', new Map([
+
+  map.set("Tr2DynamicEmitter", new Map([
     ["name", r.string],
     ["particleSystem", r.object],
     ["generators", r.array],
@@ -272,14 +286,14 @@ export default function(map) {
     ["rate", r.float],
   ]))
 
-  map.set('Tr2StaticEmitter', new Map([
+  map.set("Tr2StaticEmitter", new Map([
     ["name", r.string],
     ["particleSystem", r.object],
     ["geometryResourcePath", r.string],
     ["meshIndex", r.uint],
   ]))
 
-  map.set('Tr2GpuSharedEmitter', new Map([
+  map.set("Tr2GpuSharedEmitter", new Map([
     ["name", r.string],
     ["particleSystem", r.object],
     ["angle", r.float],
@@ -315,7 +329,7 @@ export default function(map) {
     ["velocityStretchRotation", r.float],
   ]))
 
-  map.set('Tr2GpuUniqueEmitter', new Map([
+  map.set("Tr2GpuUniqueEmitter", new Map([
     ["name", r.string],
     ["particleSystem", r.object],
     ["angle", r.float],
@@ -351,12 +365,12 @@ export default function(map) {
     ["velocityStretchRotation", r.float],
   ]))
 
-  map.set('Tr2ForceSphereVolume', new Map([
+  map.set("Tr2ForceSphereVolume", new Map([
     ["forces", r.array],
     ["radius", r.float],
   ]))
 
-  map.set('Tr2InstancedMesh', new Map([
+  map.set("Tr2InstancedMesh", new Map([
     ["additiveAreas", r.array],
     ["decalAreas", r.array],
     ["depthAreas", r.array],
@@ -370,18 +384,18 @@ export default function(map) {
     ["opaqueAreas", r.array],
     ["transparentAreas", r.array],
   ]))
-  
-  map.set('Tr2InteriorPlaceable', new Map([
+
+  map.set("Tr2InteriorPlaceable", new Map([
     ["placeableResPath", r.string],
     ["transform", r.rawObject]
   ]))
 
-  map.set('Tr2InteriorScene', new Map([
+  map.set("Tr2InteriorScene", new Map([
     ["dynamics", r.array],
     ["lights", r.array],
   ]))
 
-  map.set('Tr2InteriorLightSource', new Map([
+  map.set("Tr2InteriorLightSource", new Map([
     ["color", r.vector4],
     ["coneAlphaInner", r.float],
     ["coneAlphaOuter", r.float],
@@ -395,23 +409,23 @@ export default function(map) {
     ["radius", r.float],
     ["useKelvinColor", r.boolean],
   ]))
-  
-  map.set('Tr2IntSkinnedObject', new Map([
+
+  map.set("Tr2IntSkinnedObject", new Map([
     ["curveSets", r.array],
     ["transform", r.rawObject],
     ["visualModel", r.object],
   ]))
 
-  map.set('Tr2KelvinColor', new Map([
+  map.set("Tr2KelvinColor", new Map([
     ["temperature", r.float],
     ["tint", r.float],
   ]))
 
-  map.set('Tr2Model', new Map([
+  map.set("Tr2Model", new Map([
     ["meshes", r.array],
   ]))
 
-  map.set('Tr2PointLight', new Map([
+  map.set("Tr2PointLight", new Map([
     ["name", r.string],
     ["brightness", r.float],
     ["color", r.vector4],
@@ -422,14 +436,14 @@ export default function(map) {
     ["radius", r.float],
   ]))
 
-  map.set('Tr2LodResource', new Map([
+  map.set("Tr2LodResource", new Map([
     ["name", r.string],
     ["highDetailResPath", r.string],
     ["lowDetailResPath", r.string],
     ["mediumDetailResPath", r.string],
   ]))
 
-  map.set('Tr2Mesh', new Map([
+  map.set("Tr2Mesh", new Map([
     ["additiveAreas", r.array],
     ["decalAreas", r.array],
     ["deferGeometryLoad", r.boolean],
@@ -445,7 +459,7 @@ export default function(map) {
     ["transparentAreas", r.array],
   ]))
 
-  map.set('Tr2MeshArea', new Map([
+  map.set("Tr2MeshArea", new Map([
     ["count", r.uint],
     ["effect", r.object],
     ["index", r.uint],
@@ -454,7 +468,7 @@ export default function(map) {
     ["useSHLighting", r.boolean],
   ]))
 
-  map.set('Tr2MeshLod', new Map([
+  map.set("Tr2MeshLod", new Map([
     ["additiveAreas", r.array],
     ["associatedResources", r.array],
     ["decalAreas", r.array],
@@ -466,33 +480,33 @@ export default function(map) {
     ["transparentAreas", r.array],
   ]))
 
-  map.set('Tr2ExternalParameter', new Map([
+  map.set("Tr2ExternalParameter", new Map([
     ["name", r.string],
     ["destinationObject", r.object],
     ["destinationAttribute", r.string],
   ]))
 
-  map.set('Tr2FloatParameter', new Map([
+  map.set("Tr2FloatParameter", new Map([
     ["name", r.string],
     ["value", r.float],
   ]))
 
-  map.set('Tr2Matrix4Parameter', new Map([
+  map.set("Tr2Matrix4Parameter", new Map([
     ["name", r.string],
     ["value", r.matrix],
   ]))
 
-  map.set('Tr2Texture2dLodParameter', new Map([
+  map.set("Tr2Texture2dLodParameter", new Map([
     ["name", r.string],
     ["lodResource", r.object],
   ]))
 
-  map.set('Tr2Vector4Parameter', new Map([
+  map.set("Tr2Vector4Parameter", new Map([
     ["name", r.string],
     ["value", r.vector4],
   ]))
-  
-  map.set('Tr2ParticleElementDeclaration', new Map([
+
+  map.set("Tr2ParticleElementDeclaration", new Map([
     ["customName", r.string],
     ["dimension", r.uint],
     ["elementType", r.struct(ParticleType)],
@@ -500,42 +514,42 @@ export default function(map) {
     ["usedByGPU", r.boolean]
   ]))
 
-  map.set('Tr2ParticleAttractorForce', new Map([ 
+  map.set("Tr2ParticleAttractorForce", new Map([
     ["magnitude", r.float],
     ["position", r.vector3],
   ]))
 
-  map.set('Tr2ParticleDirectForce', new Map([ 
+  map.set("Tr2ParticleDirectForce", new Map([
     ["force", r.vector3],
   ]))
 
-  map.set('Tr2ParticleDragForce', new Map([ 
+  map.set("Tr2ParticleDragForce", new Map([
     ["drag", r.float],
   ]))
 
-  map.set('Tr2ParticleFluidDragForce', new Map([ 
+  map.set("Tr2ParticleFluidDragForce", new Map([
     ["drag", r.float],
   ]))
 
-  map.set('Tr2ParticleTurbulenceForce', new Map([ 
+  map.set("Tr2ParticleTurbulenceForce", new Map([
     ["amplitude", r.vector3],
     ["frequency", r.vector4],
     ["noiseLevel", r.float],
     ["noiseRatio", r.float],
   ]))
 
-  map.set('Tr2ParticleVortexForce', new Map([ 
+  map.set("Tr2ParticleVortexForce", new Map([
     ["axis", r.vector3],
     ["magnitude", r.float],
     ["position", r.vector3],
   ]))
 
-  map.set('Tr2ParticleSpring', new Map([
+  map.set("Tr2ParticleSpring", new Map([
     ["position", r.vector3],
     ["springConstant", r.float],
   ]))
 
-  map.set('Tr2ParticleSystem', new Map([
+  map.set("Tr2ParticleSystem", new Map([
     ["constraints", r.array],
     ["name", r.string],
     ["applyAging", r.boolean],
@@ -551,7 +565,7 @@ export default function(map) {
     ["useSimTimeRebase", r.boolean],
   ]))
 
-  map.set('Tr2GpuParticleSystem', new Map([
+  map.set("Tr2GpuParticleSystem", new Map([
     ["clear", r.object],
     ["emit", r.object],
     ["render", r.object],
@@ -563,41 +577,41 @@ export default function(map) {
     ["update", r.object],
   ]))
 
-  map.set('Tr2PostProcess', new Map([
+  map.set("Tr2PostProcess", new Map([
     ["stages", r.array],
   ]))
 
-  map.set('Tr2RuntimeInstanceData', new Map())
+  map.set("Tr2RuntimeInstanceData", new Map())
 
-  map.set('Tr2ShLightingManager', new Map([
+  map.set("Tr2ShLightingManager", new Map([
     ["primaryIntensity", r.float],
     ["secondaryIntensity", r.float],
   ]))
 
-  map.set('Tr2SkinnedModel', new Map([
+  map.set("Tr2SkinnedModel", new Map([
     ["geometryResPath", r.string],
     ["meshes", r.array],
     ["name", r.string],
     ["skeletonName", r.string],
   ]))
 
-  map.set('Tr2StateMachine', new Map([
+  map.set("Tr2StateMachine", new Map([
     ["name", r.string],
     ["states", r.array],
     ["startState", r.uint],
   ]))
 
-  map.set('Tr2StateMachineState', new Map([
+  map.set("Tr2StateMachineState", new Map([
     ["actions", r.array],
     ["finalizer", r.object],
     ["name", r.string],
     ["transitions", r.array],
   ]))
 
-  map.set('Tr2StateMachineTransition', new Map([
+  map.set("Tr2StateMachineTransition", new Map([
     ["condition", r.string],
     ["name", r.string],
   ]))
 
-  map.set('Tr2SyncToAnimation', new Map())
+  map.set("Tr2SyncToAnimation", new Map())
 }

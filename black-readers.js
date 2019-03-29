@@ -1,18 +1,22 @@
-import classes from './black-classes.js'
+import classes from "./black-classes.js"
 
 export function array(reader) {
   let count = reader.readU32()
   let result = []
-  
+
   for (let i = 0; i < count; i++) {
     result[i] = object(reader)
   }
-  
+
   return result
 }
 
+export function byte(reader) {
+  return reader.readU8()
+}
+
 export function boolean(reader) {
-  return reader.readU8() != 0
+  return reader.readU8() !== 0
 }
 
 export function color(reader) {
@@ -24,7 +28,7 @@ export function float(reader) {
 }
 
 export function matrix(reader) {
-  var buffer = new ArrayBuffer(64)
+  const buffer = new ArrayBuffer(64)
 
   return [
     vector4(reader, new Float32Array(buffer, 0, 4)),
@@ -37,12 +41,12 @@ export function matrix(reader) {
 export function object(reader, id = null) {
   let context = reader.context
 
-  if (arguments.length == 1) {
+  if (arguments.length === 1) {
     id = reader.readU32()
 
-    if (id == 0) {
+    if (id === 0) {
       return null
-    } else if (context.references.has(id)) {
+    }else if (context.references.has(id)) {
       return context.references.get(id)
     }
   }
@@ -52,7 +56,7 @@ export function object(reader, id = null) {
 
   let result = context.constructType(type)
 
-  if (arguments.length == 1) {
+  if (arguments.length === 1) {
     context.references.set(id, result)
   }
 
@@ -67,7 +71,7 @@ export function object(reader, id = null) {
 
     if (properties.has(propertyName)) {
       result[propertyName] = properties.get(propertyName)(objectReader)
-    } else {
+    }else {
       throw `unknown property ${propertyName} for ${type}`
     }
   }
@@ -123,10 +127,10 @@ export function vector4(reader, result = new Float32Array(4)) {
 export function indexBuffer(reader) {
   let count = reader.readU32()
   let byteSize = reader.readU16()
-  
-  if (byteSize == 4) {
+
+  if (byteSize === 4) {
     return reader.readU32Array(count)
-  } else {
+  }else {
     throw "unsupported for now"
   }
 }

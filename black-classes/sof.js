@@ -1,11 +1,11 @@
 import * as r from "../black-readers.js"
 
-class Instance{
-  constructor(data){
+class Instance {
+  constructor(data) {
     this.data = data
   }
 
-  static readStruct(reader){
+  static readStruct(reader) {
     let data = [
       reader.readF32(),
       reader.readF32(),
@@ -24,7 +24,7 @@ class Instance{
   }
 }
 
-export default function(map){
+export default function(map) {
   map.set("EveSOFData", new Map([
     ["faction", r.array],
     ["generic", r.object],

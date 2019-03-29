@@ -1,8 +1,8 @@
-let stringDecoder = new TextDecoder('utf-8')
-let wstringDecoder = new TextDecoder('utf-16le')
+let stringDecoder = new TextDecoder("utf-8")
+let wstringDecoder = new TextDecoder("utf-16le")
 
 function expect(actual, expected, message) {
-  if (actual != expected) {
+  if (actual !== expected) {
     throw `${message}: expected ${expected}, got ${actual}`
   }
 }
@@ -21,7 +21,7 @@ export default class BinaryReader {
   }
 
   atEnd() {
-    return this.length == 0
+    return this.length === 0
   }
 
   readBinaryReader(n) {
@@ -31,7 +31,9 @@ export default class BinaryReader {
   readCString() {
     let view = this.view
     let startOffset = this.offset
-    while (this.readU8() != 0) { }
+    while (this.readU8() !== 0) {
+      // No op
+    }
     let arrayOffset = view.byteOffset + startOffset
     let arrayLength = this.offset - startOffset - 1
     let array = new Uint8Array(view.buffer, arrayOffset, arrayLength)
@@ -42,7 +44,9 @@ export default class BinaryReader {
   readCWString() {
     let view = this.view
     let startOffset = this.offset
-    while (this.readU16() != 0) { }
+    while (this.readU16() !== 0) {
+      // No op
+    }
     let arrayOffset = view.byteOffset + startOffset
     let arrayLength = this.offset - startOffset - 2
     let array = new Uint8Array(view.buffer, arrayOffset, arrayLength)
@@ -51,7 +55,9 @@ export default class BinaryReader {
   }
 
   readDataView(n) {
-    if (n < 0) { throw `n should be positive: got ${n}` }
+    if (n < 0) {
+      throw `n should be positive: got ${n}`
+    }
 
     let view = this.view
 
@@ -99,7 +105,9 @@ export default class BinaryReader {
   }
 
   readU16Array(n) {
-    if (n < 0) { throw `n should be positive: got ${n}` }
+    if (n < 0) {
+      throw `n should be positive: got ${n}`
+    }
 
     let value = new Uint16Array(n)
 
@@ -117,7 +125,9 @@ export default class BinaryReader {
   }
 
   readU32Array(n) {
-    if (n < 0) { throw `n should be positive: got ${n}` }
+    if (n < 0) {
+      throw `n should be positive: got ${n}`
+    }
 
     let value = new Uint32Array(n)
 
@@ -129,7 +139,7 @@ export default class BinaryReader {
   }
 
   expectEnd(message) {
-    if (this.length != 0) {
+    if (this.length !== 0) {
       console.trace()
       throw `${message}: expected 0 bytes remaining, got ${this.length}`
     }

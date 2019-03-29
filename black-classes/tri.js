@@ -1,13 +1,13 @@
-import * as r from '../black-readers.js'
+import * as r from "../black-readers.js"
 
 export default function(map) {
-  map.set('TriColorSequencer', new Map([
+  map.set("TriColorSequencer", new Map([
     ["functions", r.array],
     ["name", r.string],
     ["value", r.vector4]
   ]))
-  
-  map.set('TriCurveSet', new Map([
+
+  map.set("TriCurveSet", new Map([
     ["bindings", r.array],
     ["curves", r.array],
     ["name", r.string],
@@ -17,25 +17,25 @@ export default function(map) {
     ["useSimTimeRebase", r.boolean]
   ]))
 
-  map.set('TriEventCurve', new Map([
+  map.set("TriEventCurve", new Map([
     ["extrapolation", r.uint],
     ["name", r.string],
     ["keys", r.array],
     ["value", r.ushort]
   ]))
 
-  map.set('TriEventKey', new Map([
+  map.set("TriEventKey", new Map([
     ["time", r.float],
     ["value", r.ushort]
   ]))
 
-  map.set('TriFloat', new Map([
+  map.set("TriFloat", new Map([
     ["value", r.float]
   ]))
 
-  map.set('TriGeometryRes', new Map())
+  map.set("TriGeometryRes", new Map())
 
-  map.set('TriMatrix', new Map([
+  map.set("TriMatrix", new Map([
     ["_11", r.float],
     ["_12", r.float],
     ["_13", r.float],
@@ -54,11 +54,11 @@ export default function(map) {
     ["_44", r.float]
   ]))
 
-  map.set('TriObserverLocal', new Map([
+  map.set("TriObserverLocal", new Map([
     ["front", r.vector3]
   ]))
 
-  map.set('TriPerlinCurve', new Map([
+  map.set("TriPerlinCurve", new Map([
     ["alpha", r.float],
     ["beta", r.float],
     ["N", r.uint],
@@ -69,17 +69,17 @@ export default function(map) {
     ["value", r.float]
   ]))
 
-  map.set('TriTextureParameter', new Map([
+  map.set("TriTextureParameter", new Map([
     ["name", r.string],
     ["resourcePath", r.string]
   ]))
-  
-  map.set('TriTransformParameter', new Map([
+
+  map.set("TriTransformParameter", new Map([
     ["name", r.string],
     ["rotation", r.vector4]
   ]))
-  
-  map.set('TriValueBinding', new Map([
+
+  map.set("TriValueBinding", new Map([
     ["destinationObject", r.object],
     ["destinationAttribute", r.string],
     ["name", r.string],
@@ -88,9 +88,9 @@ export default function(map) {
     ["sourceObject", r.object],
     ["sourceAttribute", r.string]
   ]))
-  
-  map.set('TriVariableParameter', new Map([
+
+  map.set("TriVariableParameter", new Map([
     ["name", r.string],
     ["variableName", r.string]
-  ])) 
+  ]))
 }

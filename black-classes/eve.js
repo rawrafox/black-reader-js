@@ -1,18 +1,18 @@
-import * as r from '../black-readers.js'
+import * as r from "../black-readers.js"
 
 class Locator {
   constructor(position, direction) {
     this.position = position
     this.direction = direction
   }
-  
+
   static readStruct(reader) {
     return new Locator(r.vector4(reader), r.vector4(reader))
   }
 }
 
 export default function(map) {
-  map.set('EveBoosterSet2', new Map([
+  map.set("EveBoosterSet2", new Map([
     ["alwaysOn", r.boolean],
     ["alwaysOnIntensity", r.float],
     ["effect", r.object],
@@ -36,7 +36,7 @@ export default function(map) {
     ["warpHaloColor", r.color]
   ]))
 
-  map.set('EveCamera', new Map([
+  map.set("EveCamera", new Map([
     ["fieldOfView", r.float],
     ["friction", r.float],
     ["frontClip", r.float],
@@ -55,7 +55,7 @@ export default function(map) {
     ["zoomCurve", r.object]
   ]))
 
-  map.set('EveChildCloud', new Map([
+  map.set("EveChildCloud", new Map([
     ["cellScreenSize", r.float],
     ["sortingModifier", r.float],
     ["effect", r.object],
@@ -66,7 +66,7 @@ export default function(map) {
     ["translation", r.vector3]
   ]))
 
-  map.set('EveChildBulletStorm', new Map([
+  map.set("EveChildBulletStorm", new Map([
     ["effect", r.object],
     ["multiplier", r.uint],
     ["range", r.float],
@@ -74,7 +74,7 @@ export default function(map) {
     ["sourceLocatorSet", r.string]
   ]))
 
-  map.set('EveChildContainer', new Map([
+  map.set("EveChildContainer", new Map([
     ["boneIndex", r.uint],
     ["controllers", r.array],
     ["display", r.boolean],
@@ -92,7 +92,7 @@ export default function(map) {
     ["translation", r.vector3]
   ]))
 
-  map.set('EveChildExplosion', new Map([
+  map.set("EveChildExplosion", new Map([
     ["globalDuration", r.float],
     ["globalExplosion", r.object],
     ["globalExplosionDelay", r.float],
@@ -110,7 +110,7 @@ export default function(map) {
     ["scaling", r.vector3]
   ]))
 
-  map.set('EveChildLink', new Map([
+  map.set("EveChildLink", new Map([
     ["linkStrengthBindings", r.array],
     ["linkStrengthCurves", r.array],
     ["mesh", r.object],
@@ -118,7 +118,7 @@ export default function(map) {
     ["rotation", r.vector4]
   ]))
 
-  map.set('EveChildMesh', new Map([
+  map.set("EveChildMesh", new Map([
     ["display", r.boolean],
     ["localTransform", r.matrix],
     ["lowestLodVisible", r.uint],
@@ -135,7 +135,7 @@ export default function(map) {
     ["useSRT", r.boolean]
   ]))
 
-  map.set('EveChildParticleSphere', new Map([
+  map.set("EveChildParticleSphere", new Map([
     ["generators", r.array],
     ["maxSpeed", r.float],
     ["mesh", r.object],
@@ -150,7 +150,7 @@ export default function(map) {
     ["useSpaceObjectData", r.boolean]
   ]))
 
-  map.set('EveChildParticleSystem', new Map([
+  map.set("EveChildParticleSystem", new Map([
     ["display", r.boolean],
     ["localTransform", r.matrix],
     ["lodSphereRadius", r.float],
@@ -165,23 +165,23 @@ export default function(map) {
     ["useDynamicLod", r.boolean]
   ]))
 
-  map.set('EveChildModifierAttachToBone', new Map([
+  map.set("EveChildModifierAttachToBone", new Map([
     ["boneIndex", r.uint]
   ]))
 
-  map.set('EveChildModifierBillboard2D', new Map())
-  map.set('EveChildModifierBillboard3D', new Map())
-  map.set('EveChildModifierCameraOrientedRotationConstrained', new Map())
+  map.set("EveChildModifierBillboard2D", new Map())
+  map.set("EveChildModifierBillboard3D", new Map())
+  map.set("EveChildModifierCameraOrientedRotationConstrained", new Map())
 
-  map.set('EveChildModifierSRT', new Map([
+  map.set("EveChildModifierSRT", new Map([
     ["rotation", r.vector4],
     ["scaling", r.vector3],
     ["translation", r.vector3],
   ]))
 
-  map.set('EveChildModifierTranslateWithCamera', new Map())
+  map.set("EveChildModifierTranslateWithCamera", new Map())
 
-  map.set('EveChildQuad', new Map([
+  map.set("EveChildQuad", new Map([
     ["brightness", r.float],
     ["color", r.color],
     ["effect", r.object],
@@ -193,7 +193,7 @@ export default function(map) {
     ["translation", r.vector3],
   ]))
 
-  map.set('EveConnector', new Map([
+  map.set("EveConnector", new Map([
     ["animationColor", r.color],
     ["animationScale", r.float],
     ["animationSpeed", r.float],
@@ -207,12 +207,12 @@ export default function(map) {
     ["type", r.uint],
   ]))
 
-  map.set('EveCurveLineSet', new Map([
+  map.set("EveCurveLineSet", new Map([
     ["lineEffect", r.object],
     ["pickEffect", r.object],
   ]))
 
-  map.set('EveCustomMask', new Map([
+  map.set("EveCustomMask", new Map([
     ["materialIndex", r.byte],
     ["position", r.vector3],
     ["rotation", r.vector4],
@@ -220,7 +220,7 @@ export default function(map) {
     ["targetMaterials", r.vector4],
   ]))
 
-  map.set('EveEffectRoot2', new Map([
+  map.set("EveEffectRoot2", new Map([
     ["boundingSphereCenter", r.vector3],
     ["boundingSphereRadius", r.float],
     ["curveSets", r.array],
@@ -237,7 +237,7 @@ export default function(map) {
     ["translation", r.vector3],
   ]))
 
-  map.set('EveLensflare', new Map([
+  map.set("EveLensflare", new Map([
     ["backgroundOccluders", r.array],
     ["bindings", r.array],
     ["distanceToCenterCurves", r.array],
@@ -252,25 +252,25 @@ export default function(map) {
     ["zDistanceToCenter", r.array],
   ]))
 
-  map.set('EveLineContainer', new Map([
+  map.set("EveLineContainer", new Map([
     ["lineSet", r.object],
   ]))
 
-  map.set('EveLocalPositionCurve', new Map([
+  map.set("EveLocalPositionCurve", new Map([
     ["value", r.vector3],
   ]))
 
-  map.set('EveLocatorSets', new Map([
+  map.set("EveLocatorSets", new Map([
     ["locators", r.structList(Locator)],
     ["name", r.string]
   ]))
 
-  map.set('EveLocator2', new Map([
+  map.set("EveLocator2", new Map([
     ["name", r.string],
     ["transform", r.matrix],
   ]))
 
-  map.set('EveMeshOverlayEffect', new Map([
+  map.set("EveMeshOverlayEffect", new Map([
     ["additiveEffects", r.array],
     ["curveSet", r.object],
     ["distortionEffects", r.array],
@@ -279,7 +279,7 @@ export default function(map) {
     ["transparentEffects", r.array],
   ]))
 
-  map.set('EveMissile', new Map([
+  map.set("EveMissile", new Map([
     ["boundingSphereCenter", r.vector3],
     ["boundingSphereRadius", r.float],
     ["modelTranslationCurve", r.object],
@@ -287,7 +287,7 @@ export default function(map) {
     ["warheads", r.array],
   ]))
 
-  map.set('EveMissileWarhead', new Map([
+  map.set("EveMissileWarhead", new Map([
     ["acceleration", r.float],
     ["durationEjectPhase", r.float],
     ["impactDuration", r.float],
@@ -303,7 +303,7 @@ export default function(map) {
     ["warheadRadius", r.float],
   ]))
 
-  map.set('EveMobile', new Map([
+  map.set("EveMobile", new Map([
     ["attachments", r.array],
     ["boundingSphereCenter", r.vector3],
     ["boundingSphereRadius", r.float],
@@ -317,20 +317,20 @@ export default function(map) {
     ["shadowEffect", r.object],
   ]))
 
-  map.set('EveOccluder', new Map([
+  map.set("EveOccluder", new Map([
     ["name", r.string],
     ["sprites", r.array],
   ]))
 
-  map.set('EveParticleDirectForce', new Map([
+  map.set("EveParticleDirectForce", new Map([
     ["force", r.vector3],
   ]))
 
-  map.set('EveParticleDragForce', new Map([
+  map.set("EveParticleDragForce", new Map([
     ["drag", r.float],
   ]))
 
-  map.set('EvePlaneSet', new Map([
+  map.set("EvePlaneSet", new Map([
     ["effect", r.object],
     ["hideOnLowQuality", r.boolean],
     ["name", r.string],
@@ -338,7 +338,7 @@ export default function(map) {
     ["planes", r.array],
   ]))
 
-  map.set('EvePlaneSetItem', new Map([
+  map.set("EvePlaneSetItem", new Map([
     ["color", r.color],
     ["layer1Scroll", r.vector4],
     ["layer1Transform", r.vector4],
@@ -351,7 +351,7 @@ export default function(map) {
     ["scaling", r.vector3],
   ]))
 
-  map.set('EveRootTransform', new Map([
+  map.set("EveRootTransform", new Map([
     ["boundingSphereRadius", r.float],
     ["children", r.array],
     ["curveSets", r.array],
@@ -370,7 +370,7 @@ export default function(map) {
     ["useDistanceBasedScale", r.boolean],
   ]))
 
-  map.set('EveShip2', new Map([
+  map.set("EveShip2", new Map([
     ["attachments", r.array],
     ["boosters", r.object],
     ["boundingSphereCenter", r.vector3],
@@ -391,7 +391,7 @@ export default function(map) {
     ["translationCurve", r.object],
   ]))
 
-  map.set('EveStation2', new Map([
+  map.set("EveStation2", new Map([
     ["attachments", r.array],
     ["boundingSphereCenter", r.vector3],
     ["boundingSphereRadius", r.float],
@@ -413,7 +413,7 @@ export default function(map) {
     ["translationCurve", r.object],
   ]))
 
-  map.set('EveSpaceObjectDecal', new Map([
+  map.set("EveSpaceObjectDecal", new Map([
     ["decalEffect", r.object],
     ["name", r.string],
     ["position", r.vector3],
@@ -422,7 +422,7 @@ export default function(map) {
     ["indexBuffer", r.indexBuffer]
   ]))
 
-  map.set('EveSpaceScene', new Map([
+  map.set("EveSpaceScene", new Map([
     ["ambientColor", r.color],
     ["backgroundEffect", r.object],
     ["backgroundObjects", r.array],
@@ -452,7 +452,7 @@ export default function(map) {
     ["useSunDiffuseColorWithDynamicLights", r.boolean]
   ]))
 
-  map.set('EveSpherePin', new Map([
+  map.set("EveSpherePin", new Map([
     ["centerNormal", r.vector3],
     ["color", r.color],
     ["curveSets", r.array],
@@ -467,7 +467,7 @@ export default function(map) {
     ["sortValueMultiplier", r.float]
   ]))
 
-  map.set('EveSpotlightSet', new Map([
+  map.set("EveSpotlightSet", new Map([
     ["coneEffect", r.object],
     ["glowEffect", r.object],
     ["intensity", r.float],
@@ -475,7 +475,7 @@ export default function(map) {
     ["spotlightItems", r.array]
   ]))
 
-  map.set('EveSpotlightSetItem', new Map([
+  map.set("EveSpotlightSetItem", new Map([
     ["coneColor", r.color],
     ["flareColor", r.color],
     ["name", r.string],
@@ -484,7 +484,7 @@ export default function(map) {
     ["transform", r.matrix]
   ]))
 
-  map.set('EveSpriteSet', new Map([
+  map.set("EveSpriteSet", new Map([
     ["effect", r.object],
     ["name", r.string],
     ["intensity", r.float],
@@ -492,7 +492,7 @@ export default function(map) {
     ["sprites", r.array]
   ]))
 
-  map.set('EveSpriteSetItem', new Map([
+  map.set("EveSpriteSetItem", new Map([
     ["blinkPhase", r.float],
     ["blinkRate", r.float],
     ["boneIndex", r.uint],
@@ -505,7 +505,7 @@ export default function(map) {
     ["warpColor", r.color]
   ]))
 
-  map.set('EveStarfield', new Map([
+  map.set("EveStarfield", new Map([
     ["effect", r.object],
     ["maxDist", r.float],
     ["maxFlashRate", r.float],
@@ -516,7 +516,7 @@ export default function(map) {
     ["seed", r.uint]
   ]))
 
-  map.set('EveStretch', new Map([
+  map.set("EveStretch", new Map([
     ["curveSets", r.array],
     ["dest", r.object],
     ["destObject", r.object],
@@ -532,7 +532,7 @@ export default function(map) {
     ["useCurveLod", r.boolean]
   ]))
 
-  map.set('EveStretch2', new Map([
+  map.set("EveStretch2", new Map([
     ["destinationEmitter", r.object],
     ["destinationLight", r.object],
     ["effect", r.object],
@@ -543,7 +543,7 @@ export default function(map) {
     ["quadCount", r.uint]
   ]))
 
-  map.set('EveTacticalOverlay', new Map([
+  map.set("EveTacticalOverlay", new Map([
     ["anchorEffect", r.object],
     ["arcSegmentMultiplier", r.float],
     ["connectorEffect", r.object],
@@ -554,12 +554,12 @@ export default function(map) {
     ["velocityEffect", r.object]
   ]))
 
-  map.set('EveTrailsSet', new Map([
+  map.set("EveTrailsSet", new Map([
     ["effect", r.object],
     ["geometryResPath", r.string]
   ]))
 
-  map.set('EveTransform', new Map([
+  map.set("EveTransform", new Map([
     ["children", r.array],
     ["curveSets", r.array],
     ["display", r.boolean],
@@ -585,7 +585,7 @@ export default function(map) {
     ["visibilityThreshold", r.float]
   ]))
 
-  map.set('EveTurretFiringFX', new Map([
+  map.set("EveTurretFiringFX", new Map([
     ["boneName", r.string],
     ["destinationObserver", r.object],
     ["firingDelay1", r.float],
@@ -608,7 +608,7 @@ export default function(map) {
     ["useMuzzleTransform", r.boolean]
   ]))
 
-  map.set('EveTurretSet', new Map([
+  map.set("EveTurretSet", new Map([
     ["name", r.string],
     ["bottomClipHeight", r.float],
     ["boundingSphere", r.vector4],
@@ -634,7 +634,7 @@ export default function(map) {
     ["useRandomFiringDelay", r.boolean]
   ]))
 
-  map.set('EveUiObject', new Map([
+  map.set("EveUiObject", new Map([
     ["boundingSphereRadius", r.float],
     ["name", r.string],
     ["mesh", r.object],

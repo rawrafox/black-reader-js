@@ -1,5 +1,5 @@
-import BinaryReader from './binary-reader.js'
-import { object } from './black-readers.js'
+import BinaryReader from "./binary-reader.js"
+import {object} from "./black-readers.js"
 
 export class Context {
   constructor(constructors, defaultConstructor = Object) {
@@ -12,7 +12,7 @@ export class Context {
   constructType(type) {
     if (this.constructors.has(type)) {
       return new this.constructors.get(type)()
-    } else {
+    }else {
       let result = new this.defaultConstructor()
       result._type = type
       return result
