@@ -1,11 +1,11 @@
 import * as r from "../black-readers.js"
 
-class Instance {
-  constructor(data) {
+class Instance{
+  constructor(data){
     this.data = data
   }
 
-  static readStruct(reader) {
+  static readStruct(reader){
     let data = [
       reader.readF32(),
       reader.readF32(),
@@ -24,7 +24,7 @@ class Instance {
   }
 }
 
-export default function(map) {
+export default function(map){
   map.set("EveSOFData", new Map([
     ["faction", r.array],
     ["generic", r.object],
@@ -156,15 +156,15 @@ export default function(map) {
   ]))
 
   map.set("EveSOFDataLogo", new Map([
-      ["textures", r.array]
+    ["textures", r.array]
   ]))
 
   map.set("EveSOFDataLogoSet", new Map([
-      ["Marking_01", r.object],
-      ["Marking_02", r.object],
-      ["Primary", r.object],
-      ["Secondary", r.object],
-      ["Tertiary", r.object]
+    ["Marking_01", r.object],
+    ["Marking_02", r.object],
+    ["Primary", r.object],
+    ["Secondary", r.object],
+    ["Tertiary", r.object]
   ]))
 
   map.set("EveSOFDataFactionPlaneSet", new Map([
@@ -391,19 +391,19 @@ export default function(map) {
   ]))
 
   map.set("EveSOFDataHullDecalSetItem", new Map([
-      ["name", r.string],
-      ["boneIndex", r.uint],
-      ["indexBuffer", r.indexBuffer],
-      ["glowColorType", r.uint],
-      ["logoType", r.uint],
-      ["meshIndex",r.uint],
-      ["parameters", r.array],
-      ["position", r.vector3],
-      ["rotation", r.vector4],
-      ["scaling", r.vector3],
-      ["textures", r.array],
-      ["usage", r.uint],
-      ["visibilityGroup", r.string],
+    ["name", r.string],
+    ["boneIndex", r.uint],
+    ["indexBuffer", r.indexBuffer],
+    ["glowColorType", r.uint],
+    ["logoType", r.uint],
+    ["meshIndex", r.uint],
+    ["parameters", r.array],
+    ["position", r.vector3],
+    ["rotation", r.vector4],
+    ["scaling", r.vector3],
+    ["textures", r.array],
+    ["usage", r.uint],
+    ["visibilityGroup", r.string],
   ]))
 
   map.set("EveSOFDataHullHazeSet", new Map([
@@ -425,17 +425,38 @@ export default function(map) {
   ]))
 
   map.set("EveSOFDataHullLightSet", new Map([
-      ["name", r.string],
-      ["items", r.array],
+    ["name", r.string],
+    ["items", r.array],
   ]))
 
   map.set("EveSOFDataHullLightSetItem", new Map([
-      ["name", r.string],
-      ["brightness", r.float],
-      ["innerRadius", r.float],
-      ["lightColor", r.vector4],
-      ["position", r.vector3],
-      ["radius", r.float],
+    ["name", r.string],
+    ["brightness", r.float],
+    ["innerRadius", r.float],
+    ["lightColor", r.vector4],
+    ["noiseAmplitude", r.float],
+    ["noiseFrequency", r.float],
+    ["position", r.vector3],
+    ["radius", r.float],
+  ]))
+
+  map.set("EveSOFDataHullLightSetTexturedPointLight", new Map([
+    ["name", r.string],
+    ["brightness", r.float],
+    ["innerRadius", r.float],
+    ["position", r.vector3],
+    ["radius", r.float],
+    ["texturePath", r.path]
+  ]))
+
+  map.set("EveSOFDataHullLightSetSpotLight", new Map([
+    ["name", r.string],
+    ["brightness", r.float],
+    ["innerAngle", r.float],
+    ["lightColor", r.color],
+    ["outerAngle", r.float],
+    ["position", r.vector3],
+    ["rotation", r.vector4],
   ]))
 
   map.set("EveSOFDataHullLocator", new Map([
@@ -493,11 +514,11 @@ export default function(map) {
     ["spriteIntensity", r.float],
     ["transform", r.matrix],
   ]))
-    
+
   map.set("EveSOFDataHullSoundEmitter", new Map([
     ["name", r.string],
     ["prefix", r.string]
-  ]))  
+  ]))
 
   map.set("EveSOFDataHullSpriteLineSet", new Map([
     ["items", r.array],
