@@ -1,4 +1,4 @@
-import * as r from '../black-readers.js'
+import * as r from "../black-readers.js"
 
 class Instance {
   constructor(data) {
@@ -25,7 +25,7 @@ class Instance {
 }
 
 export default function(map) {
-  map.set('EveSOFData', new Map([
+  map.set("EveSOFData", new Map([
     ["faction", r.array],
     ["generic", r.object],
     ["hull", r.array],
@@ -34,7 +34,7 @@ export default function(map) {
     ["race", r.array],
   ]))
 
-  map.set('EveSOFDataArea', new Map([
+  map.set("EveSOFDataArea", new Map([
     ["Black", r.object],
     ["Blue", r.object],
     ["Booster", r.object],
@@ -45,6 +45,7 @@ export default function(map) {
     ["Green", r.object],
     ["Hull", r.object],
     ["Killmark", r.object],
+    ["Monument", r.object],
     ["Orange", r.object],
     ["Primary", r.object],
     ["Reactor", r.object],
@@ -57,7 +58,7 @@ export default function(map) {
     ["Yellow", r.object],
   ]))
 
-  map.set('EveSOFDataAreaMaterial', new Map([
+  map.set("EveSOFDataAreaMaterial", new Map([
     ["colorType", r.uint],
     ["material1", r.string],
     ["material2", r.string],
@@ -65,7 +66,7 @@ export default function(map) {
     ["material4", r.string],
   ]))
 
-  map.set('EveSOFDataBooster', new Map([
+  map.set("EveSOFDataBooster", new Map([
     ["glowColor", r.vector4],
     ["glowScale", r.float],
     ["gradient0ResPath", r.string],
@@ -97,7 +98,7 @@ export default function(map) {
     ["warpShape1", r.object],
   ]))
 
-  map.set('EveSOFDataBoosterShape', new Map([
+  map.set("EveSOFDataBoosterShape", new Map([
     ["color", r.vector4],
     ["noiseFunction", r.float],
     ["noiseSpeed", r.float],
@@ -106,15 +107,15 @@ export default function(map) {
     ["noiseFrequency", r.vector4],
   ]))
 
-  map.set('EveSOFDataFaction', new Map([
+  map.set("EveSOFDataFaction", new Map([
     ["areas", r.array],
     ["areaTypes", r.object],
     ["colorSet", r.object],
     ["children", r.array],
-    ["decals", r.array],
     ["defaultPattern", r.object],
     ["defaultPatternLayer1MaterialName", r.string],
     ["description", r.string],
+    ["logoSet", r.object],
     ["materialUsageMtl1", r.uint],
     ["materialUsageMtl2", r.uint],
     ["materialUsageMtl3", r.uint],
@@ -127,13 +128,13 @@ export default function(map) {
     ["visibilityGroupSet", r.object],
   ]))
 
-  map.set('EveSOFDataFactionChild', new Map([
+  map.set("EveSOFDataFactionChild", new Map([
     ["groupIndex", r.uint],
     ["name", r.string],
     ["isVisible", r.boolean],
   ]))
 
-  map.set('EveSOFDataFactionColorSet', new Map([
+  map.set("EveSOFDataFactionColorSet", new Map([
     ["Black", r.vector4],
     ["Blue", r.vector4],
     ["Booster", r.vector4],
@@ -154,38 +155,29 @@ export default function(map) {
     ["Yellow", r.vector4],
   ]))
 
-  map.set('EveSOFDataFactionDecal', new Map([
-    ["groupIndex", r.uint],
-    ["name", r.string],
-    ["parameters", r.array],
-    ["shader", r.string],
-    ["textures", r.array],
-    ["isVisible", r.boolean],
+  map.set("EveSOFDataLogo", new Map([
+      ["textures", r.array]
   ]))
 
-  map.set("EveSOFDataFactionHullArea", new Map([
-      ["name", r.string],
-      ["groupIndex", r.uint],
-      ["parameters", r.array]
+  map.set("EveSOFDataLogoSet", new Map([
+      ["Marking_01", r.object],
+      ["Marking_02", r.object],
+      ["Primary", r.object],
+      ["Secondary", r.object],
+      ["Tertiary", r.object]
   ]))
 
-  map.set('EveSOFDataFactionPlaneSet', new Map([
+  map.set("EveSOFDataFactionPlaneSet", new Map([
     ["color", r.vector4],
     ["groupIndex", r.uint],
     ["name", r.string],
   ]))
 
-  map.set("EveSOFDataFactionSpriteSet", new Map([
-      ["color", r.vector4],
-      ["groupIndex", r.uint],
-      ["name", r.string]
-  ]))
-
-  map.set('EveSOFDataFactionVisibilityGroupSet', new Map([
+  map.set("EveSOFDataFactionVisibilityGroupSet", new Map([
     ["visibilityGroups", r.array],
   ]))
 
-  map.set('EveSOFDataGeneric', new Map([
+  map.set("EveSOFDataGeneric", new Map([
     ["areaShaderLocation", r.string],
     ["areaShaders", r.array],
     ["bannerShader", r.rawObject],
@@ -205,7 +197,7 @@ export default function(map) {
     ["variants", r.array],
   ]))
 
-  map.set('EveSOFDataGenericDamage', new Map([
+  map.set("EveSOFDataGenericDamage", new Map([
     ["armorParticleAngle", r.float],
     ["armorParticleColor0", r.vector4],
     ["armorParticleColor1", r.vector4],
@@ -230,15 +222,14 @@ export default function(map) {
     ["shieldShaderHull", r.string],
   ]))
 
-  map.set('EveSOFDataGenericDecalShader', new Map([
-    ["defaultParameters", r.array],
+  map.set("EveSOFDataGenericDecalShader", new Map([
     ["defaultTextures", r.array],
     ["parameters", r.array],
     ["parentTextures", r.array],
     ["shader", r.string],
   ]))
 
-  map.set('EveSOFDataGenericHullDamage', new Map([
+  map.set("EveSOFDataGenericHullDamage", new Map([
     ["hullParticleAngle", r.float],
     ["hullParticleColor0", r.vector4],
     ["hullParticleColor1", r.vector4],
@@ -254,21 +245,20 @@ export default function(map) {
     ["hullParticleTextureIndex", r.uint],
   ]))
 
-  map.set('EveSOFDataGenericShader', new Map([
+  map.set("EveSOFDataGenericShader", new Map([
     ["defaultParameters", r.array],
     ["defaultTextures", r.array],
     ["doGenerateDepthArea", r.boolean],
     ["parameters", r.array],
     ["shader", r.string],
-    ["textures", r.array],
     ["transparencyTextureName", r.string],
   ]))
 
-  map.set('EveSOFDataGenericString', new Map([
+  map.set("EveSOFDataGenericString", new Map([
     ["str", r.string],
   ]))
 
-  map.set('EveSOFDataGenericSwarm', new Map([
+  map.set("EveSOFDataGenericSwarm", new Map([
     ["formationDistance", r.float],
     ["maxDistance0", r.float],
     ["maxDeceleration", r.float],
@@ -284,13 +274,13 @@ export default function(map) {
     ["weightSeparation", r.float],
   ]))
 
-  map.set('EveSOFDataGenericVariant', new Map([
+  map.set("EveSOFDataGenericVariant", new Map([
     ["hullArea", r.object],
     ["isTransparent", r.boolean],
     ["name", r.string],
   ]))
 
-  map.set('EveSOFDataHull', new Map([
+  map.set("EveSOFDataHull", new Map([
     ["additiveAreas", r.array],
     ["animations", r.array],
     ["audioPosition", r.vector3],
@@ -303,6 +293,7 @@ export default function(map) {
     ["children", r.array],
     ["controllers", r.array],
     ["decalAreas", r.array],
+    ["decalSets", r.array],
     ["defaultPattern", r.object],
     ["depthAreas", r.array],
     ["description", r.string],
@@ -314,6 +305,7 @@ export default function(map) {
     ["impactEffectType", r.uint],
     ["instancedMeshes", r.array],
     ["isSkinned", r.boolean],
+    ["lightSets", r.array],
     ["locatorSets", r.array],
     ["locatorTurrets", r.array],
     ["name", r.string],
@@ -322,13 +314,14 @@ export default function(map) {
     ["modelRotationCurvePath", r.string],
     ["shapeEllipsoidCenter", r.vector3],
     ["shapeEllipsoidRadius", r.vector3],
+    ["soundEmitters", r.array],
     ["spotlightSets", r.array],
     ["spriteLineSets", r.array],
     ["spriteSets", r.array],
     ["transparentAreas", r.array],
   ]))
 
-  map.set('EveSOFDataHullAnimation', new Map([
+  map.set("EveSOFDataHullAnimation", new Map([
     ["endRate", r.float],
     ["endRotationTime", r.float],
     ["endRotationValue", r.vector4],
@@ -339,7 +332,7 @@ export default function(map) {
     ["startRotationValue", r.vector4],
   ]))
 
-  map.set('EveSOFDataHullArea', new Map([
+  map.set("EveSOFDataHullArea", new Map([
     ["areaType", r.uint],
     ["blockedMaterials", r.uint],
     ["count", r.uint],
@@ -350,7 +343,7 @@ export default function(map) {
     ["textures", r.array],
   ]))
 
-  map.set('EveSOFDataHullBanner', new Map([
+  map.set("EveSOFDataHullBanner", new Map([
     ["angleX", r.float],
     ["angleY", r.float],
     ["angleZ", r.float],
@@ -362,13 +355,13 @@ export default function(map) {
     ["usage", r.uint],
   ]))
 
-  map.set('EveSOFDataHullBooster', new Map([
+  map.set("EveSOFDataHullBooster", new Map([
     ["alwaysOn", r.boolean],
     ["hasTrails", r.boolean],
     ["items", r.array],
   ]))
 
-  map.set('EveSOFDataHullBoosterItem', new Map([
+  map.set("EveSOFDataHullBoosterItem", new Map([
     ["atlasIndex0", r.uint],
     ["atlasIndex1", r.uint],
     ["functionality", r.vector4],
@@ -376,7 +369,7 @@ export default function(map) {
     ["transform", r.matrix],
   ]))
 
-  map.set('EveSOFDataHullChild', new Map([
+  map.set("EveSOFDataHullChild", new Map([
     ["groupIndex", r.uint],
     ["id", r.uint],
     ["lowestLodVisible", r.uint],
@@ -387,32 +380,39 @@ export default function(map) {
     ["translation", r.vector3],
   ]))
 
-  map.set('EveSOFDataHullController', new Map([
+  map.set("EveSOFDataHullController", new Map([
     ["path", r.string],
   ]))
 
-  map.set('EveSOFDataHullDecal', new Map([
-    ["boneIndex", r.uint],
-    ["glowColorType", r.uint],
-    ["groupIndex", r.uint],
-    ["indexBuffer", r.indexBuffer],
-    ["meshIndex", r.uint],
+  map.set("EveSOFDataHullDecalSet", new Map([
     ["name", r.string],
-    ["parameters", r.array],
-    ["position", r.vector3],
-    ["rotation", r.vector4],
-    ["scaling", r.vector3],
-    ["shader", r.string],
-    ["textures", r.array],
-    ["usage", r.uint],
+    ["items", r.array],
+    ["visibilityGroup", r.string],
   ]))
 
-  map.set('EveSOFDataHullHazeSet', new Map([
+  map.set("EveSOFDataHullDecalSetItem", new Map([
+      ["name", r.string],
+      ["boneIndex", r.uint],
+      ["indexBuffer", r.indexBuffer],
+      ["glowColorType", r.uint],
+      ["logoType", r.uint],
+      ["meshIndex",r.uint],
+      ["parameters", r.array],
+      ["position", r.vector3],
+      ["rotation", r.vector4],
+      ["scaling", r.vector3],
+      ["textures", r.array],
+      ["usage", r.uint],
+      ["visibilityGroup", r.string],
+  ]))
+
+  map.set("EveSOFDataHullHazeSet", new Map([
     ["items", r.array],
     ["name", r.string],
+    ["visibilityGroup", r.string],
   ]))
 
-  map.set('EveSOFDataHullHazeSetItem', new Map([
+  map.set("EveSOFDataHullHazeSetItem", new Map([
     ["boosterGainInfluence", r.boolean],
     ["colorType", r.uint],
     ["hazeBrightness", r.float],
@@ -424,17 +424,31 @@ export default function(map) {
     ["sourceSize", r.float],
   ]))
 
-  map.set('EveSOFDataHullLocator', new Map([
+  map.set("EveSOFDataHullLightSet", new Map([
+      ["name", r.string],
+      ["items", r.array],
+  ]))
+
+  map.set("EveSOFDataHullLightSetItem", new Map([
+      ["name", r.string],
+      ["brightness", r.float],
+      ["innerRadius", r.float],
+      ["lightColor", r.vector4],
+      ["position", r.vector3],
+      ["radius", r.float],
+  ]))
+
+  map.set("EveSOFDataHullLocator", new Map([
     ["name", r.string],
     ["transform", r.matrix],
   ]))
 
-  map.set('EveSOFDataHullLocatorSet', new Map([
+  map.set("EveSOFDataHullLocatorSet", new Map([
     ["name", r.string],
     ["locators", r.array],
   ]))
 
-  map.set('EveSOFDataHullPlaneSet', new Map([
+  map.set("EveSOFDataHullPlaneSet", new Map([
     ["atlasSize", r.uint],
     ["items", r.array],
     ["layer1MapResPath", r.string],
@@ -446,7 +460,7 @@ export default function(map) {
     ["usage", r.uint],
   ]))
 
-  map.set('EveSOFDataHullPlaneSetItem', new Map([
+  map.set("EveSOFDataHullPlaneSetItem", new Map([
     ["boneIndex", r.uint],
     ["color", r.vector4],
     ["groupIndex", r.uint],
@@ -460,7 +474,7 @@ export default function(map) {
     ["scaling", r.vector3],
   ]))
 
-  map.set('EveSOFDataHullSpotlightSet', new Map([
+  map.set("EveSOFDataHullSpotlightSet", new Map([
     ["coneTextureResPath", r.string],
     ["glowTextureResPath", r.string],
     ["items", r.array],
@@ -469,7 +483,7 @@ export default function(map) {
     ["zOffset", r.float],
   ]))
 
-  map.set('EveSOFDataHullSpotlightSetItem', new Map([
+  map.set("EveSOFDataHullSpotlightSetItem", new Map([
     ["boneIndex", r.uint],
     ["boosterGainInfluence", r.boolean],
     ["coneIntensity", r.float],
@@ -479,15 +493,20 @@ export default function(map) {
     ["spriteIntensity", r.float],
     ["transform", r.matrix],
   ]))
+    
+  map.set("EveSOFDataHullSoundEmitter", new Map([
+    ["name", r.string],
+    ["prefix", r.string]
+  ]))  
 
-  map.set('EveSOFDataHullSpriteLineSet', new Map([
+  map.set("EveSOFDataHullSpriteLineSet", new Map([
     ["items", r.array],
     ["name", r.string],
     ["skinned", r.boolean],
     ["visibilityGroup", r.string],
   ]))
 
-  map.set('EveSOFDataHullSpriteLineSetItem', new Map([
+  map.set("EveSOFDataHullSpriteLineSetItem", new Map([
     ["blinkRate", r.float],
     ["blinkPhase", r.float],
     ["blinkPhaseShift", r.float],
@@ -505,14 +524,14 @@ export default function(map) {
     ["spacing", r.float],
   ]))
 
-  map.set('EveSOFDataHullSpriteSet', new Map([
+  map.set("EveSOFDataHullSpriteSet", new Map([
     ["name", r.string],
     ["items", r.array],
     ["skinned", r.boolean],
     ["visibilityGroup", r.string],
   ]))
 
-  map.set('EveSOFDataHullSpriteSetItem', new Map([
+  map.set("EveSOFDataHullSpriteSetItem", new Map([
     ["blinkRate", r.float],
     ["blinkPhase", r.float],
     ["boneIndex", r.uint],
@@ -525,9 +544,8 @@ export default function(map) {
     ["position", r.vector3],
   ]))
 
-  map.set('EveSOFDataInstancedMesh', new Map([
+  map.set("EveSOFDataInstancedMesh", new Map([
     ["geometryResPath", r.string],
-    ["instanceGeometryResPath", r.string],
     ["instances", r.structList(Instance)],
     ["lowestLodVisible", r.uint],
     ["name", r.string],
@@ -535,33 +553,24 @@ export default function(map) {
     ["textures", r.array],
   ]))
 
-  map.set('EveSOFDataMaterial', new Map([
+  map.set("EveSOFDataMaterial", new Map([
     ["name", r.string],
     ["parameters", r.array],
   ]))
 
-  map.set('EveSOFDataParameter', new Map([
+  map.set("EveSOFDataParameter", new Map([
     ["name", r.string],
     ["value", r.vector4],
   ]))
 
-  map.set('EveSOFDataPattern', new Map([
+  map.set("EveSOFDataPattern", new Map([
     ["name", r.string],
-    ["areas", r.array],
-    ["isTargetMtl1", r.boolean],
-    ["isTargetMtl2", r.boolean],
-    ["isTargetMtl3", r.boolean],
-    ["isTargetMtl4", r.boolean],
     ["layer1", r.object],
     ["layer2", r.object],
-    ["materialSource" , r.uint],
-    ["patternTextures", r.array],
     ["projections", r.array],
-    ["projectionTypeU", r.uint],
-    ["projectionTypeV", r.uint],
   ]))
 
-  map.set('EveSOFDataPatternLayer', new Map([
+  map.set("EveSOFDataPatternLayer", new Map([
     ["isTargetMtl1", r.boolean],
     ["isTargetMtl2", r.boolean],
     ["isTargetMtl3", r.boolean],
@@ -573,35 +582,33 @@ export default function(map) {
     ["textureResFilePath", r.string],
   ]))
 
-  map.set('EveSOFDataPatternPerHull', new Map([
+  map.set("EveSOFDataPatternPerHull", new Map([
     ["name", r.string],
     ["transformLayer1", r.object],
     ["transformLayer2", r.object],
   ]))
 
-  map.set('EveSOFDataPatternTransform', new Map([
+  map.set("EveSOFDataPatternTransform", new Map([
     ["isMirrored", r.boolean],
     ["position", r.vector3],
     ["rotation", r.vector4],
     ["scaling", r.vector3],
   ]))
 
-  map.set('EveSOFDataRace', new Map([
+  map.set("EveSOFDataRace", new Map([
     ["booster", r.object],
     ["damage", r.object],
-    ["hullAreas", r.array],
-    ["hullDamage", r.object],
     ["name", r.string],
   ]))
 
-  map.set('EveSOFDataRaceDamage', new Map([
+  map.set("EveSOFDataRaceDamage", new Map([
     ["armorImpactParameters", r.array],
     ["armorImpactTextures", r.array],
     ["shieldImpactParameters", r.array],
     ["shieldImpactTextures", r.array],
   ]))
 
-  map.set('EveSOFDataFactionSpotlightSet', new Map([
+  map.set("EveSOFDataFactionSpotlightSet", new Map([
     ["coneColor", r.vector4],
     ["flareColor", r.vector4],
     ["groupIndex", r.uint],
@@ -609,12 +616,12 @@ export default function(map) {
     ["spriteColor", r.vector4],
   ]))
 
-  map.set('EveSOFDataTexture', new Map([
+  map.set("EveSOFDataTexture", new Map([
     ["name", r.string],
     ["resFilePath", r.string],
   ]))
 
-  map.set('EveSOFDataTransform', new Map([
+  map.set("EveSOFDataTransform", new Map([
     ["boneIndex", r.uint],
     ["position", r.vector3],
     ["rotation", r.vector4],
