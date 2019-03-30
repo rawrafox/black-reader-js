@@ -429,6 +429,7 @@ export default function(map) {
     ["name", r.string],
     ["brightness", r.float],
     ["color", r.vector4],
+    ["innerRadius", r.float],
     ["noiseAmplitude", r.float],
     ["noiseFrequency", r.float],
     ["noiseOctaves", r.float],
