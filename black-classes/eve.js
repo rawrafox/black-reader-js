@@ -11,7 +11,71 @@ class Locator {
   }
 }
 
+// TODO: Figure out property names and values
+class Transition {
+  static readStruct(reader) {
+    let result = new Transition()
+
+    // Not sure of property name
+    result.state = reader.readStringU16()
+
+    reader.expectU8(0, "unknown content")
+    reader.expectU8(0, "unknown content")
+    reader.expectU8(0, "unknown content")
+    reader.expectU8(0, "unknown content")
+    reader.expectU8(0, "unknown content")
+    reader.expectU8(0, "unknown content")
+
+    // Not sure of property name
+    result.transition = reader.readStringU16();
+
+    reader.expectU8(0, "unknown content")
+    reader.expectU8(0, "unknown content")
+    reader.expectU8(0, "unknown content")
+    reader.expectU8(0, "unknown content")
+    reader.expectU8(0, "unknown content")
+    reader.expectU8(0, "unknown content")
+
+
+    return result
+  }
+}
+
+
 export default function(map) {
+
+  map.set("EveAnimation", new Map([
+    ["name", r.string],
+    ["loops", r.uint],
+  ]))
+
+  map.set("EveAnimationCommand", new Map([
+    ["command", r.uint],
+
+  ]))
+
+  map.set("EveAnimationCurve", new Map([
+    ["name", r.string],
+  ]))
+
+  map.set("EveAnimationState", new Map([
+    ["name", r.string],
+    ["animation", r.object],
+    ["curves", r.array],
+    ["commands", r.array],
+    ["initCommands", r.array],
+    ["transitions", r.structList(Transition)],
+  ]))
+
+  map.set("EveAnimationStateMachine", new Map([
+    ["name", r.string],
+    ["autoPlayDefault", r.boolean],
+    ["states", r.array],
+    ["transitions", r.array],
+    ["trackMask", r.string],
+    ["defaultAnimation", r.string]
+  ]))
+
   map.set("EveBoosterSet2", new Map([
     ["alwaysOn", r.boolean],
     ["alwaysOnIntensity", r.float],
