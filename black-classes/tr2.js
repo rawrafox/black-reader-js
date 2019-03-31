@@ -172,7 +172,7 @@ export default function(map) {
   map.set("Tr2ControllerFloatVariable", new Map([
     ["name", r.string],
     ["defaultValue", r.float],
-    ["enumValues", r.string],
+    ["enumValues", r.enums],
     ["variableType", r.uint],
   ]))
 

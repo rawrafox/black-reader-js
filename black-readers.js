@@ -96,6 +96,17 @@ export function string(reader) {
   return reader.readStringU16()
 }
 
+export function enums(reader) {
+  const value = reader.readStringU16()
+  const entry = value.split(",")
+  const out = {}
+  for (let i = 0; i < entry.length; i++) {
+    const split = entry[i].split("=")
+    out[split[0]] = Number(split[1])
+  }
+  return out
+}
+
 export function ushort(reader) {
   return reader.readU16()
 }
