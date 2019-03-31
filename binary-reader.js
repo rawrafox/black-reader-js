@@ -82,7 +82,7 @@ export default class BinaryReader {
     return value
   }
 
-  readStringU16(key) {
+  readStringU16() {
     let value = this.readU16()
 
     if (value > this.strings.length) {

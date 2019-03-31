@@ -70,14 +70,17 @@ export function object(reader, id = null) {
     let propertyName = objectReader.readStringU16()
 
     if (properties.has(propertyName)) {
-      result[propertyName] = properties.get(propertyName)(objectReader)
+      try {
+        result[propertyName] = properties.get(propertyName)(objectReader)
+      } catch (err) {
+        throw `${propertyName} > ${err}`
+      }
     } else {
       throw `unknown property ${propertyName} for ${type}`
     }
   }
 
   objectReader.expectEnd("object did not read to end?")
-
   return result
 }
 
@@ -143,8 +146,10 @@ export function struct(struct) {
 
 export function structList(struct) {
   return function(reader) {
+
     let count = reader.readU32()
     let byteSize = reader.readU16()
+
     let result = []
 
     for (let i = 0; i < count; i++) {
