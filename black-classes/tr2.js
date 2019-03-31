@@ -44,19 +44,15 @@ class ParticleType {
     let value = reader.readU32()
     let name = null
 
-    if (value == 0) {
+    if (value === 0) {
       name = "LIFETIME"
-    }
-    else if (value == 1) {
+    } else if (value === 1) {
       name = "POSITION"
-    }
-    else if (value == 2) {
+    } else if (value === 2) {
       name = "VELOCITY"
-    }
-    else if (value == 3) {
+    } else if (value === 3) {
       name = "MASS"
-    }
-    else {
+    } else {
       throw `unknown particle type ${value}`
     }
 
@@ -99,12 +95,23 @@ export default function(map) {
     ["mask", r.string],
   ]))
 
-  map.set("Tr2ActionResetClipSphereCenter", new Map())
+  map.set("Tr2ActionPlaySound", new Map([
+    ["emitter", r.string],
+    ["event", r.string]
+  ]))
+
+  map.set("Tr2ActionResetClipSphereCenter", new Map([
+
+  ]))
 
   map.set("Tr2ActionSetValue", new Map([
     ["attribute", r.string],
     ["path", r.string],
     ["value", r.string],
+  ]))
+
+  map.set("Tr2ActionSpawnParticles", new Map([
+
   ]))
 
   map.set("Tr2TranslationAdapter", new Map([
@@ -165,6 +172,7 @@ export default function(map) {
   map.set("Tr2ControllerFloatVariable", new Map([
     ["name", r.string],
     ["defaultValue", r.float],
+    ["enumValues", r.string],
     ["variableType", r.uint],
   ]))
 
