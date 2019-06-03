@@ -147,11 +147,15 @@ export default function(map) {
     ["Killmark", r.vector4],
     ["Orange", r.vector4],
     ["Primary", r.vector4],
+    ["PrimaryLight", r.vector4],
     ["Reactor", r.vector4],
     ["Red", r.vector4],
     ["Secondary", r.vector4],
+    ["SecondaryLight", r.vector4],
     ["Tertiary", r.vector4],
+    ["TertiaryLight", r.vector4],
     ["White", r.vector4],
+    ["WhiteLight", r.vector4],
     ["Yellow", r.vector4],
   ]))
 
@@ -427,6 +431,7 @@ export default function(map) {
   map.set("EveSOFDataHullLightSet", new Map([
     ["name", r.string],
     ["items", r.array],
+    ["visibilityGroup", r.string]
   ]))
 
   map.set("EveSOFDataHullLightSetItem", new Map([
@@ -453,9 +458,11 @@ export default function(map) {
     ["name", r.string],
     ["brightness", r.float],
     ["innerAngle", r.float],
+    ["innerRadius", r.float],
     ["lightColor", r.color],
     ["outerAngle", r.float],
     ["position", r.vector3],
+    ["radius", r.float],
     ["rotation", r.vector4],
   ]))
 
@@ -648,4 +655,6 @@ export default function(map) {
     ["rotation", r.vector4],
     ["scaling", r.vector3],
   ]))
+
+
 }
