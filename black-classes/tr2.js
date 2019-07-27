@@ -61,6 +61,18 @@ class ParticleType {
 }
 
 export default function(map) {
+
+  map.set("AudEventKey", new Map([
+    ["value", r.ushort],
+    ["time", r.float]
+  ]))
+
+  map.set("AudEventCurve", new Map([
+    ["name", r.string],
+    ["keys", r.array],
+    ["sourceTriObserver", r.object]
+  ]))
+
   map.set("Tr2ActionAnimateCurveSet", new Map([
     ["curveSet", r.object],
     ["value", r.string],
