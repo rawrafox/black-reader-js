@@ -23,7 +23,7 @@ class ConstantParameter {
 class Key {
   static readStruct(reader) {
     let result = new Key()
-
+    result._type = "Tr2CurveScalarKey"
     result.time = reader.readF32()
     result.value = reader.readF32()
     result.startTangent = reader.readF32()
