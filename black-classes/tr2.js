@@ -104,7 +104,7 @@ export default function(map) {
 
   map.set('Tr2RandomUniformAttributeGenerator', new Map([
     ["customName", r.string],
-    ["elementType", r.struct(ParticleType)],
+    ["elementType", r.uint],
     ["minRange", r.vector4],
     ["maxRange", r.vector4]
   ]))
