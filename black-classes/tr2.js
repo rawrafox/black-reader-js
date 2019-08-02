@@ -2,6 +2,7 @@ import * as r from '../black-readers.js'
 
 class ConstantParameter {
   constructor(name, value) {
+    this._type = "Tr2Vector4Parameter"
     this.name = name
     this.value = value
   }
@@ -22,7 +23,7 @@ class ConstantParameter {
 class Key {
   static readStruct(reader) {
     let result = new Key()
-
+    result._type = "Tr2CurveScalarKey"
     result.time = reader.readF32()
     result.value = reader.readF32()
     result.startTangent = reader.readF32()
@@ -32,25 +33,6 @@ class Key {
     result.extrapolation = reader.readU8()
 
     return result
-  }
-}
-
-class ParticleType {
-  constructor(name) {
-    this.name = name
-  }
-  
-  static readStruct(reader) {
-    let value = reader.readU32()
-    let name = null
-
-    if (value == 0) { name = "LIFETIME" }
-    else if (value == 1) { name = "POSITION" }
-    else if (value == 2) { name = "VELOCITY" }
-    else if (value == 3) { name = "MASS" }
-    else { throw `unknown particle type ${value}`}
-
-    return new ParticleType(name)
   }
 }
 
@@ -89,6 +71,11 @@ export default function(map) {
     ["mask", r.string],
   ]))
 
+  map.set("Tr2ActionPlaySound", new Map([
+    ["emitter", r.string],
+    ["event", r.string]
+  ]))
+
   map.set('Tr2ActionResetClipSphereCenter', new Map())
 
   map.set('Tr2ActionSetValue', new Map([
@@ -96,6 +83,8 @@ export default function(map) {
     ["path", r.string],
     ["value", r.string],
   ]))
+
+  map.set("Tr2ActionSpawnParticles", new Map())
 
   map.set('Tr2TranslationAdapter', new Map([
     ["curve", r.object],
@@ -115,7 +104,7 @@ export default function(map) {
 
   map.set('Tr2RandomUniformAttributeGenerator', new Map([
     ["customName", r.string],
-    ["elementType", r.struct(ParticleType)],
+    ["elementType", r.uint],
     ["minRange", r.vector4],
     ["maxRange", r.vector4]
   ]))
@@ -155,6 +144,7 @@ export default function(map) {
   map.set('Tr2ControllerFloatVariable', new Map([
     ["name", r.string],
     ["defaultValue", r.float],
+    ["enumValues", r.string],
     ["variableType", r.uint],
   ]))
 
@@ -415,6 +405,7 @@ export default function(map) {
     ["name", r.string],
     ["brightness", r.float],
     ["color", r.vector4],
+    ["innerRadius", r.float],
     ["noiseAmplitude", r.float],
     ["noiseFrequency", r.float],
     ["noiseOctaves", r.float],
@@ -495,7 +486,7 @@ export default function(map) {
   map.set('Tr2ParticleElementDeclaration', new Map([
     ["customName", r.string],
     ["dimension", r.uint],
-    ["elementType", r.struct(ParticleType)],
+    ["elementType", r.uint],
     ["usageIndex", r.uint],
     ["usedByGPU", r.boolean]
   ]))
