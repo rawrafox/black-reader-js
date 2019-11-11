@@ -112,6 +112,7 @@ export default function(map) {
     ["areaTypes", r.object],
     ["colorSet", r.object],
     ["children", r.array],
+    ["decals", r.array],
     ["defaultPattern", r.object],
     ["defaultPatternLayer1MaterialName", r.string],
     ["description", r.string],
@@ -157,6 +158,15 @@ export default function(map) {
     ["White", r.vector4],
     ["WhiteLight", r.vector4],
     ["Yellow", r.vector4],
+  ]))
+
+  map.set("EveSOFDataFactionDecal", new Map([
+    ["groupIndex", r.uint],
+    ["isVisible", r.boolean],
+    ["name", r.string],
+    ["parameters", r.array],
+    ["shader", r.path],
+    ["textures", r.array]
   ]))
 
   map.set("EveSOFDataLogo", new Map([
