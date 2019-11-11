@@ -167,7 +167,11 @@ export function object(reader, id = null) {
           debugContext.property(propertyName, value)
         }
       } catch (e) {
-        throw new PropertyDataError(type, propertyName, objectReader, e)
+        if (e instanceof UnknownPropertyError) {
+          throw e
+        } else {
+          throw new PropertyDataError(type, propertyName, objectReader, e)
+        }
       }
     } else {
       throw new UnknownPropertyError(type, propertyName, objectReader)
