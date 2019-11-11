@@ -1,15 +1,15 @@
 let stringDecoder = new TextDecoder('utf-8')
 let wstringDecoder = new TextDecoder('utf-16le')
 
-class UnexpectedContent extends Error {
+class UnexpectedContentError extends Error {
   constructor(message, actual, expected) {
     super(message)
 
     if (Error.captureStackTrace) {
-      Error.captureStackTrace(this, UnknownClassException);
+      Error.captureStackTrace(this, UnexpectedContentError);
     }
 
-    this.name = "UnexpectedContent"
+    this.name = "UnexpectedContentError"
     this.actual = actual
     this.expected = expected
   }
@@ -17,7 +17,7 @@ class UnexpectedContent extends Error {
 
 function expect(actual, expected, message) {
   if (actual != expected) {
-    throw new UnexpectedContent(`${message}`, actual, expected)
+    throw new UnexpectedContentError(`${message}`, actual, expected)
   }
 }
 
@@ -194,7 +194,7 @@ export default class BinaryReader {
 
   expectEnd(message) {
     if (this.length != 0) {
-      throw new UnexpectedContent(message, `${this.length} bytes`, "0 bytes")
+      throw new UnexpectedContentError(message, `${this.length} bytes`, "0 bytes")
     }
   }
 

@@ -27,15 +27,15 @@ function addBinaryReaderDebugInformation(object, reader) {
   object.view = reader.view
 }
 
-class PropertyDataException extends Error {
+class PropertyDataError extends Error {
   constructor(type, propertyName, objectReader, error) {
     super(error.message)
 
     if (Error.captureStackTrace) {
-      Error.captureStackTrace(this, UnknownClassException);
+      Error.captureStackTrace(this, PropertyDataError);
     }
 
-    this.name = "PropertyDataException"
+    this.name = "PropertyDataError"
     this.type = type
     this.propertyName = propertyName
     this.error = error
@@ -44,28 +44,28 @@ class PropertyDataException extends Error {
   }
 }
 
-class UnknownClassException extends Error {
+class UnknownClassError extends Error {
   constructor(type) {
     super(type)
 
     if (Error.captureStackTrace) {
-      Error.captureStackTrace(this, UnknownClassException);
+      Error.captureStackTrace(this, UnknownClassError);
     }
 
-    this.name = "UnknownClassException"
+    this.name = "UnknownClassError"
     this.type = type
   }
 }
 
-class UnknownPropertyException extends Error {
+class UnknownPropertyError extends Error {
   constructor(type, propertyName, objectReader) {
     super(`"${propertyName}" for ${type}`)
 
     if (Error.captureStackTrace) {
-      Error.captureStackTrace(this, UnknownClassException);
+      Error.captureStackTrace(this, UnknownPropertyError);
     }
 
-    this.name = "UnknownPropertyException"
+    this.name = "UnknownPropertyError"
     this.type = type
     this.propertyName = propertyName
 
@@ -141,7 +141,7 @@ export function object(reader, id = null) {
   }
 
   if (!classes.has(type)) {
-    throw new UnknownClassException(type)
+    throw new UnknownClassError(type)
   }
 
   let properties = classes.get(type)
@@ -167,10 +167,10 @@ export function object(reader, id = null) {
           debugContext.property(propertyName, value)
         }
       } catch (e) {
-        throw new PropertyDataException(type, propertyName, objectReader, e)
+        throw new PropertyDataError(type, propertyName, objectReader, e)
       }
     } else {
-      throw new UnknownPropertyException(type, propertyName, objectReader)
+      throw new UnknownPropertyError(type, propertyName, objectReader)
     }
   }
 
