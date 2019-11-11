@@ -362,12 +362,15 @@ export default function(map) {
     ["angleY", r.float],
     ["angleZ", r.float],
     ["boneIndex", r.uint],
+    ["lightOverride", r.object],
     ["name", r.string],
     ["position", r.vector3],
     ["rotation", r.vector4],
     ["scaling", r.vector3],
     ["usage", r.uint],
   ]))
+
+  map.set("EveSOFDataHullBannerLight", new Map([]))
 
   map.set("EveSOFDataHullBooster", new Map([
     ["alwaysOn", r.boolean],
@@ -380,6 +383,7 @@ export default function(map) {
     ["atlasIndex1", r.uint],
     ["functionality", r.vector4],
     ["hasTrail", r.boolean],
+    ["lightScale", r.float],
     ["transform", r.matrix],
   ]))
 
