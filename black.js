@@ -77,7 +77,7 @@ export function read(view, context, debugContext = nullDebugContext) {
   reader.strings = strings
 
   for (let i = 0; i < stringsCount; i++) {
-    console.log(`${i}: ${strings[i]}`)
+    debugContext.log(`${i}: ${strings[i]}`)
   }
 
   let result = {}
