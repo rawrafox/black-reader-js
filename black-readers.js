@@ -1,15 +1,95 @@
 import classes from './black-classes.js'
 
+function addBinaryReaderDebugInformation(object, reader) {
+  object.offset = reader.offset
+  object.remainingLength = reader.length
+  object.fileOffsetBuffer = reader.view.byteOffset - reader.fileStart
+  object.fileOffsetCurrent = object.fileOffsetBuffer + object.offset
+
+  if (reader.length >= 1) {
+    object.u8 = reader.copy().readU8()
+  }
+
+  if (reader.length >= 2) {
+    object.u16 = reader.copy().readU16()
+
+    try {
+      object.stringU16 = reader.copy().readStringU16()
+    } catch {}
+  }
+
+  if (reader.length >= 4) {
+    object.u32 = reader.copy().readU32()
+    object.f32 = reader.copy().readF32()
+  }
+
+  object.data = reader.copy().readU8Array(Math.min(reader.length, 64))
+  object.view = reader.view
+}
+
+class PropertyDataException extends Error {
+  constructor(type, propertyName, objectReader, error) {
+    super(error.message)
+
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, UnknownClassException);
+    }
+
+    this.name = "PropertyDataException"
+    this.type = type
+    this.propertyName = propertyName
+    this.error = error
+
+    addBinaryReaderDebugInformation(this, objectReader)
+  }
+}
+
+class UnknownClassException extends Error {
+  constructor(type) {
+    super(type)
+
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, UnknownClassException);
+    }
+
+    this.name = "UnknownClassException"
+    this.type = type
+  }
+}
+
+class UnknownPropertyException extends Error {
+  constructor(type, propertyName, objectReader) {
+    super(`"${propertyName}" for ${type}`)
+
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, UnknownClassException);
+    }
+
+    this.name = "UnknownPropertyException"
+    this.type = type
+    this.propertyName = propertyName
+
+    addBinaryReaderDebugInformation(this, objectReader)
+  }
+}
+
 export function array(reader) {
   let count = reader.readU32()
   let result = []
-  
+
+  let debugContext = reader.debugContext
+  debugContext.group(`Array(count: ${count})`)
+
   for (let i = 0; i < count; i++) {
     result[i] = object(reader)
   }
-  
+
+  debugContext.groupEnd()
+
   return result
 }
+
+array.complexReader = true
 
 export function boolean(reader) {
   return reader.readU8() != 0
@@ -36,6 +116,7 @@ export function matrix(reader) {
 
 export function object(reader, id = null) {
   let context = reader.context
+  let debugContext = reader.debugContext
 
   if (arguments.length == 1) {
     id = reader.readU32()
@@ -47,8 +128,11 @@ export function object(reader, id = null) {
     }
   }
 
-  let objectReader = reader.readBinaryReader(reader.readU32())
+  let length = reader.readU32()
+  let objectReader = reader.readBinaryReader(length)
   let type = objectReader.readStringU16()
+
+  debugContext.group(`object ${type}(id: ${id}, length: ${length})`)
 
   let result = context.constructType(type)
 
@@ -57,7 +141,7 @@ export function object(reader, id = null) {
   }
 
   if (!classes.has(type)) {
-    throw `unknown class ${type}`
+    throw new UnknownClassException(type)
   }
 
   let properties = classes.get(type)
@@ -66,16 +150,38 @@ export function object(reader, id = null) {
     let propertyName = objectReader.readStringU16()
 
     if (properties.has(propertyName)) {
-      result[propertyName] = properties.get(propertyName)(objectReader)
+      try {
+        let propertyReader = properties.get(propertyName)
+
+        if (propertyReader.complexReader) {
+          debugContext.group(propertyName)
+        }
+
+        let value = propertyReader(objectReader)
+
+        result[propertyName] = value
+
+        if (propertyReader.complexReader) {
+          debugContext.groupEnd()
+        } else {
+          debugContext.property(propertyName, value)
+        }
+      } catch (e) {
+        throw new PropertyDataException(type, propertyName, objectReader, e)
+      }
     } else {
-      throw `unknown property ${propertyName} for ${type}`
+      throw new UnknownPropertyException(type, propertyName, objectReader)
     }
   }
 
   objectReader.expectEnd("object did not read to end?")
 
+  debugContext.groupEnd()
+
   return result
 }
+
+object.complexReader = true
 
 export function path(reader) {
   return reader.readStringU16()
@@ -84,6 +190,8 @@ export function path(reader) {
 export function rawObject(reader) {
   return object(reader, null)
 }
+
+rawObject.complexReader = true
 
 export function string(reader) {
   return reader.readStringU16()
@@ -123,7 +231,7 @@ export function vector4(reader, result = new Float32Array(4)) {
 export function indexBuffer(reader) {
   let count = reader.readU32()
   let byteSize = reader.readU16()
-  
+
   if (byteSize == 4) {
     return reader.readU32Array(count)
   } else {

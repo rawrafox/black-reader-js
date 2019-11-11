@@ -1,19 +1,46 @@
 let stringDecoder = new TextDecoder('utf-8')
 let wstringDecoder = new TextDecoder('utf-16le')
 
+class UnexpectedContent extends Error {
+  constructor(message, actual, expected) {
+    super(message)
+
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, UnknownClassException);
+    }
+
+    this.name = "UnexpectedContent"
+    this.actual = actual
+    this.expected = expected
+  }
+}
+
 function expect(actual, expected, message) {
   if (actual != expected) {
-    throw `${message}: expected ${expected}, got ${actual}`
+    throw new UnexpectedContent(`${message}`, actual, expected)
   }
 }
 
 export default class BinaryReader {
-  constructor(view, context, strings = null) {
+  constructor(view, context) {
     this.view = view
     this.context = context
-    this.strings = strings
 
+    this.debugContext = null
+    this.fileStart = null
     this.offset = 0
+    this.strings = null
+  }
+
+  copy() {
+    let reader = new BinaryReader(this.view, this.context)
+
+    reader.debugContext = this.debugContext
+    reader.fileStart = this.fileStart
+    reader.offset = this.offset
+    reader.strings = this.strings
+
+    return reader
   }
 
   get length() {
@@ -25,7 +52,13 @@ export default class BinaryReader {
   }
 
   readBinaryReader(n) {
-    return new BinaryReader(this.readDataView(n), this.context, this.strings)
+    let reader = new BinaryReader(this.readDataView(n), this.context)
+
+    reader.debugContext = this.debugContext
+    reader.fileStart = this.fileStart
+    reader.strings = this.strings
+
+    return reader
   }
 
   readCString() {
@@ -67,39 +100,67 @@ export default class BinaryReader {
   readF32() {
     let value = this.view.getFloat32(this.offset, true)
     this.offset += 4
+
+    this.debugContext.log("reading f32 (%d)", value)
+
     return value
   }
 
   readF64() {
     let value = this.view.getFloat64(this.offset, true)
     this.offset += 8
+
+    this.debugContext.log("reading f64 (%d)", value)
+
     return value
   }
 
-  readStringU16(key) {
-    let value = this.readU16()
+  readStringU16() {
+    let key = this.readU16()
 
-    if (value > this.strings.length) {
-      throw `reading string ${value}, but only ${this.strings.length} exist`
+    if (key > this.strings.length) {
+      throw new RangeError(`reading string ${key}, but only ${this.strings.length} exist`)
     }
 
-    return this.strings[value]
+    let value = this.strings[key]
+
+    this.debugContext.log("reading string (key: %d, value: %s)", key, value)
+
+    return value
   }
 
   readU8() {
     let value = this.view.getUint8(this.offset, true)
     this.offset += 1
+
+    this.debugContext.log("reading u8 (%d)", value)
+
+    return value
+  }
+
+  readU8Array(n) {
+    if (n < 0) { throw new RangeError(`n should be positive: got ${n}`) }
+
+    let value = new Uint8Array(n)
+
+    for (let i = 0; i < n; i++) {
+      value[i] = this.readU8()
+    }
+
     return value
   }
 
   readU16() {
     let value = this.view.getUint16(this.offset, true)
     this.offset += 2
+
+    this.debugContext.log("reading u16 (%d)", value)
+
     return value
   }
 
   readU16Array(n) {
-    if (n < 0) { throw `n should be positive: got ${n}` }
+    if (n < 0) { throw new RangeError(`n should be positive: got ${n}`) }
 
     let value = new Uint16Array(n)
 
@@ -113,11 +174,14 @@ export default class BinaryReader {
   readU32() {
     let value = this.view.getUint32(this.offset, true)
     this.offset += 4
+
+    this.debugContext.log("reading u32 (%d)", value)
+
     return value
   }
 
   readU32Array(n) {
-    if (n < 0) { throw `n should be positive: got ${n}` }
+    if (n < 0) { throw new RangeError(`n should be positive: got ${n}`) }
 
     let value = new Uint32Array(n)
 
@@ -130,8 +194,7 @@ export default class BinaryReader {
 
   expectEnd(message) {
     if (this.length != 0) {
-      console.trace()
-      throw `${message}: expected 0 bytes remaining, got ${this.length}`
+      throw new UnexpectedContent(message, `${this.length} bytes`, "0 bytes")
     }
   }
 

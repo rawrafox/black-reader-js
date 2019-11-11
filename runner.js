@@ -7,7 +7,8 @@ let fs = require("fs")
 let path = require("path")
 
 let arguments = process.argv.slice(2)
-let context = new black.Context(new Map())
+let context = new black.Context()
+let debugContext = new black.DebugContext(console)
 
 function processPath(p) {
   if (fs.statSync(p).isDirectory()) {
@@ -17,7 +18,7 @@ function processPath(p) {
       let buffer = fs.readFileSync(p)
       let view = new DataView(buffer.buffer, buffer.byteOffset, buffer.byteLength)
 
-      console.log(black.read(view, context))
+      console.log(black.read(view, context, debugContext))
     }
   }
 }

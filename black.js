@@ -2,7 +2,7 @@ import BinaryReader from './binary-reader.js'
 import { object } from './black-readers.js'
 
 export class Context {
-  constructor(constructors, defaultConstructor = Object) {
+  constructor(constructors = new Map(), defaultConstructor = Object) {
     this.constructors = constructors
     this.defaultConstructor = defaultConstructor
 
@@ -20,8 +20,46 @@ export class Context {
   }
 }
 
-export function read(view, context) {
+export class DebugContext {
+  constructor(io) {
+    this.console = io
+  }
+
+  group(message) {
+    this.console.group(message)
+  }
+
+  groupEnd() {
+    this.console.groupEnd()
+  }
+
+  log(value) { }
+
+  property(name, value) {
+    this.console.log("%s: %s", name, value)
+  }
+}
+
+export class VerboseDebugContext extends DebugContext {
+  log(value, ...args) {
+    this.console.log.call(this.console, value, ...args)
+  }
+}
+
+function nop() {}
+
+const nullDebugContext = {
+  group: nop,
+  groupEnd: nop,
+  log: nop,
+  property: nop
+}
+
+export function read(view, context, debugContext = nullDebugContext) {
   let reader = new BinaryReader(view, context)
+
+  reader.debugContext = debugContext
+  reader.fileStart = view.byteOffset
 
   reader.expectU32(0xB1ACF11E, "wrong FOURCC")
   reader.expectU32(1, "wrong version")
@@ -37,6 +75,10 @@ export function read(view, context) {
   stringsReader.expectEnd()
 
   reader.strings = strings
+
+  for (let i = 0; i < stringsCount; i++) {
+    console.log(`${i}: ${strings[i]}`)
+  }
 
   let result = {}
 
