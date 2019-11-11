@@ -5,6 +5,7 @@ require = require("esm")(module)
 let fs = require("fs")
 let http = require("http")
 let path = require("path")
+let zlib = require("zlib")
 
 let args = process.argv.slice(2)
 
@@ -44,7 +45,6 @@ for (let i = 0; i < index.length; i++) {
   if (e && e.path.match(pattern)) {
     http.get({ hostname: "resources.eveonline.com", path: e.cdn, agent: agent }, function (res) {
       const { statusCode } = res
-      const contentType = res.headers['content-type']
 
       if (statusCode !== 200) {
         console.error("Failed: %s with status %s", e.path, statusCode)
@@ -57,7 +57,7 @@ for (let i = 0; i < index.length; i++) {
 
       var file = fs.createWriteStream(filePath)
 
-      res.pipe(file)
+      res.pipe(zlib.createGunzip()).pipe(file)
 
       file.on('finish', function() {
         file.close()
