@@ -1,8 +1,10 @@
 import * as r from '../black-readers.js'
 
+import { typeSymbol } from '../black.js'
+
 class ConstantParameter {
   constructor(name, value) {
-    this._type = "Tr2Vector4Parameter"
+    this[typeSymbol] = "Tr2Vector4Parameter"
     this.name = name
     this.value = value
   }
@@ -23,7 +25,8 @@ class ConstantParameter {
 class Key {
   static readStruct(reader) {
     let result = new Key()
-    result._type = "Tr2CurveScalarKey"
+
+    result[typeSymbol] = "Tr2CurveScalarKey"
     result.time = reader.readF32()
     result.value = reader.readF32()
     result.startTangent = reader.readF32()

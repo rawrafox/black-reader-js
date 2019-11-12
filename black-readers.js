@@ -1,5 +1,7 @@
 import classes from './black-classes.js'
 
+export const idSymbol = Symbol('id')
+
 function addBinaryReaderDebugInformation(object, reader) {
   object.offset = reader.offset
   object.remainingLength = reader.length
@@ -136,6 +138,8 @@ export function object(reader, id = null) {
 
   let result = context.constructType(type)
 
+  result[idSymbol] = id
+
   if (arguments.length == 1) {
     reader.references.set(id, result)
   }
@@ -159,7 +163,11 @@ export function object(reader, id = null) {
 
         let value = propertyReader(objectReader)
 
-        result[propertyName] = value
+        if (result instanceof Map) {
+          result.set(propertyName, value)
+        } else {
+          result[propertyName] = value
+        }
 
         if (propertyReader.complexReader) {
           debugContext.groupEnd()

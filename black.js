@@ -1,8 +1,11 @@
 import BinaryReader from './binary-reader.js'
 import { object } from './black-readers.js'
 
+export { idSymbol } from './black-readers.js'
+export const typeSymbol = Symbol('type')
+
 export class Context {
-  constructor(constructors = new Map(), defaultConstructor = Object) {
+  constructor(constructors = new Map(), defaultConstructor = Map) {
     this.constructors = constructors
     this.defaultConstructor = defaultConstructor
   }
@@ -12,7 +15,9 @@ export class Context {
       return new this.constructors.get(type)()
     } else {
       let result = new this.defaultConstructor()
-      result._type = type
+
+      result[typeSymbol] = type
+
       return result
     }
   }
