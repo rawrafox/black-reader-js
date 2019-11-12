@@ -29,6 +29,7 @@ export default class BinaryReader {
     this.debugContext = null
     this.fileStart = null
     this.offset = 0
+    this.references = null
     this.strings = null
   }
 
@@ -38,6 +39,7 @@ export default class BinaryReader {
     reader.debugContext = this.debugContext
     reader.fileStart = this.fileStart
     reader.offset = this.offset
+    reader.references = this.references
     reader.strings = this.strings
 
     return reader
@@ -56,6 +58,7 @@ export default class BinaryReader {
 
     reader.debugContext = this.debugContext
     reader.fileStart = this.fileStart
+    reader.references = this.references
     reader.strings = this.strings
 
     return reader

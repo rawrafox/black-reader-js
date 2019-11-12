@@ -5,8 +5,6 @@ export class Context {
   constructor(constructors = new Map(), defaultConstructor = Object) {
     this.constructors = constructors
     this.defaultConstructor = defaultConstructor
-
-    this.references = new Map()
   }
 
   constructType(type) {
@@ -60,6 +58,7 @@ export function read(view, context, debugContext = nullDebugContext) {
 
   reader.debugContext = debugContext
   reader.fileStart = view.byteOffset
+  reader.references = new Map()
 
   reader.expectU32(0xB1ACF11E, "wrong FOURCC")
   reader.expectU32(1, "wrong version")

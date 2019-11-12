@@ -123,8 +123,8 @@ export function object(reader, id = null) {
 
     if (id == 0) {
       return null
-    } else if (context.references.has(id)) {
-      return context.references.get(id)
+    } else if (reader.references.has(id)) {
+      return reader.references.get(id)
     }
   }
 
@@ -137,7 +137,7 @@ export function object(reader, id = null) {
   let result = context.constructType(type)
 
   if (arguments.length == 1) {
-    context.references.set(id, result)
+    reader.references.set(id, result)
   }
 
   if (!classes.has(type)) {
