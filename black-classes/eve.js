@@ -137,9 +137,11 @@ export default function(map) {
   ]))
 
   map.set('EveChildContainer', new Map([
+    ["alwaysOn", r.boolean],
     ["boneIndex", r.uint],
     ["controllers", r.array],
     ["display", r.boolean],
+    ["displayFilter", r.object],
     ["localTransform", r.matrix],
     ["name", r.string],
     ["curveSets", r.array],

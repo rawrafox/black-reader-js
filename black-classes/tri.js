@@ -55,7 +55,9 @@ export default function(map) {
   ]))
 
   map.set('TriObserverLocal', new Map([
-    ["front", r.vector3]
+    ["front", r.vector3],
+    ["name", r.string],
+    ["observer", r.object]
   ]))
 
   map.set('TriPerlinCurve', new Map([

@@ -10,6 +10,7 @@ let path = require("path")
 let args = process.argv.slice(2)
 let context = new black.Context()
 let debugContext = black.nullDebugContext
+// let debugContext = new black.VerboseDebugContext(console)
 
 function processPath(p, output) {
   if (fs.statSync(p).isDirectory()) {
