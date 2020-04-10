@@ -69,8 +69,8 @@ export default function(map) {
   map.set("EveSOFDataBooster", new Map([
     ["glowColor", r.vector4],
     ["glowScale", r.float],
-    ["gradient0ResPath", r.string],
-    ["gradient1ResPath", r.string],
+    ["gradient0ResPath", r.path],
+    ["gradient1ResPath", r.path],
     ["haloColor", r.vector4],
     ["haloScaleX", r.float],
     ["haloScaleY", r.float],
@@ -86,7 +86,7 @@ export default function(map) {
     ["shape1", r.object],
     ["shapeAtlasCount", r.uint],
     ["shapeAtlasHeight", r.uint],
-    ["shapeAtlasResPath", r.string],
+    ["shapeAtlasResPath", r.path],
     ["shapeAtlasWidth", r.uint],
     ["symHaloScale", r.float],
     ["trailColor", r.vector4],
@@ -192,10 +192,10 @@ export default function(map) {
   ]))
 
   map.set("EveSOFDataGeneric", new Map([
-    ["areaShaderLocation", r.string],
+    ["areaShaderLocation", r.path],
     ["areaShaders", r.array],
     ["bannerShader", r.rawObject],
-    ["decalShaderLocation", r.string],
+    ["decalShaderLocation", r.path],
     ["decalShaders", r.array],
     ["damage", r.object],
     ["genericWreckMaterial", r.object],
@@ -203,9 +203,9 @@ export default function(map) {
     ["hullDamage", r.object],
     ["materialPrefixes", r.array],
     ["patternMaterialPrefixes", r.array],
-    ["resPathDefaultAlliance", r.string],
-    ["resPathDefaultCeo", r.string],
-    ["resPathDefaultCorp", r.string],
+    ["resPathDefaultAlliance", r.path],
+    ["resPathDefaultCeo", r.path],
+    ["resPathDefaultCorp", r.path],
     ["shaderPrefixAnimated", r.string],
     ["swarm", r.object],
     ["variants", r.array],
@@ -231,7 +231,7 @@ export default function(map) {
     ["flickerPerlinBeta", r.float],
     ["flickerPerlinSpeed", r.float],
     ["flickerPerlinN", r.uint],
-    ["shieldGeometryResFilePath", r.string],
+    ["shieldGeometryResFilePath", r.path],
     ["shieldShaderEllipsoid", r.string],
     ["shieldShaderHull", r.string],
   ]))
@@ -313,7 +313,7 @@ export default function(map) {
     ["description", r.string],
     ["distortionAreas", r.array],
     ["enableDynamicBoundingSphere", r.boolean],
-    ["geometryResFilePath", r.string],
+    ["geometryResFilePath", r.path],
     ["hazeSets", r.array],
     ["hullDecals", r.array],
     ["impactEffectType", r.uint],
@@ -325,7 +325,7 @@ export default function(map) {
     ["name", r.string],
     ["opaqueAreas", r.array],
     ["planeSets", r.array],
-    ["modelRotationCurvePath", r.string],
+    ["modelRotationCurvePath", r.path],
     ["shapeEllipsoidCenter", r.vector3],
     ["shapeEllipsoidRadius", r.vector3],
     ["soundEmitters", r.array],
@@ -399,7 +399,7 @@ export default function(map) {
   ]))
 
   map.set("EveSOFDataHullController", new Map([
-    ["path", r.string],
+    ["path", r.path],
   ]))
 
   map.set("EveSOFDataHullDecalSet", new Map([
@@ -493,9 +493,9 @@ export default function(map) {
   map.set("EveSOFDataHullPlaneSet", new Map([
     ["atlasSize", r.uint],
     ["items", r.array],
-    ["layer1MapResPath", r.string],
-    ["layer2MapResPath", r.string],
-    ["maskMapResPath", r.string],
+    ["layer1MapResPath", r.path],
+    ["layer2MapResPath", r.path],
+    ["maskMapResPath", r.path],
     ["name", r.string],
     ["planeData", r.vector4],
     ["skinned", r.boolean],
@@ -517,8 +517,8 @@ export default function(map) {
   ]))
 
   map.set("EveSOFDataHullSpotlightSet", new Map([
-    ["coneTextureResPath", r.string],
-    ["glowTextureResPath", r.string],
+    ["coneTextureResPath", r.path],
+    ["glowTextureResPath", r.path],
     ["items", r.array],
     ["name", r.string],
     ["skinned", r.boolean],
@@ -587,7 +587,7 @@ export default function(map) {
   ]))
 
   map.set("EveSOFDataInstancedMesh", new Map([
-    ["geometryResPath", r.string],
+    ["geometryResPath", r.path],
     ["instances", r.structList(Instance)],
     ["lowestLodVisible", r.uint],
     ["name", r.string],
@@ -621,7 +621,7 @@ export default function(map) {
     ["projectionTypeU", r.uint],
     ["projectionTypeV", r.uint],
     ["textureName", r.string],
-    ["textureResFilePath", r.string],
+    ["textureResFilePath", r.path],
   ]))
 
   map.set("EveSOFDataPatternPerHull", new Map([

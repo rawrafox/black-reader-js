@@ -496,9 +496,9 @@ export default function(map) {
     ["backgroundRenderingEnabled", r.boolean],
     ["curveSets", r.array],
     ["enableShadows", r.boolean],
-    ["envMapResPath", r.string],
-    ["envMap1ResPath", r.string],
-    ["envMap2ResPath", r.string],
+    ["envMapResPath", r.path],
+    ["envMap1ResPath", r.path],
+    ["envMap2ResPath", r.path],
     ["envMapRotation", r.vector4],
     ["externalParameters", r.array],
     ["fogColor", r.color],
@@ -524,7 +524,7 @@ export default function(map) {
     ["color", r.color],
     ["curveSets", r.array],
     ["enablePicking", r.boolean],
-    ["geometryResPath", r.string],
+    ["geometryResPath", r.path],
     ["name", r.string],
     ["pinColor", r.color],
     ["pinEffect", r.object],
@@ -623,7 +623,7 @@ export default function(map) {
 
   map.set('EveTrailsSet', new Map([
     ["effect", r.object],
-    ["geometryResPath", r.string]
+    ["geometryResPath", r.path]
   ]))
 
   map.set('EveTransform', new Map([
@@ -681,8 +681,8 @@ export default function(map) {
     ["boundingSphere", r.vector4],
     ["chooseRandomLocator", r.boolean],
     ["cyclingFireGroupCount", r.uint],
-    ["firingEffectResPath", r.string],
-    ["geometryResPath", r.string],
+    ["firingEffectResPath", r.path],
+    ["geometryResPath", r.path],
     ["impactSize", r.float],
     ["laserMissBehaviour", r.boolean],
     ["locatorName", r.string],

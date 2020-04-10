@@ -71,18 +71,18 @@ export default function(map) {
   map.set('Tr2ActionAnimateValue', new Map([
     ["attribute", r.string],
     ["curve", r.object],
-    ["path", r.string],
+    ["path", r.path],
     ["value", r.string],
   ]))
 
   map.set('Tr2ActionChildEffect', new Map([
     ["childName", r.string],
-    ["path", r.string],
+    ["path", r.path],
     ["removeOnStop", r.boolean],
   ]))
 
   map.set('Tr2ActionOverlay', new Map([
-    ["path", r.string],
+    ["path", r.path],
   ]))
 
   map.set('Tr2ActionPlayCurveSet', new Map([
@@ -106,7 +106,7 @@ export default function(map) {
 
   map.set('Tr2ActionSetValue', new Map([
     ["attribute", r.string],
-    ["path", r.string],
+    ["path", r.path],
     ["value", r.string],
   ]))
 
@@ -164,7 +164,7 @@ export default function(map) {
   ]))
 
   map.set('Tr2ControllerReference', new Map([
-    ["path", r.string],
+    ["path", r.path],
   ]))
 
   map.set('Tr2ControllerFloatVariable', new Map([
@@ -291,7 +291,7 @@ export default function(map) {
   map.set('Tr2StaticEmitter', new Map([
     ["name", r.string],
     ["particleSystem", r.object],
-    ["geometryResourcePath", r.string],
+    ["geometryResourcePath", r.path],
     ["meshIndex", r.uint],
   ]))
 
@@ -377,8 +377,8 @@ export default function(map) {
     ["decalAreas", r.array],
     ["depthAreas", r.array],
     ["distortionAreas", r.array],
-    ["geometryResPath", r.string],
-    ["instanceGeometryResPath", r.string],
+    ["geometryResPath", r.path],
+    ["instanceGeometryResPath", r.path],
     ["instanceGeometryResource", r.object],
     ["instanceMeshIndex", r.uint],
     ["minBounds", r.vector3],
@@ -388,7 +388,7 @@ export default function(map) {
   ]))
   
   map.set('Tr2InteriorPlaceable', new Map([
-    ["placeableResPath", r.string],
+    ["placeableResPath", r.path],
     ["transform", r.rawObject]
   ]))
 
@@ -441,9 +441,9 @@ export default function(map) {
 
   map.set('Tr2LodResource', new Map([
     ["name", r.string],
-    ["highDetailResPath", r.string],
-    ["lowDetailResPath", r.string],
-    ["mediumDetailResPath", r.string],
+    ["highDetailResPath", r.path],
+    ["lowDetailResPath", r.path],
+    ["mediumDetailResPath", r.path],
   ]))
 
   map.set('Tr2Mesh', new Map([
@@ -453,7 +453,7 @@ export default function(map) {
     ["depthAreas", r.array],
     ["depthNormalAreas", r.array],
     ["distortionAreas", r.array],
-    ["geometryResPath", r.string],
+    ["geometryResPath", r.path],
     ["meshIndex", r.uint],
     ["name", r.string],
     ["opaqueAreas", r.array],
@@ -592,7 +592,7 @@ export default function(map) {
   ]))
 
   map.set('Tr2SkinnedModel', new Map([
-    ["geometryResPath", r.string],
+    ["geometryResPath", r.path],
     ["meshes", r.array],
     ["name", r.string],
     ["skeletonName", r.string],
