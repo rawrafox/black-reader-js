@@ -47,11 +47,13 @@ export default function(map) {
     ["Killmark", r.object],
     ["Monument", r.object],
     ["Orange", r.object],
+    ["Ornament", r.object],
     ["Primary", r.object],
     ["Reactor", r.object],
     ["Red", r.object],
     ["Rock", r.object],
     ["Sails", r.object],
+    ["SimplePrimary", r.object],
     ["Secondary", r.object],
     ["Tertiary", r.object],
     ["White", r.object],
@@ -209,6 +211,7 @@ export default function(map) {
     ["shaderPrefixAnimated", r.string],
     ["swarm", r.object],
     ["variants", r.array],
+    ["visibilityGroups", r.array],
   ]))
 
   map.set("EveSOFDataGenericDamage", new Map([
@@ -455,6 +458,7 @@ export default function(map) {
     ["lightColor", r.vector4],
     ["noiseAmplitude", r.float],
     ["noiseFrequency", r.float],
+    ["noiseOctaves", r.float],
     ["position", r.vector3],
     ["radius", r.float],
   ]))
@@ -463,6 +467,7 @@ export default function(map) {
     ["name", r.string],
     ["brightness", r.float],
     ["innerRadius", r.float],
+    ["noiseOctaves", r.float],
     ["position", r.vector3],
     ["radius", r.float],
     ["texturePath", r.path]
@@ -474,6 +479,8 @@ export default function(map) {
     ["innerAngle", r.float],
     ["innerRadius", r.float],
     ["lightColor", r.color],
+    ["noiseAmplitude", r.float],
+    ["noiseFrequency", r.float],
     ["outerAngle", r.float],
     ["position", r.vector3],
     ["radius", r.float],
@@ -505,6 +512,7 @@ export default function(map) {
   map.set("EveSOFDataHullPlaneSetItem", new Map([
     ["boneIndex", r.uint],
     ["color", r.vector4],
+    ["dutyCycle", r.float],
     ["groupIndex", r.uint],
     ["layer1Scroll", r.vector4],
     ["layer1Transform", r.vector4],
@@ -512,6 +520,7 @@ export default function(map) {
     ["layer2Transform", r.vector4],
     ["maskMapAtlasIndex", r.uint],
     ["position", r.vector3],
+    ["rate", r.float],
     ["rotation", r.vector4],
     ["scaling", r.vector3],
   ]))
@@ -538,6 +547,7 @@ export default function(map) {
 
   map.set("EveSOFDataHullSoundEmitter", new Map([
     ["name", r.string],
+    ["position", r.vector3],
     ["prefix", r.string]
   ]))
 
