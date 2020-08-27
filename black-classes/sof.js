@@ -453,6 +453,7 @@ export default function(map) {
 
   map.set("EveSOFDataHullLightSetItem", new Map([
     ["name", r.string],
+    ["boneIndex", r.uint],
     ["brightness", r.float],
     ["innerRadius", r.float],
     ["lightColor", r.vector4],
@@ -475,6 +476,7 @@ export default function(map) {
 
   map.set("EveSOFDataHullLightSetSpotLight", new Map([
     ["name", r.string],
+    ["boneIndex", r.uint],
     ["brightness", r.float],
     ["innerAngle", r.float],
     ["innerRadius", r.float],
@@ -510,6 +512,9 @@ export default function(map) {
   ]))
 
   map.set("EveSOFDataHullPlaneSetItem", new Map([
+    ["blinkRate", r.float],
+    ["blinkPhase", r.float],
+    ["blinkMode", r.uint],
     ["boneIndex", r.uint],
     ["color", r.vector4],
     ["dutyCycle", r.float],
