@@ -8,6 +8,7 @@ export class Context {
   constructor(constructors = new Map(), defaultConstructor = Map) {
     this.constructors = constructors
     this.defaultConstructor = defaultConstructor
+    this.pathHandler = null
   }
 
   constructType(type) {

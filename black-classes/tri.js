@@ -73,7 +73,7 @@ export default function(map) {
 
   map.set('TriTextureParameter', new Map([
     ["name", r.string],
-    ["resourcePath", r.string]
+    ["resourcePath", r.path]
   ]))
   
   map.set('TriTransformParameter', new Map([

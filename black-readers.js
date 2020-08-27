@@ -198,7 +198,12 @@ export function object(reader, id = null) {
 object.complexReader = true
 
 export function path(reader) {
-  return reader.readStringU16()
+  let value = reader.readStringU16()
+  if (typeof reader.context.pathHandler == "function")
+  {
+    value = reader.context.pathHandler(value)
+  }
+  return value
 }
 
 export function rawObject(reader) {
