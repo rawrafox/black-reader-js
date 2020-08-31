@@ -24,7 +24,7 @@ function replacer(context) {
       }
 
       value.forEach((e, k) => {
-        result[k] = e
+        result[k] = e.buffer instanceof ArrayBuffer && e.BYTES_PER_ELEMENT ? Array.from(e) : e;
       })
 
       return result
