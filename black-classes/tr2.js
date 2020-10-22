@@ -583,6 +583,71 @@ export default function(map) {
   map.set('Tr2PostProcess', new Map([
     ["stages", r.array],
   ]))
+  
+  map.set('Tr2PostProcess2', new Map([
+    ["bloom", r.object],
+    ["dynamicExposure", r.object],
+    ["desaturate", r.object],
+    ["fade", r.object],
+    ["fidelityFX", r.object],
+    ["filmGrain", r.object],
+    ["fog", r.object],
+    ["godRays", r.object],
+    ["lut", r.object],
+    ["signalLoss", r.object],
+    ["vignette", r.object]
+  ]))
+
+  map.set('Tr2PPBloomEffect', new Map())
+
+  map.set('Tr2PPDesaturateEffect', new Map([
+    ["intensity", r.float]
+  ]))
+
+  map.set('Tr2PPDynamicExposureEffect', new Map([
+    ["adjustment", r.float],
+    ["influence", r.float],
+    ["middleValue", r.float]
+  ]))
+
+  map.set('Tr2PPFadeEffect', new Map())
+
+  map.set('Tr2PPFidelityFXEffect', new Map())
+
+  map.set('Tr2PPFilmGrainEffect', new Map())
+
+  map.set('Tr2PPFogEffect', new Map([
+    ["areaCenter", r.vector3],
+    ["blendAmount0", r.float],
+    ["blendAmount1", r.float],
+    ["blendAmount2", r.float],
+    ["blendBias0", r.float],
+    ["blendBias1", r.float],
+    ["blendBias2", r.float],
+    ["blendDistance0", r.float],
+    ["blendDistance1", r.float],
+    ["blendDistance2", r.float],
+    ["blendPower0", r.float],
+    ["blendPower1", r.float],
+    ["blendPower2", r.float],
+    ["color", r.color],
+    ["colorInfluence", r.float],
+    ["nebulaInfluence", r.float]
+  ]))
+
+  map.set('Tr2PPGodRaysEffect', new Map([
+    ["noiseTexturePath", r.path]
+  ]))
+
+  map.set('Tr2PPLutEffect', new Map([
+    ["path", r.path]
+  ]))
+
+  map.set('Tr2PPSignalLossEffect', new Map())
+
+  map.set('Tr2PPVignetteEffect', new Map([
+    ["sineFrequency", r.float]
+  ]))
 
   map.set('Tr2RuntimeInstanceData', new Map())
 
