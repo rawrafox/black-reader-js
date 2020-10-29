@@ -399,6 +399,7 @@ export default function(map) {
     ["rotation", r.vector4],
     ["scaling", r.vector3],
     ["translation", r.vector3],
+    ["visibilityGroup", r.string],
   ]))
 
   map.set("EveSOFDataHullController", new Map([
