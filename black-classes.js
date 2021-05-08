@@ -11,8 +11,8 @@ function define(map, arg1, arg2)
     switch (typeof arg1)
     {
         case 'object':
-            for (const key in arg1 && key.indexOf("__") !== 0) {
-                if (arg1.hasOwnProperty(key)) {
+            for (const key in arg1) {
+                if (arg1.hasOwnProperty(key) && key.indexOf("__") !== 0) {
                     define(map, key, arg1[key]);
                 }
             }
@@ -27,7 +27,7 @@ function define(map, arg1, arg2)
                     }
                 }
             }
-            map.set(name, new Map(properties));
+            map.set(arg1, new Map(properties));
             break;
 
         default:
