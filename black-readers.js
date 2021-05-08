@@ -97,6 +97,10 @@ export function boolean(reader) {
   return reader.readU8() != 0
 }
 
+export function byte(reader) {
+  return reader.readU8()
+}
+
 export function color(reader) {
   return [reader.readF32(), reader.readF32(), reader.readF32(), reader.readF32()]
 }
