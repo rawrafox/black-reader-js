@@ -1,5 +1,5 @@
-import * as r from '../black-readers.js'
-import { typeSymbol } from '../black.js'
+import * as r from "../black-readers.js"
+import { typeSymbol } from "../black.js"
 
 class ConstantParameter {
   constructor(name, value) {
@@ -64,35 +64,35 @@ class Key {
 
 export default {
 
-  'Tr2ActionAnimateCurveSet': {
+  "Tr2ActionAnimateCurveSet": {
     curveSet: r.object,
     value: r.string
   },
 
-  'Tr2ActionAnimateValue': {
+  "Tr2ActionAnimateValue": {
     attribute: r.string,
     curve: r.object,
     path: r.path,
     value: r.string
   },
 
-  'Tr2ActionChildEffect': {
+  "Tr2ActionChildEffect": {
     childName: r.string,
     path: r.path,
     removeOnStop: r.boolean
   },
 
-  'Tr2ActionOverlay': {
+  "Tr2ActionOverlay": {
     path: r.path
   },
 
-  'Tr2ActionPlayCurveSet': {
+  "Tr2ActionPlayCurveSet": {
     curveSetName: r.string,
     rangeName: r.string,
     syncToRange: r.boolean
   },
 
-  'Tr2ActionPlayMeshAnimation': {
+  "Tr2ActionPlayMeshAnimation": {
     animation: r.string,
     loops: r.uint,
     mask: r.string
@@ -103,12 +103,13 @@ export default {
     event: r.string
   },
 
-  'Tr2ActionResetClipSphereCenter': {
+  "Tr2ActionResetClipSphereCenter": {
 
   },
 
-  'Tr2ActionSetValue': {
+  "Tr2ActionSetValue": {
     attribute: r.string,
+    delayBinding: r.boolean,
     path: r.path,
     value: r.string
   },
@@ -117,30 +118,30 @@ export default {
 
   },
 
-  'Tr2TranslationAdapter': {
+  "Tr2TranslationAdapter": {
     curve: r.object,
     value: r.vector3
   },
 
-  'Tr2RotationAdapter': {
+  "Tr2RotationAdapter": {
     curve: r.object,
     value: r.vector4
   },
 
-  'Tr2RandomIntegerAttributeGenerator': {
+  "Tr2RandomIntegerAttributeGenerator": {
     customName: r.string,
     minRange: r.vector4,
     maxRange: r.vector4
   },
 
-  'Tr2RandomUniformAttributeGenerator': {
+  "Tr2RandomUniformAttributeGenerator": {
     customName: r.string,
     elementType: r.uint,
     minRange: r.vector4,
     maxRange: r.vector4
   },
 
-  'Tr2SphereShapeAttributeGenerator': {
+  "Tr2SphereShapeAttributeGenerator": {
     customName: r.string,
     distributionExponent: r.float,
     maxPhi: r.float,
@@ -156,54 +157,55 @@ export default {
     rotation: r.vector4
   },
 
-  'Tr2PlaneConstraint': {
+  "Tr2PlaneConstraint": {
     reflectionNoise: r.float,
     generators: r.array
   },
 
-  'Tr2Controller': {
+  "Tr2Controller": {
     isShared: r.boolean,
     stateMachines: r.array,
     name: r.string,
     variables: r.array
   },
 
-  'Tr2ControllerReference': {
+  "Tr2ControllerReference": {
     path: r.path
   },
 
-  'Tr2ControllerFloatVariable': {
+  "Tr2ControllerFloatVariable": {
     name: r.string,
     defaultValue: r.float,
     enumValues: r.string,
     variableType: r.uint
   },
 
-  'Tr2BoneMatrixCurve': {
+  "Tr2BoneMatrixCurve": {
     name: r.string
   },
 
-  'Tr2CurveColor': {
+  "Tr2CurveColor": {
     name: r.string,
     r: r.rawObject,
     g: r.rawObject,
     b: r.rawObject,
-    a: r.rawObject
+    a: r.rawObject,
+    srgbOutput: r.boolean
   },
 
-  'Tr2CurveConstant': {
+  "Tr2CurveConstant": {
     name: r.string,
     value: r.vector4
   },
 
-  'Tr2CurveEulerRotation': {
+  "Tr2CurveEulerRotation": {
     name: r.string,
     pitch: r.rawObject,
     roll: r.rawObject,
     yaw: r.rawObject
   },
 
-  'Tr2CurveScalar': {
+  "Tr2CurveScalar": {
     name: r.string,
     timeOffset: r.float,
     timeScale: r.float,
@@ -212,14 +214,15 @@ export default {
     keys: r.structList(Key)
   },
 
-  'Tr2CurveVector3': {
+  "Tr2CurveVector3": {
     name: r.string,
     x: r.rawObject,
     y: r.rawObject,
     z: r.rawObject
   },
 
-  'Tr2CurveEulerRotationExpression': {
+  "Tr2CurveEulerRotationExpression": {
+    input1: r.float,
     inputs: r.array,
     name: r.string,
     expressionYaw: r.string,
@@ -227,7 +230,7 @@ export default {
     expressionRoll: r.string
   },
 
-  'Tr2CurveScalarExpression': {
+  "Tr2CurveScalarExpression": {
     inputs: r.array,
     name: r.string,
     expression: r.string,
@@ -236,7 +239,7 @@ export default {
     input3: r.float
   },
 
-  'Tr2ScalarExprKey': {
+  "Tr2ScalarExprKey": {
     input1: r.float,
     input2: r.float,
     input3: r.float,
@@ -248,13 +251,13 @@ export default {
     value: r.float
   },
 
-  'Tr2ScalarExprKeyCurve': {
+  "Tr2ScalarExprKeyCurve": {
     interpolation: r.uint,
     keys: r.array,
     name: r.string
   },
 
-  'Tr2CurveVector3Expression': {
+  "Tr2CurveVector3Expression": {
     inputs: r.array,
     name: r.string,
     expressionX: r.string,
@@ -262,20 +265,20 @@ export default {
     expressionZ: r.string
   },
 
-  'Tr2CurveSetRange': {
+  "Tr2CurveSetRange": {
     endTime: r.float,
     looped: r.boolean,
     name: r.string,
     startTime: r.float
   },
 
-  'Tr2DistanceTracker': {
+  "Tr2DistanceTracker": {
     name: r.string,
     direction: r.vector3,
     targetPosition: r.vector3
   },
 
-  'Tr2Effect': {
+  "Tr2Effect": {
     effectFilePath: r.path,
     name: r.string,
     parameters: r.array,
@@ -285,7 +288,7 @@ export default {
     samplerOverrides: (reader) => { throw "lulz" }
   },
 
-  'Tr2DynamicEmitter': {
+  "Tr2DynamicEmitter": {
     name: r.string,
     particleSystem: r.object,
     generators: r.array,
@@ -293,14 +296,7 @@ export default {
     rate: r.float
   },
 
-  'Tr2StaticEmitter': {
-    name: r.string,
-    particleSystem: r.object,
-    geometryResourcePath: r.path,
-    meshIndex: r.uint
-  },
-
-  'Tr2GpuSharedEmitter': {
+  "Tr2GpuSharedEmitter": {
     name: r.string,
     particleSystem: r.object,
     angle: r.float,
@@ -336,7 +332,7 @@ export default {
     velocityStretchRotation: r.float
   },
 
-  'Tr2GpuUniqueEmitter': {
+  "Tr2GpuUniqueEmitter": {
     name: r.string,
     particleSystem: r.object,
     angle: r.float,
@@ -372,13 +368,14 @@ export default {
     velocityStretchRotation: r.float
   },
 
-  'Tr2ForceSphereVolume': {
+  "Tr2ForceSphereVolume": {
     forces: r.array,
     radius: r.float
   },
 
-  'Tr2InstancedMesh': {
+  "Tr2InstancedMesh": {
     additiveAreas: r.array,
+    boundsMethod: r.object,
     decalAreas: r.array,
     depthAreas: r.array,
     distortionAreas: r.array,
@@ -386,23 +383,24 @@ export default {
     instanceGeometryResPath: r.path,
     instanceGeometryResource: r.object,
     instanceMeshIndex: r.uint,
+    maxInstanceSize: r.uint,
     minBounds: r.vector3,
     maxBounds: r.vector3,
     opaqueAreas: r.array,
     transparentAreas: r.array
   },
 
-  'Tr2InteriorPlaceable': {
+  "Tr2InteriorPlaceable": {
     placeableResPath: r.path,
     transform: r.rawObject
   },
 
-  'Tr2InteriorScene': {
+  "Tr2InteriorScene": {
     dynamics: r.array,
     lights: r.array
   },
 
-  'Tr2InteriorLightSource': {
+  "Tr2InteriorLightSource": {
     color: r.vector4,
     coneAlphaInner: r.float,
     coneAlphaOuter: r.float,
@@ -417,23 +415,24 @@ export default {
     useKelvinColor: r.boolean
   },
 
-  'Tr2IntSkinnedObject': {
+  "Tr2IntSkinnedObject": {
     curveSets: r.array,
     transform: r.rawObject,
     visualModel: r.object
   },
 
-  'Tr2KelvinColor': {
+  "Tr2KelvinColor": {
     temperature: r.float,
     tint: r.float
   },
 
-  'Tr2Model': {
+  "Tr2Model": {
     meshes: r.array
   },
 
-  'Tr2PointLight': {
+  "Tr2PointLight": {
     name: r.string,
+    boneIndex: r.uint,
     brightness: r.float,
     color: r.vector4,
     innerRadius: r.float,
@@ -444,14 +443,14 @@ export default {
     radius: r.float
   },
 
-  'Tr2LodResource': {
+  "Tr2LodResource": {
     name: r.string,
     highDetailResPath: r.path,
     lowDetailResPath: r.path,
     mediumDetailResPath: r.path
   },
 
-  'Tr2Mesh': {
+  "Tr2Mesh": {
     additiveAreas: r.array,
     decalAreas: r.array,
     deferGeometryLoad: r.boolean,
@@ -467,7 +466,7 @@ export default {
     transparentAreas: r.array
   },
 
-  'Tr2MeshArea': {
+  "Tr2MeshArea": {
     count: r.uint,
     effect: r.object,
     index: r.uint,
@@ -476,7 +475,7 @@ export default {
     useSHLighting: r.boolean
   },
 
-  'Tr2MeshLod': {
+  "Tr2MeshLod": {
     additiveAreas: r.array,
     associatedResources: r.array,
     decalAreas: r.array,
@@ -488,33 +487,54 @@ export default {
     transparentAreas: r.array
   },
 
-  'Tr2ExternalParameter': {
+  "Tr2ExternalParameter": {
     name: r.string,
     destinationObject: r.object,
     destinationAttribute: r.string
   },
 
-  'Tr2FloatParameter': {
+  "Tr2FloatParameter": {
     name: r.string,
     value: r.float
   },
 
-  'Tr2Matrix4Parameter': {
+  "Tr2Matrix4Parameter": {
     name: r.string,
     value: r.matrix
   },
 
-  'Tr2Texture2dLodParameter': {
+  "Tr2SpotLight" : {
+    name: r.string,
+    brightness: r.float,
+    color: r.vector4,
+    innerAngle: r.float,
+    innerRadius: r.float,
+    noiseAmplitude: r.float,
+    noiseFrequency: r.float,
+    outerAngle: r.float,
+    position: r.vector3,
+    radius: r.float,
+    rotation: r.vector4
+  },
+
+  "Tr2StaticEmitter": {
+    name: r.string,
+    particleSystem: r.object,
+    geometryResourcePath: r.path,
+    meshIndex: r.uint
+  },
+
+  "Tr2Texture2dLodParameter": {
     name: r.string,
     lodResource: r.object
   },
 
-  'Tr2Vector4Parameter': {
+  "Tr2Vector4Parameter": {
     name: r.string,
     value: r.vector4
   },
 
-  'Tr2ParticleElementDeclaration': {
+  "Tr2ParticleElementDeclaration": {
     customName: r.string,
     dimension: r.uint,
     elementType: r.uint,
@@ -522,42 +542,42 @@ export default {
     usedByGPU: r.boolean
   },
 
-  'Tr2ParticleAttractorForce': {
+  "Tr2ParticleAttractorForce": {
     magnitude: r.float,
     position: r.vector3
   },
 
-  'Tr2ParticleDirectForce': {
+  "Tr2ParticleDirectForce": {
     force: r.vector3
   },
 
-  'Tr2ParticleDragForce': {
+  "Tr2ParticleDragForce": {
     drag: r.float
   },
 
-  'Tr2ParticleFluidDragForce': {
+  "Tr2ParticleFluidDragForce": {
     drag: r.float
   },
 
-  'Tr2ParticleTurbulenceForce': {
+  "Tr2ParticleTurbulenceForce": {
     amplitude: r.vector3,
     frequency: r.vector4,
     noiseLevel: r.float,
     noiseRatio: r.float
   },
 
-  'Tr2ParticleVortexForce': {
+  "Tr2ParticleVortexForce": {
     axis: r.vector3,
     magnitude: r.float,
     position: r.vector3
   },
 
-  'Tr2ParticleSpring': {
+  "Tr2ParticleSpring": {
     position: r.vector3,
     springConstant: r.float
   },
 
-  'Tr2ParticleSystem': {
+  "Tr2ParticleSystem": {
     constraints: r.array,
     name: r.string,
     applyAging: r.boolean,
@@ -573,7 +593,7 @@ export default {
     useSimTimeRebase: r.boolean
   },
 
-  'Tr2GpuParticleSystem': {
+  "Tr2GpuParticleSystem": {
     clear: r.object,
     emit: r.object,
     render: r.object,
@@ -585,11 +605,11 @@ export default {
     update: r.object
   },
 
-  'Tr2PostProcess': {
+  "Tr2PostProcess": {
     stages: r.array
   },
 
-  'Tr2PostProcess2': {
+  "Tr2PostProcess2": {
     bloom: r.object,
     dynamicExposure: r.object,
     desaturate: r.object,
@@ -603,33 +623,33 @@ export default {
     vignette: r.object
   },
 
-  'Tr2PPBloomEffect': {
+  "Tr2PPBloomEffect": {
 
   },
 
-  'Tr2PPDesaturateEffect': {
+  "Tr2PPDesaturateEffect": {
     intensity: r.float
   },
 
-  'Tr2PPDynamicExposureEffect': {
+  "Tr2PPDynamicExposureEffect": {
     adjustment: r.float,
     influence: r.float,
     middleValue: r.float
   },
 
-  'Tr2PPFadeEffect': {
+  "Tr2PPFadeEffect": {
 
   },
 
-  'Tr2PPFidelityFXEffect': {
+  "Tr2PPFidelityFXEffect": {
 
   },
 
-  'Tr2PPFilmGrainEffect': {
+  "Tr2PPFilmGrainEffect": {
 
   },
 
-  'Tr2PPFogEffect': {
+  "Tr2PPFogEffect": {
     areaCenter: r.vector3,
     blendAmount0: r.float,
     blendAmount1: r.float,
@@ -648,57 +668,57 @@ export default {
     nebulaInfluence: r.float
   },
 
-  'Tr2PPGodRaysEffect': {
+  "Tr2PPGodRaysEffect": {
     noiseTexturePath: r.path
   },
 
-  'Tr2PPLutEffect': {
+  "Tr2PPLutEffect": {
     path: r.path
   },
 
-  'Tr2PPSignalLossEffect': {
+  "Tr2PPSignalLossEffect": {
 
   },
 
-  'Tr2PPVignetteEffect': {
+  "Tr2PPVignetteEffect": {
     sineFrequency: r.float
   },
 
-  'Tr2RuntimeInstanceData': {
+  "Tr2RuntimeInstanceData": {
 
   },
 
-  'Tr2ShLightingManager': {
+  "Tr2ShLightingManager": {
     primaryIntensity: r.float,
     secondaryIntensity: r.float
   },
 
-  'Tr2SkinnedModel': {
+  "Tr2SkinnedModel": {
     geometryResPath: r.path,
     meshes: r.array,
     name: r.string,
     skeletonName: r.string
   },
 
-  'Tr2StateMachine': {
+  "Tr2StateMachine": {
     name: r.string,
     states: r.array,
     startState: r.uint
   },
 
-  'Tr2StateMachineState': {
+  "Tr2StateMachineState": {
     actions: r.array,
     finalizer: r.object,
     name: r.string,
     transitions: r.array
   },
 
-  'Tr2StateMachineTransition': {
+  "Tr2StateMachineTransition": {
     condition: r.string,
     name: r.string
   },
 
-  'Tr2SyncToAnimation': {
+  "Tr2SyncToAnimation": {
 
   }
 

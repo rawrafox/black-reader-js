@@ -1,14 +1,14 @@
-import * as r from '../black-readers.js'
+import * as r from "../black-readers.js"
 
 export default {
 
-  'TriColorSequencer': {
+  "TriColorSequencer": {
     functions: r.array,
     name: r.string,
     value: r.vector4
   },
 
-  'TriCurveSet': {
+  "TriCurveSet": {
     bindings: r.array,
     curves: r.array,
     name: r.string,
@@ -18,27 +18,27 @@ export default {
     useSimTimeRebase: r.boolean
   },
 
-  'TriEventCurve': {
+  "TriEventCurve": {
     extrapolation: r.uint,
     name: r.string,
     keys: r.array,
     value: r.ushort
   },
 
-  'TriEventKey': {
+  "TriEventKey": {
     time: r.float,
     value: r.ushort
   },
 
-  'TriFloat': {
+  "TriFloat": {
     value: r.float
   },
 
-  'TriGeometryRes': {
+  "TriGeometryRes": {
 
   },
 
-  'TriMatrix': {
+  "TriMatrix": {
     _11: r.float,
     _12: r.float,
     _13: r.float,
@@ -57,13 +57,14 @@ export default {
     _44: r.float
   },
 
-  'TriObserverLocal': {
+  "TriObserverLocal": {
     front: r.vector3,
     name: r.string,
-    observer: r.object
+    observer: r.object,
+    position: r.vector3
   },
 
-  'TriPerlinCurve': {
+  "TriPerlinCurve": {
     alpha: r.float,
     beta: r.float,
     N: r.uint,
@@ -74,17 +75,17 @@ export default {
     value: r.float
   },
 
-  'TriTextureParameter': {
+  "TriTextureParameter": {
     name: r.string,
     resourcePath: r.path
   },
 
-  'TriTransformParameter': {
+  "TriTransformParameter": {
     name: r.string,
     rotation: r.vector4
   },
 
-  'TriValueBinding': {
+  "TriValueBinding": {
     destinationObject: r.object,
     destinationAttribute: r.string,
     name: r.string,
@@ -94,7 +95,7 @@ export default {
     sourceAttribute: r.string
   },
 
-  'TriVariableParameter': {
+  "TriVariableParameter": {
     name: r.string,
     variableName: r.string
   }

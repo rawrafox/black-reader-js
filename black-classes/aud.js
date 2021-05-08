@@ -1,4 +1,4 @@
-import * as r from '../black-readers.js'
+import * as r from "../black-readers.js"
 
 export default {
 
@@ -13,6 +13,7 @@ export default {
 
   "AudEventCurve": {
     name: r.string,
+    extrapolation: r.uint,
     keys: r.array,
     sourceTriObserver: r.object
   }

@@ -1,4 +1,5 @@
 import * as r from "../black-readers.js"
+import { typeSymbol } from "../black";
 
 class Locator {
   constructor(position, direction) {
@@ -69,6 +70,22 @@ export default {
     trackMask: r.string,
     defaultAnimation: r.string
   },
+
+  "EveBezierCurve": {
+    billboardObjects: r.boolean,
+    bezierPoint: r.vector3,
+    lineWidth: r.float,
+    lineSet: r.object,
+    movementScale: r.float,
+    movementSpeed: r.float,
+    objectScale: r.vector3,
+    point1: r.vector3,
+    point2: r.vector3,
+    scaleEndpoints: r.boolean,
+    scaleSegmentsByCompleteness: r.boolean,
+    segments: r.uint,
+    translation: r.vector3,
+  },
     
   "EveBoosterSet2": {
     alwaysOn: r.boolean,
@@ -112,7 +129,15 @@ export default {
     yaw: r.float,
     zoomCurve: r.object
   },
-    
+
+  "EveChildBulletStorm": {
+    effect: r.object,
+    multiplier: r.uint,
+    range: r.float,
+    speed: r.float,
+    sourceLocatorSet: r.string
+  },
+
   "EveChildCloud": {
     cellScreenSize: r.float,
     sortingModifier: r.float,
@@ -122,14 +147,6 @@ export default {
     rotation: r.vector4,
     scaling: r.vector3,
     translation: r.vector3
-  },
-  
-  "EveChildBulletStorm": {
-    effect: r.object,
-    multiplier: r.uint,
-    range: r.float,
-    speed: r.float,
-    sourceLocatorSet: r.string
   },
 
   "EveChildContainer": {
@@ -153,6 +170,16 @@ export default {
     translation: r.vector3
   },
 
+  "EveChildEffectPropagator": {
+    name: r.string,
+    effect: r.object,
+    propagationType: r.uint,
+    randScaleMax: r.float,
+    stopToClearDelay: r.float,
+    triggerSphereOffset:  r.vector3,
+    triggerSphereRadiusCurve: r.object
+  },
+
   "EveChildExplosion": {
     globalDuration: r.float,
     globalExplosion: r.object,
@@ -172,7 +199,28 @@ export default {
   },
 
   "EveChildInheritProperties": {
-      source: r.object
+    source: r.object
+  },
+
+  "EveChildInstanceContainer" : {
+    source: r.object,
+    scaling: r.vector3,
+    localTransform: r.matrix
+  },
+
+  "EveChildLineSet": {
+    name: r.string,
+    additiveBatches: r.boolean,
+    animColor: r.vector4,
+    baseColor: r.vector4,
+    brightness: r.float,
+    display: r.boolean,
+    lines: r.array,
+    lineSet: r.object,
+    minScreenSize: r.float,
+    rotation: r.vector4,
+    scrollSpeed: r.float,
+    translation: r.vector3,
   },
   
   "EveChildLink": {
@@ -227,6 +275,7 @@ export default {
     rotation: r.vector4,
     scaling: r.vector3,
     translation: r.vector3,
+    transformModifiers: r.array,
     useDynamicLod: r.boolean
   },
 
@@ -239,12 +288,16 @@ export default {
    },
     
   "EveChildModifierBillboard3D":{
-    
+    fixed: r.boolean
    },
     
   "EveChildModifierCameraOrientedRotationConstrained": {
     
    },
+
+  "EveChildModifierHalo": {
+
+  },
 
   "EveChildModifierSRT": {
     rotation: r.vector4,
@@ -283,8 +336,10 @@ export default {
   },
 
   "EveCurveLineSet": {
+    additive: r.boolean,
     lineEffect: r.object,
     pickEffect: r.object,
+    scrollSpeed: r.float,
   },
 
   "EveCustomMask": {
@@ -298,6 +353,7 @@ export default {
   "EveEffectRoot2": {
     boundingSphereCenter: r.vector3,
     boundingSphereRadius: r.float,
+    controllers: r.array,
     curveSets: r.array,
     duration: r.float,
     dynamicLOD: r.boolean,
@@ -306,6 +362,7 @@ export default {
     name: r.string,
     observers: r.array,
     rotation: r.vector4,
+    rotationCurve: r.object,
     scaling: r.vector3,
     secondaryLightingEmissiveColor: r.color,
     secondaryLightingSphereRadius: r.float,
