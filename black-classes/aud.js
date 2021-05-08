@@ -1,18 +1,20 @@
 import * as r from '../black-readers.js'
 
-export default function(map) {
-  map.set("AudEmitter", new Map([
-    ["name", r.string]
-  ]))
+export default {
 
-  map.set("AudEventKey", new Map([
-    ["value", r.ushort],
-    ["time", r.float]
-  ]))
+  "AudEmitter": {
+    name: r.string
+  },
 
-  map.set("AudEventCurve", new Map([
-    ["name", r.string],
-    ["keys", r.array],
-    ["sourceTriObserver", r.object]
-  ]))
+  "AudEventKey": {
+    value: r.ushort,
+    time: r.float
+  },
+
+  "AudEventCurve": {
+    name: r.string,
+    keys: r.array,
+    sourceTriObserver: r.object
+  }
+
 }

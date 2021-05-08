@@ -1,5 +1,4 @@
 import * as r from '../black-readers.js'
-
 import { typeSymbol } from '../black.js'
 
 class ConstantParameter {
@@ -62,624 +61,645 @@ class Key {
   }
 }
 
-export default function(map) {
-  map.set('Tr2ActionAnimateCurveSet', new Map([
-    ["curveSet", r.object],
-    ["value", r.string],
-  ]))
-
-  map.set('Tr2ActionAnimateValue', new Map([
-    ["attribute", r.string],
-    ["curve", r.object],
-    ["path", r.path],
-    ["value", r.string],
-  ]))
-
-  map.set('Tr2ActionChildEffect', new Map([
-    ["childName", r.string],
-    ["path", r.path],
-    ["removeOnStop", r.boolean],
-  ]))
-
-  map.set('Tr2ActionOverlay', new Map([
-    ["path", r.path],
-  ]))
-
-  map.set('Tr2ActionPlayCurveSet', new Map([
-    ["curveSetName", r.string],
-    ["rangeName", r.string],
-    ["syncToRange", r.boolean],
-  ]))
-
-  map.set('Tr2ActionPlayMeshAnimation', new Map([
-    ["animation", r.string],
-    ["loops", r.uint],
-    ["mask", r.string],
-  ]))
-
-  map.set("Tr2ActionPlaySound", new Map([
-    ["emitter", r.string],
-    ["event", r.string]
-  ]))
-
-  map.set('Tr2ActionResetClipSphereCenter', new Map())
-
-  map.set('Tr2ActionSetValue', new Map([
-    ["attribute", r.string],
-    ["path", r.path],
-    ["value", r.string],
-  ]))
-
-  map.set("Tr2ActionSpawnParticles", new Map())
-
-  map.set('Tr2TranslationAdapter', new Map([
-    ["curve", r.object],
-    ["value", r.vector3],
-  ]))
-
-  map.set('Tr2RotationAdapter', new Map([
-    ["curve", r.object],
-    ["value", r.vector4],
-  ]))
-
-  map.set('Tr2RandomIntegerAttributeGenerator', new Map([
-    ["customName", r.string],
-    ["minRange", r.vector4],
-    ["maxRange", r.vector4],
-  ]))
-
-  map.set('Tr2RandomUniformAttributeGenerator', new Map([
-    ["customName", r.string],
-    ["elementType", r.uint],
-    ["minRange", r.vector4],
-    ["maxRange", r.vector4]
-  ]))
-
-  map.set('Tr2SphereShapeAttributeGenerator', new Map([
-    ["customName", r.string],
-    ["distributionExponent", r.float],
-    ["maxPhi", r.float],
-    ["maxRadius", r.float],
-    ["maxSpeed", r.float],
-    ["maxTheta", r.float],
-    ["minPhi", r.float],
-    ["minRadius", r.float],
-    ["minSpeed", r.float],
-    ["minTheta", r.float],
-    ["parentVelocityFactor", r.float],
-    ["position", r.vector3],
-    ["rotation", r.vector4],
-  ]))
-
-  map.set('Tr2PlaneConstraint', new Map([ 
-    ["reflectionNoise", r.float],
-    ["generators", r.array],
-  ]))
-
-  map.set('Tr2Controller', new Map([
-    ["isShared", r.boolean],
-    ["stateMachines", r.array],
-    ["name", r.string],
-    ["variables", r.array],
-  ]))
-
-  map.set('Tr2ControllerReference', new Map([
-    ["path", r.path],
-  ]))
-
-  map.set('Tr2ControllerFloatVariable', new Map([
-    ["name", r.string],
-    ["defaultValue", r.float],
-    ["enumValues", r.string],
-    ["variableType", r.uint],
-  ]))
-
-  map.set('Tr2BoneMatrixCurve', new Map([ 
-    ["name", r.string],
-  ]))
-
-  map.set('Tr2CurveColor', new Map([ 
-    ["name", r.string],
-    ["r", r.rawObject],
-    ["g", r.rawObject],
-    ["b", r.rawObject],
-    ["a", r.rawObject]
-  ]))
-
-  map.set('Tr2CurveConstant', new Map([ 
-    ["name", r.string],
-    ["value", r.vector4],
-  ]))
-
-  map.set('Tr2CurveEulerRotation', new Map([ 
-    ["name", r.string],
-    ["pitch", r.rawObject],
-    ["roll", r.rawObject],
-    ["yaw", r.rawObject]
-  ]))
-
-  map.set('Tr2CurveScalar', new Map([ 
-    ["name", r.string],
-    ["timeOffset", r.float],
-    ["timeScale", r.float],
-    ["extrapolationAfter", r.uint],
-    ["extrapolationBefore", r.uint],
-    ["keys", r.structList(Key)]
-  ]))
-
-  map.set('Tr2CurveVector3', new Map([ 
-    ["name", r.string],
-    ["x", r.rawObject],
-    ["y", r.rawObject],
-    ["z", r.rawObject]
-  ]))
-
-  map.set('Tr2CurveEulerRotationExpression', new Map([
-    ["inputs", r.array],
-    ["name", r.string],
-    ["expressionYaw", r.string],
-    ["expressionPitch", r.string],
-    ["expressionRoll", r.string],
-  ]))
-
-  map.set('Tr2CurveScalarExpression', new Map([
-    ["inputs", r.array],
-    ["name", r.string],
-    ["expression", r.string],
-    ["input1", r.float],
-    ["input2", r.float],
-    ["input3", r.float],
-  ]))
-
-  map.set('Tr2ScalarExprKey', new Map([
-    ["input1", r.float],
-    ["input2", r.float],
-    ["input3", r.float],
-    ["interpolation", r.uint],
-    ["left", r.float],
-    ["right", r.float],
-    ["time", r.float],
-    ["timeExpression", r.string],
-    ["value", r.float],
-  ]))
-
-  map.set('Tr2ScalarExprKeyCurve', new Map([
-    ["interpolation", r.uint],
-    ["keys", r.array],
-    ["name", r.string],
-  ]))
-
-  map.set('Tr2CurveVector3Expression', new Map([
-    ["inputs", r.array],
-    ["name", r.string],
-    ["expressionX", r.string],
-    ["expressionY", r.string],
-    ["expressionZ", r.string],
-  ]))
-
-  map.set('Tr2CurveSetRange', new Map([
-    ["endTime", r.float],
-    ["looped", r.boolean],
-    ["name", r.string],
-    ["startTime", r.float],
-  ]))
-
-  map.set('Tr2DistanceTracker', new Map([
-    ["name", r.string],
-    ["direction", r.vector3],
-    ["targetPosition", r.vector3],
-  ]))
-
-  map.set('Tr2Effect', new Map([
-    ['effectFilePath', r.path],
-    ['name', r.string],
-    ['parameters', r.array],
-    ['resources', r.array],
-    ['constParameters', r.structList(ConstantParameter)],
-    ['options', r.structList(EffectOption)],
-    ['samplerOverrides', (reader) => { throw "lulz" }]
-  ]))
-  
-  map.set('Tr2DynamicEmitter', new Map([
-    ["name", r.string],
-    ["particleSystem", r.object],
-    ["generators", r.array],
-    ["maxParticles", r.uint],
-    ["rate", r.float],
-  ]))
-
-  map.set('Tr2StaticEmitter', new Map([
-    ["name", r.string],
-    ["particleSystem", r.object],
-    ["geometryResourcePath", r.path],
-    ["meshIndex", r.uint],
-  ]))
-
-  map.set('Tr2GpuSharedEmitter', new Map([
-    ["name", r.string],
-    ["particleSystem", r.object],
-    ["angle", r.float],
-    ["attractorPosition", r.vector3],
-    ["attractorStrength", r.float],
-    ["color0", r.vector4],
-    ["color1", r.vector4],
-    ["color2", r.vector4],
-    ["color3", r.vector4],
-    ["colorMidpoint", r.float],
-    ["continuousEmitter", r.boolean],
-    ["direction", r.vector3],
-    ["drag", r.float],
-    ["emissionDensity", r.float],
-    ["gravity", r.float],
-    ["maxDisplacement", r.float],
-    ["maxEmissionDensity", r.float],
-    ["maxLifeTime", r.float],
-    ["maxSpeed", r.float],
-    ["minLifeTime", r.float],
-    ["minSpeed", r.float],
-    ["position", r.vector3],
-    ["inheritVelocity", r.float],
-    ["innerAngle", r.float],
-    ["radius", r.float],
-    ["rate", r.float],
-    ["sizeVariance", r.float],
-    ["sizes", r.vector3],
-    ["scaledByParent", r.boolean],
-    ["textureIndex", r.uint],
-    ["turbulenceAmplitude", r.float],
-    ["turbulenceFrequency", r.float],
-    ["velocityStretchRotation", r.float],
-  ]))
-
-  map.set('Tr2GpuUniqueEmitter', new Map([
-    ["name", r.string],
-    ["particleSystem", r.object],
-    ["angle", r.float],
-    ["attractorPosition", r.vector3],
-    ["attractorStrength", r.float],
-    ["color0", r.vector4],
-    ["color1", r.vector4],
-    ["color2", r.vector4],
-    ["color3", r.vector4],
-    ["colorMidpoint", r.float],
-    ["continuousEmitter", r.boolean],
-    ["direction", r.vector3],
-    ["drag", r.float],
-    ["emissionDensity", r.float],
-    ["gravity", r.float],
-    ["maxDisplacement", r.float],
-    ["maxEmissionDensity", r.float],
-    ["maxLifeTime", r.float],
-    ["maxSpeed", r.float],
-    ["minLifeTime", r.float],
-    ["minSpeed", r.float],
-    ["position", r.vector3],
-    ["inheritVelocity", r.float],
-    ["innerAngle", r.float],
-    ["radius", r.float],
-    ["rate", r.float],
-    ["sizeVariance", r.float],
-    ["sizes", r.vector3],
-    ["scaledByParent", r.boolean],
-    ["textureIndex", r.uint],
-    ["turbulenceAmplitude", r.float],
-    ["turbulenceFrequency", r.float],
-    ["velocityStretchRotation", r.float],
-  ]))
-
-  map.set('Tr2ForceSphereVolume', new Map([
-    ["forces", r.array],
-    ["radius", r.float],
-  ]))
-
-  map.set('Tr2InstancedMesh', new Map([
-    ["additiveAreas", r.array],
-    ["decalAreas", r.array],
-    ["depthAreas", r.array],
-    ["distortionAreas", r.array],
-    ["geometryResPath", r.path],
-    ["instanceGeometryResPath", r.path],
-    ["instanceGeometryResource", r.object],
-    ["instanceMeshIndex", r.uint],
-    ["minBounds", r.vector3],
-    ["maxBounds", r.vector3],
-    ["opaqueAreas", r.array],
-    ["transparentAreas", r.array],
-  ]))
-  
-  map.set('Tr2InteriorPlaceable', new Map([
-    ["placeableResPath", r.path],
-    ["transform", r.rawObject]
-  ]))
-
-  map.set('Tr2InteriorScene', new Map([
-    ["dynamics", r.array],
-    ["lights", r.array],
-  ]))
-
-  map.set('Tr2InteriorLightSource', new Map([
-    ["color", r.vector4],
-    ["coneAlphaInner", r.float],
-    ["coneAlphaOuter", r.float],
-    ["coneDirection", r.vector3],
-    ["falloff", r.float],
-    ["importanceBias", r.float],
-    ["importanceScale", r.float],
-    ["kelvinColor", r.object],
-    ["name", r.string],
-    ["position", r.vector3],
-    ["radius", r.float],
-    ["useKelvinColor", r.boolean],
-  ]))
-  
-  map.set('Tr2IntSkinnedObject', new Map([
-    ["curveSets", r.array],
-    ["transform", r.rawObject],
-    ["visualModel", r.object],
-  ]))
-
-  map.set('Tr2KelvinColor', new Map([
-    ["temperature", r.float],
-    ["tint", r.float],
-  ]))
-
-  map.set('Tr2Model', new Map([
-    ["meshes", r.array],
-  ]))
-
-  map.set('Tr2PointLight', new Map([
-    ["name", r.string],
-    ["brightness", r.float],
-    ["color", r.vector4],
-    ["innerRadius", r.float],
-    ["noiseAmplitude", r.float],
-    ["noiseFrequency", r.float],
-    ["noiseOctaves", r.float],
-    ["position", r.vector3],
-    ["radius", r.float],
-  ]))
-
-  map.set('Tr2LodResource', new Map([
-    ["name", r.string],
-    ["highDetailResPath", r.path],
-    ["lowDetailResPath", r.path],
-    ["mediumDetailResPath", r.path],
-  ]))
-
-  map.set('Tr2Mesh', new Map([
-    ["additiveAreas", r.array],
-    ["decalAreas", r.array],
-    ["deferGeometryLoad", r.boolean],
-    ["depthAreas", r.array],
-    ["depthNormalAreas", r.array],
-    ["distortionAreas", r.array],
-    ["geometryResPath", r.path],
-    ["meshIndex", r.uint],
-    ["name", r.string],
-    ["opaqueAreas", r.array],
-    ["opaquePrepassAreas", r.array],
-    ["pickableAreas", r.array],
-    ["transparentAreas", r.array],
-  ]))
-
-  map.set('Tr2MeshArea', new Map([
-    ["count", r.uint],
-    ["effect", r.object],
-    ["index", r.uint],
-    ["name", r.string],
-    ["reversed", r.boolean],
-    ["useSHLighting", r.boolean],
-  ]))
-
-  map.set('Tr2MeshLod', new Map([
-    ["additiveAreas", r.array],
-    ["associatedResources", r.array],
-    ["decalAreas", r.array],
-    ["depthAreas", r.array],
-    ["distortionAreas", r.array],
-    ["geometryRes", r.object],
-    ["opaqueAreas", r.array],
-    ["pickableAreas", r.array],
-    ["transparentAreas", r.array],
-  ]))
-
-  map.set('Tr2ExternalParameter', new Map([
-    ["name", r.string],
-    ["destinationObject", r.object],
-    ["destinationAttribute", r.string],
-  ]))
-
-  map.set('Tr2FloatParameter', new Map([
-    ["name", r.string],
-    ["value", r.float],
-  ]))
-
-  map.set('Tr2Matrix4Parameter', new Map([
-    ["name", r.string],
-    ["value", r.matrix],
-  ]))
-
-  map.set('Tr2Texture2dLodParameter', new Map([
-    ["name", r.string],
-    ["lodResource", r.object],
-  ]))
-
-  map.set('Tr2Vector4Parameter', new Map([
-    ["name", r.string],
-    ["value", r.vector4],
-  ]))
-  
-  map.set('Tr2ParticleElementDeclaration', new Map([
-    ["customName", r.string],
-    ["dimension", r.uint],
-    ["elementType", r.uint],
-    ["usageIndex", r.uint],
-    ["usedByGPU", r.boolean]
-  ]))
-
-  map.set('Tr2ParticleAttractorForce', new Map([ 
-    ["magnitude", r.float],
-    ["position", r.vector3],
-  ]))
-
-  map.set('Tr2ParticleDirectForce', new Map([ 
-    ["force", r.vector3],
-  ]))
-
-  map.set('Tr2ParticleDragForce', new Map([ 
-    ["drag", r.float],
-  ]))
-
-  map.set('Tr2ParticleFluidDragForce', new Map([ 
-    ["drag", r.float],
-  ]))
-
-  map.set('Tr2ParticleTurbulenceForce', new Map([ 
-    ["amplitude", r.vector3],
-    ["frequency", r.vector4],
-    ["noiseLevel", r.float],
-    ["noiseRatio", r.float],
-  ]))
-
-  map.set('Tr2ParticleVortexForce', new Map([ 
-    ["axis", r.vector3],
-    ["magnitude", r.float],
-    ["position", r.vector3],
-  ]))
-
-  map.set('Tr2ParticleSpring', new Map([
-    ["position", r.vector3],
-    ["springConstant", r.float],
-  ]))
-
-  map.set('Tr2ParticleSystem', new Map([
-    ["constraints", r.array],
-    ["name", r.string],
-    ["applyAging", r.boolean],
-    ["applyForce", r.boolean],
-    ["elements", r.array],
-    ["emitParticleDuringLifeEmitter", r.object],
-    ["emitParticleOnDeathEmitter", r.object],
-    ["forces", r.array],
-    ["maxParticleCount", r.uint],
-    ["requiresSorting", r.boolean],
-    ["updateBoundingBox", r.boolean],
-    ["updateSimulation", r.boolean],
-    ["useSimTimeRebase", r.boolean],
-  ]))
-
-  map.set('Tr2GpuParticleSystem', new Map([
-    ["clear", r.object],
-    ["emit", r.object],
-    ["render", r.object],
-    ["setDrawParameters", r.object],
-    ["setSortParameters", r.object],
-    ["sort", r.object],
-    ["sortInner", r.object],
-    ["sortStep", r.object],
-    ["update", r.object],
-  ]))
-
-  map.set('Tr2PostProcess', new Map([
-    ["stages", r.array],
-  ]))
-  
-  map.set('Tr2PostProcess2', new Map([
-    ["bloom", r.object],
-    ["dynamicExposure", r.object],
-    ["desaturate", r.object],
-    ["fade", r.object],
-    ["fidelityFX", r.object],
-    ["filmGrain", r.object],
-    ["fog", r.object],
-    ["godRays", r.object],
-    ["lut", r.object],
-    ["signalLoss", r.object],
-    ["vignette", r.object]
-  ]))
-
-  map.set('Tr2PPBloomEffect', new Map())
-
-  map.set('Tr2PPDesaturateEffect', new Map([
-    ["intensity", r.float]
-  ]))
-
-  map.set('Tr2PPDynamicExposureEffect', new Map([
-    ["adjustment", r.float],
-    ["influence", r.float],
-    ["middleValue", r.float]
-  ]))
-
-  map.set('Tr2PPFadeEffect', new Map())
-
-  map.set('Tr2PPFidelityFXEffect', new Map())
-
-  map.set('Tr2PPFilmGrainEffect', new Map())
-
-  map.set('Tr2PPFogEffect', new Map([
-    ["areaCenter", r.vector3],
-    ["blendAmount0", r.float],
-    ["blendAmount1", r.float],
-    ["blendAmount2", r.float],
-    ["blendBias0", r.float],
-    ["blendBias1", r.float],
-    ["blendBias2", r.float],
-    ["blendDistance0", r.float],
-    ["blendDistance1", r.float],
-    ["blendDistance2", r.float],
-    ["blendPower0", r.float],
-    ["blendPower1", r.float],
-    ["blendPower2", r.float],
-    ["color", r.color],
-    ["colorInfluence", r.float],
-    ["nebulaInfluence", r.float]
-  ]))
-
-  map.set('Tr2PPGodRaysEffect', new Map([
-    ["noiseTexturePath", r.path]
-  ]))
-
-  map.set('Tr2PPLutEffect', new Map([
-    ["path", r.path]
-  ]))
-
-  map.set('Tr2PPSignalLossEffect', new Map())
-
-  map.set('Tr2PPVignetteEffect', new Map([
-    ["sineFrequency", r.float]
-  ]))
-
-  map.set('Tr2RuntimeInstanceData', new Map())
-
-  map.set('Tr2ShLightingManager', new Map([
-    ["primaryIntensity", r.float],
-    ["secondaryIntensity", r.float],
-  ]))
-
-  map.set('Tr2SkinnedModel', new Map([
-    ["geometryResPath", r.path],
-    ["meshes", r.array],
-    ["name", r.string],
-    ["skeletonName", r.string],
-  ]))
-
-  map.set('Tr2StateMachine', new Map([
-    ["name", r.string],
-    ["states", r.array],
-    ["startState", r.uint],
-  ]))
-
-  map.set('Tr2StateMachineState', new Map([
-    ["actions", r.array],
-    ["finalizer", r.object],
-    ["name", r.string],
-    ["transitions", r.array],
-  ]))
-
-  map.set('Tr2StateMachineTransition', new Map([
-    ["condition", r.string],
-    ["name", r.string],
-  ]))
-
-  map.set('Tr2SyncToAnimation', new Map())
+
+export default {
+
+  'Tr2ActionAnimateCurveSet': {
+    curveSet: r.object,
+    value: r.string
+  },
+
+  'Tr2ActionAnimateValue': {
+    attribute: r.string,
+    curve: r.object,
+    path: r.path,
+    value: r.string
+  },
+
+  'Tr2ActionChildEffect': {
+    childName: r.string,
+    path: r.path,
+    removeOnStop: r.boolean
+  },
+
+  'Tr2ActionOverlay': {
+    path: r.path
+  },
+
+  'Tr2ActionPlayCurveSet': {
+    curveSetName: r.string,
+    rangeName: r.string,
+    syncToRange: r.boolean
+  },
+
+  'Tr2ActionPlayMeshAnimation': {
+    animation: r.string,
+    loops: r.uint,
+    mask: r.string
+  },
+
+  "Tr2ActionPlaySound": {
+    emitter: r.string,
+    event: r.string
+  },
+
+  'Tr2ActionResetClipSphereCenter': {
+
+  },
+
+  'Tr2ActionSetValue': {
+    attribute: r.string,
+    path: r.path,
+    value: r.string
+  },
+
+  "Tr2ActionSpawnParticles": {
+
+  },
+
+  'Tr2TranslationAdapter': {
+    curve: r.object,
+    value: r.vector3
+  },
+
+  'Tr2RotationAdapter': {
+    curve: r.object,
+    value: r.vector4
+  },
+
+  'Tr2RandomIntegerAttributeGenerator': {
+    customName: r.string,
+    minRange: r.vector4,
+    maxRange: r.vector4
+  },
+
+  'Tr2RandomUniformAttributeGenerator': {
+    customName: r.string,
+    elementType: r.uint,
+    minRange: r.vector4,
+    maxRange: r.vector4
+  },
+
+  'Tr2SphereShapeAttributeGenerator': {
+    customName: r.string,
+    distributionExponent: r.float,
+    maxPhi: r.float,
+    maxRadius: r.float,
+    maxSpeed: r.float,
+    maxTheta: r.float,
+    minPhi: r.float,
+    minRadius: r.float,
+    minSpeed: r.float,
+    minTheta: r.float,
+    parentVelocityFactor: r.float,
+    position: r.vector3,
+    rotation: r.vector4
+  },
+
+  'Tr2PlaneConstraint': {
+    reflectionNoise: r.float,
+    generators: r.array
+  },
+
+  'Tr2Controller': {
+    isShared: r.boolean,
+    stateMachines: r.array,
+    name: r.string,
+    variables: r.array
+  },
+
+  'Tr2ControllerReference': {
+    path: r.path
+  },
+
+  'Tr2ControllerFloatVariable': {
+    name: r.string,
+    defaultValue: r.float,
+    enumValues: r.string,
+    variableType: r.uint
+  },
+
+  'Tr2BoneMatrixCurve': {
+    name: r.string
+  },
+
+  'Tr2CurveColor': {
+    name: r.string,
+    r: r.rawObject,
+    g: r.rawObject,
+    b: r.rawObject,
+    a: r.rawObject
+  },
+
+  'Tr2CurveConstant': {
+    name: r.string,
+    value: r.vector4
+  },
+
+  'Tr2CurveEulerRotation': {
+    name: r.string,
+    pitch: r.rawObject,
+    roll: r.rawObject,
+    yaw: r.rawObject
+  },
+
+  'Tr2CurveScalar': {
+    name: r.string,
+    timeOffset: r.float,
+    timeScale: r.float,
+    extrapolationAfter: r.uint,
+    extrapolationBefore: r.uint,
+    keys: r.structList(Key)
+  },
+
+  'Tr2CurveVector3': {
+    name: r.string,
+    x: r.rawObject,
+    y: r.rawObject,
+    z: r.rawObject
+  },
+
+  'Tr2CurveEulerRotationExpression': {
+    inputs: r.array,
+    name: r.string,
+    expressionYaw: r.string,
+    expressionPitch: r.string,
+    expressionRoll: r.string
+  },
+
+  'Tr2CurveScalarExpression': {
+    inputs: r.array,
+    name: r.string,
+    expression: r.string,
+    input1: r.float,
+    input2: r.float,
+    input3: r.float
+  },
+
+  'Tr2ScalarExprKey': {
+    input1: r.float,
+    input2: r.float,
+    input3: r.float,
+    interpolation: r.uint,
+    left: r.float,
+    right: r.float,
+    time: r.float,
+    timeExpression: r.string,
+    value: r.float
+  },
+
+  'Tr2ScalarExprKeyCurve': {
+    interpolation: r.uint,
+    keys: r.array,
+    name: r.string
+  },
+
+  'Tr2CurveVector3Expression': {
+    inputs: r.array,
+    name: r.string,
+    expressionX: r.string,
+    expressionY: r.string,
+    expressionZ: r.string
+  },
+
+  'Tr2CurveSetRange': {
+    endTime: r.float,
+    looped: r.boolean,
+    name: r.string,
+    startTime: r.float
+  },
+
+  'Tr2DistanceTracker': {
+    name: r.string,
+    direction: r.vector3,
+    targetPosition: r.vector3
+  },
+
+  'Tr2Effect': {
+    effectFilePath: r.path,
+    name: r.string,
+    parameters: r.array,
+    resources: r.array,
+    constParameters: r.structList(ConstantParameter),
+    options: r.structList(EffectOption),
+    samplerOverrides: (reader) => { throw "lulz" }
+  },
+
+  'Tr2DynamicEmitter': {
+    name: r.string,
+    particleSystem: r.object,
+    generators: r.array,
+    maxParticles: r.uint,
+    rate: r.float
+  },
+
+  'Tr2StaticEmitter': {
+    name: r.string,
+    particleSystem: r.object,
+    geometryResourcePath: r.path,
+    meshIndex: r.uint
+  },
+
+  'Tr2GpuSharedEmitter': {
+    name: r.string,
+    particleSystem: r.object,
+    angle: r.float,
+    attractorPosition: r.vector3,
+    attractorStrength: r.float,
+    color0: r.vector4,
+    color1: r.vector4,
+    color2: r.vector4,
+    color3: r.vector4,
+    colorMidpoint: r.float,
+    continuousEmitter: r.boolean,
+    direction: r.vector3,
+    drag: r.float,
+    emissionDensity: r.float,
+    gravity: r.float,
+    maxDisplacement: r.float,
+    maxEmissionDensity: r.float,
+    maxLifeTime: r.float,
+    maxSpeed: r.float,
+    minLifeTime: r.float,
+    minSpeed: r.float,
+    position: r.vector3,
+    inheritVelocity: r.float,
+    innerAngle: r.float,
+    radius: r.float,
+    rate: r.float,
+    sizeVariance: r.float,
+    sizes: r.vector3,
+    scaledByParent: r.boolean,
+    textureIndex: r.uint,
+    turbulenceAmplitude: r.float,
+    turbulenceFrequency: r.float,
+    velocityStretchRotation: r.float
+  },
+
+  'Tr2GpuUniqueEmitter': {
+    name: r.string,
+    particleSystem: r.object,
+    angle: r.float,
+    attractorPosition: r.vector3,
+    attractorStrength: r.float,
+    color0: r.vector4,
+    color1: r.vector4,
+    color2: r.vector4,
+    color3: r.vector4,
+    colorMidpoint: r.float,
+    continuousEmitter: r.boolean,
+    direction: r.vector3,
+    drag: r.float,
+    emissionDensity: r.float,
+    gravity: r.float,
+    maxDisplacement: r.float,
+    maxEmissionDensity: r.float,
+    maxLifeTime: r.float,
+    maxSpeed: r.float,
+    minLifeTime: r.float,
+    minSpeed: r.float,
+    position: r.vector3,
+    inheritVelocity: r.float,
+    innerAngle: r.float,
+    radius: r.float,
+    rate: r.float,
+    sizeVariance: r.float,
+    sizes: r.vector3,
+    scaledByParent: r.boolean,
+    textureIndex: r.uint,
+    turbulenceAmplitude: r.float,
+    turbulenceFrequency: r.float,
+    velocityStretchRotation: r.float
+  },
+
+  'Tr2ForceSphereVolume': {
+    forces: r.array,
+    radius: r.float
+  },
+
+  'Tr2InstancedMesh': {
+    additiveAreas: r.array,
+    decalAreas: r.array,
+    depthAreas: r.array,
+    distortionAreas: r.array,
+    geometryResPath: r.path,
+    instanceGeometryResPath: r.path,
+    instanceGeometryResource: r.object,
+    instanceMeshIndex: r.uint,
+    minBounds: r.vector3,
+    maxBounds: r.vector3,
+    opaqueAreas: r.array,
+    transparentAreas: r.array
+  },
+
+  'Tr2InteriorPlaceable': {
+    placeableResPath: r.path,
+    transform: r.rawObject
+  },
+
+  'Tr2InteriorScene': {
+    dynamics: r.array,
+    lights: r.array
+  },
+
+  'Tr2InteriorLightSource': {
+    color: r.vector4,
+    coneAlphaInner: r.float,
+    coneAlphaOuter: r.float,
+    coneDirection: r.vector3,
+    falloff: r.float,
+    importanceBias: r.float,
+    importanceScale: r.float,
+    kelvinColor: r.object,
+    name: r.string,
+    position: r.vector3,
+    radius: r.float,
+    useKelvinColor: r.boolean
+  },
+
+  'Tr2IntSkinnedObject': {
+    curveSets: r.array,
+    transform: r.rawObject,
+    visualModel: r.object
+  },
+
+  'Tr2KelvinColor': {
+    temperature: r.float,
+    tint: r.float
+  },
+
+  'Tr2Model': {
+    meshes: r.array
+  },
+
+  'Tr2PointLight': {
+    name: r.string,
+    brightness: r.float,
+    color: r.vector4,
+    innerRadius: r.float,
+    noiseAmplitude: r.float,
+    noiseFrequency: r.float,
+    noiseOctaves: r.float,
+    position: r.vector3,
+    radius: r.float
+  },
+
+  'Tr2LodResource': {
+    name: r.string,
+    highDetailResPath: r.path,
+    lowDetailResPath: r.path,
+    mediumDetailResPath: r.path
+  },
+
+  'Tr2Mesh': {
+    additiveAreas: r.array,
+    decalAreas: r.array,
+    deferGeometryLoad: r.boolean,
+    depthAreas: r.array,
+    depthNormalAreas: r.array,
+    distortionAreas: r.array,
+    geometryResPath: r.path,
+    meshIndex: r.uint,
+    name: r.string,
+    opaqueAreas: r.array,
+    opaquePrepassAreas: r.array,
+    pickableAreas: r.array,
+    transparentAreas: r.array
+  },
+
+  'Tr2MeshArea': {
+    count: r.uint,
+    effect: r.object,
+    index: r.uint,
+    name: r.string,
+    reversed: r.boolean,
+    useSHLighting: r.boolean
+  },
+
+  'Tr2MeshLod': {
+    additiveAreas: r.array,
+    associatedResources: r.array,
+    decalAreas: r.array,
+    depthAreas: r.array,
+    distortionAreas: r.array,
+    geometryRes: r.object,
+    opaqueAreas: r.array,
+    pickableAreas: r.array,
+    transparentAreas: r.array
+  },
+
+  'Tr2ExternalParameter': {
+    name: r.string,
+    destinationObject: r.object,
+    destinationAttribute: r.string
+  },
+
+  'Tr2FloatParameter': {
+    name: r.string,
+    value: r.float
+  },
+
+  'Tr2Matrix4Parameter': {
+    name: r.string,
+    value: r.matrix
+  },
+
+  'Tr2Texture2dLodParameter': {
+    name: r.string,
+    lodResource: r.object
+  },
+
+  'Tr2Vector4Parameter': {
+    name: r.string,
+    value: r.vector4
+  },
+
+  'Tr2ParticleElementDeclaration': {
+    customName: r.string,
+    dimension: r.uint,
+    elementType: r.uint,
+    usageIndex: r.uint,
+    usedByGPU: r.boolean
+  },
+
+  'Tr2ParticleAttractorForce': {
+    magnitude: r.float,
+    position: r.vector3
+  },
+
+  'Tr2ParticleDirectForce': {
+    force: r.vector3
+  },
+
+  'Tr2ParticleDragForce': {
+    drag: r.float
+  },
+
+  'Tr2ParticleFluidDragForce': {
+    drag: r.float
+  },
+
+  'Tr2ParticleTurbulenceForce': {
+    amplitude: r.vector3,
+    frequency: r.vector4,
+    noiseLevel: r.float,
+    noiseRatio: r.float
+  },
+
+  'Tr2ParticleVortexForce': {
+    axis: r.vector3,
+    magnitude: r.float,
+    position: r.vector3
+  },
+
+  'Tr2ParticleSpring': {
+    position: r.vector3,
+    springConstant: r.float
+  },
+
+  'Tr2ParticleSystem': {
+    constraints: r.array,
+    name: r.string,
+    applyAging: r.boolean,
+    applyForce: r.boolean,
+    elements: r.array,
+    emitParticleDuringLifeEmitter: r.object,
+    emitParticleOnDeathEmitter: r.object,
+    forces: r.array,
+    maxParticleCount: r.uint,
+    requiresSorting: r.boolean,
+    updateBoundingBox: r.boolean,
+    updateSimulation: r.boolean,
+    useSimTimeRebase: r.boolean
+  },
+
+  'Tr2GpuParticleSystem': {
+    clear: r.object,
+    emit: r.object,
+    render: r.object,
+    setDrawParameters: r.object,
+    setSortParameters: r.object,
+    sort: r.object,
+    sortInner: r.object,
+    sortStep: r.object,
+    update: r.object
+  },
+
+  'Tr2PostProcess': {
+    stages: r.array
+  },
+
+  'Tr2PostProcess2': {
+    bloom: r.object,
+    dynamicExposure: r.object,
+    desaturate: r.object,
+    fade: r.object,
+    fidelityFX: r.object,
+    filmGrain: r.object,
+    fog: r.object,
+    godRays: r.object,
+    lut: r.object,
+    signalLoss: r.object,
+    vignette: r.object
+  },
+
+  'Tr2PPBloomEffect': {
+
+  },
+
+  'Tr2PPDesaturateEffect': {
+    intensity: r.float
+  },
+
+  'Tr2PPDynamicExposureEffect': {
+    adjustment: r.float,
+    influence: r.float,
+    middleValue: r.float
+  },
+
+  'Tr2PPFadeEffect': {
+
+  },
+
+  'Tr2PPFidelityFXEffect': {
+
+  },
+
+  'Tr2PPFilmGrainEffect': {
+
+  },
+
+  'Tr2PPFogEffect': {
+    areaCenter: r.vector3,
+    blendAmount0: r.float,
+    blendAmount1: r.float,
+    blendAmount2: r.float,
+    blendBias0: r.float,
+    blendBias1: r.float,
+    blendBias2: r.float,
+    blendDistance0: r.float,
+    blendDistance1: r.float,
+    blendDistance2: r.float,
+    blendPower0: r.float,
+    blendPower1: r.float,
+    blendPower2: r.float,
+    color: r.color,
+    colorInfluence: r.float,
+    nebulaInfluence: r.float
+  },
+
+  'Tr2PPGodRaysEffect': {
+    noiseTexturePath: r.path
+  },
+
+  'Tr2PPLutEffect': {
+    path: r.path
+  },
+
+  'Tr2PPSignalLossEffect': {
+
+  },
+
+  'Tr2PPVignetteEffect': {
+    sineFrequency: r.float
+  },
+
+  'Tr2RuntimeInstanceData': {
+
+  },
+
+  'Tr2ShLightingManager': {
+    primaryIntensity: r.float,
+    secondaryIntensity: r.float
+  },
+
+  'Tr2SkinnedModel': {
+    geometryResPath: r.path,
+    meshes: r.array,
+    name: r.string,
+    skeletonName: r.string
+  },
+
+  'Tr2StateMachine': {
+    name: r.string,
+    states: r.array,
+    startState: r.uint
+  },
+
+  'Tr2StateMachineState': {
+    actions: r.array,
+    finalizer: r.object,
+    name: r.string,
+    transitions: r.array
+  },
+
+  'Tr2StateMachineTransition': {
+    condition: r.string,
+    name: r.string
+  },
+
+  'Tr2SyncToAnimation': {
+
+  }
+
 }
