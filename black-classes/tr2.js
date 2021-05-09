@@ -99,8 +99,9 @@ export default {
   },
 
   "Tr2ActionPlaySound": {
+    bypassPrefix: r.boolean,
     emitter: r.string,
-    event: r.string
+    event: r.string,
   },
 
   "Tr2ActionResetClipSphereCenter": {
@@ -373,6 +374,18 @@ export default {
     radius: r.float
   },
 
+  "Tr2GStateAnimation": {
+    resPath_: r.string,
+    gStateResPath_: r.string,
+    parameters: r.array
+  },
+
+  "Tr2GStateParameter" : {
+    name: r.string,
+    value: r.float,
+    nodename: r.string
+  },
+
   "Tr2InstancedMesh": {
     additiveAreas: r.array,
     boundsMethod: r.object,
@@ -396,8 +409,9 @@ export default {
   },
 
   "Tr2InteriorScene": {
+    curveSets: r.array,
     dynamics: r.array,
-    lights: r.array
+    lights: r.array,
   },
 
   "Tr2InteriorLightSource": {
@@ -411,7 +425,9 @@ export default {
     kelvinColor: r.object,
     name: r.string,
     position: r.vector3,
+    primaryLighting: r.boolean,
     radius: r.float,
+    specularIntensity: r.float,
     useKelvinColor: r.boolean
   },
 
@@ -665,6 +681,7 @@ export default {
     blendPower2: r.float,
     color: r.color,
     colorInfluence: r.float,
+    intensity: r.float,
     nebulaInfluence: r.float
   },
 
@@ -673,7 +690,8 @@ export default {
   },
 
   "Tr2PPLutEffect": {
-    path: r.path
+    path: r.path,
+    influence: r.float
   },
 
   "Tr2PPSignalLossEffect": {
