@@ -24,664 +24,669 @@ class Instance {
   }
 }
 
-export default function(map) {
-  map.set("EveSOFData", new Map([
-    ["faction", r.array],
-    ["generic", r.object],
-    ["hull", r.array],
-    ["material", r.array],
-    ["pattern", r.array],
-    ["race", r.array],
-  ]))
 
-  map.set("EveSOFDataArea", new Map([
-    ["Black", r.object],
-    ["Blue", r.object],
-    ["Booster", r.object],
-    ["Cyan", r.object],
-    ["Darkhull", r.object],
-    ["Fire", r.object],
-    ["Glass", r.object],
-    ["Green", r.object],
-    ["Hull", r.object],
-    ["Killmark", r.object],
-    ["Monument", r.object],
-    ["Orange", r.object],
-    ["Ornament", r.object],
-    ["Primary", r.object],
-    ["Reactor", r.object],
-    ["Red", r.object],
-    ["Rock", r.object],
-    ["Sails", r.object],
-    ["SimplePrimary", r.object],
-    ["Secondary", r.object],
-    ["Tertiary", r.object],
-    ["White", r.object],
-    ["Yellow", r.object],
-  ]))
+export default {
 
-  map.set("EveSOFDataAreaMaterial", new Map([
-    ["colorType", r.uint],
-    ["material1", r.string],
-    ["material2", r.string],
-    ["material3", r.string],
-    ["material4", r.string],
-  ]))
+  "EveSOFData": {
+    faction: r.array,
+    generic: r.object,
+    hull: r.array,
+    material: r.array,
+    pattern: r.array,
+    race: r.array
+  },
 
-  map.set("EveSOFDataBooster", new Map([
-    ["glowColor", r.vector4],
-    ["glowScale", r.float],
-    ["gradient0ResPath", r.path],
-    ["gradient1ResPath", r.path],
-    ["haloColor", r.vector4],
-    ["haloScaleX", r.float],
-    ["haloScaleY", r.float],
-    ["lightFlickerAmplitude", r.float],
-    ["lightFlickerColor", r.vector4],
-    ["lightFlickerFrequency", r.float],
-    ["lightFlickerRadius", r.float],
-    ["lightColor", r.vector4],
-    ["lightRadius", r.float],
-    ["lightWarpColor", r.vector4],
-    ["lightWarpRadius", r.float],
-    ["shape0", r.object],
-    ["shape1", r.object],
-    ["shapeAtlasCount", r.uint],
-    ["shapeAtlasHeight", r.uint],
-    ["shapeAtlasResPath", r.path],
-    ["shapeAtlasWidth", r.uint],
-    ["symHaloScale", r.float],
-    ["trailColor", r.vector4],
-    ["trailSize", r.vector4],
-    ["volumetric", r.boolean],
-    ["warpGlowColor", r.vector4],
-    ["warpHalpColor", r.vector4],
-    ["warpShape0", r.object],
-    ["warpShape1", r.object],
-  ]))
+  "EveSOFDataArea": {
+    Black: r.object,
+    Blue: r.object,
+    Booster: r.object,
+    Cyan: r.object,
+    Darkhull: r.object,
+    Fire: r.object,
+    Glass: r.object,
+    Green: r.object,
+    Hull: r.object,
+    Killmark: r.object,
+    Monument: r.object,
+    Orange: r.object,
+    Ornament: r.object,
+    Primary: r.object,
+    Reactor: r.object,
+    Red: r.object,
+    Rock: r.object,
+    Sails: r.object,
+    SimplePrimary: r.object,
+    Secondary: r.object,
+    Tertiary: r.object,
+    White: r.object,
+    Yellow: r.object
+  },
 
-  map.set("EveSOFDataBoosterShape", new Map([
-    ["color", r.vector4],
-    ["noiseFunction", r.float],
-    ["noiseSpeed", r.float],
-    ["noiseAmplitureStart", r.vector4],
-    ["noiseAmplitureEnd", r.vector4],
-    ["noiseFrequency", r.vector4],
-  ]))
+  "EveSOFDataAreaMaterial": {
+    colorType: r.uint,
+    material1: r.string,
+    material2: r.string,
+    material3: r.string,
+    material4: r.string
+  },
 
-  map.set("EveSOFDataFaction", new Map([
-    ["areas", r.array],
-    ["areaTypes", r.object],
-    ["colorSet", r.object],
-    ["children", r.array],
-    ["decals", r.array],
-    ["defaultPattern", r.object],
-    ["defaultPatternLayer1MaterialName", r.string],
-    ["description", r.string],
-    ["logoSet", r.object],
-    ["materialUsageMtl1", r.uint],
-    ["materialUsageMtl2", r.uint],
-    ["materialUsageMtl3", r.uint],
-    ["materialUsageMtl4", r.uint],
-    ["name", r.string],
-    ["planeSets", r.array],
-    ["resPathInsert", r.string],
-    ["spotlightSets", r.array],
-    ["spriteSets", r.array],
-    ["visibilityGroupSet", r.object],
-  ]))
+  "EveSOFDataBooster": {
+    glowColor: r.vector4,
+    glowScale: r.float,
+    gradient0ResPath: r.path,
+    gradient1ResPath: r.path,
+    haloColor: r.vector4,
+    haloScaleX: r.float,
+    haloScaleY: r.float,
+    lightFlickerAmplitude: r.float,
+    lightFlickerColor: r.vector4,
+    lightFlickerFrequency: r.float,
+    lightFlickerRadius: r.float,
+    lightColor: r.vector4,
+    lightRadius: r.float,
+    lightWarpColor: r.vector4,
+    lightWarpRadius: r.float,
+    shape0: r.object,
+    shape1: r.object,
+    shapeAtlasCount: r.uint,
+    shapeAtlasHeight: r.uint,
+    shapeAtlasResPath: r.path,
+    shapeAtlasWidth: r.uint,
+    symHaloScale: r.float,
+    trailColor: r.vector4,
+    trailSize: r.vector4,
+    volumetric: r.boolean,
+    warpGlowColor: r.vector4,
+    warpHalpColor: r.vector4,
+    warpShape0: r.object,
+    warpShape1: r.object
+  },
 
-  map.set("EveSOFDataFactionChild", new Map([
-    ["groupIndex", r.uint],
-    ["name", r.string],
-    ["isVisible", r.boolean],
-  ]))
+  "EveSOFDataBoosterShape": {
+    color: r.vector4,
+    noiseFunction: r.float,
+    noiseSpeed: r.float,
+    noiseAmplitureStart: r.vector4,
+    noiseAmplitureEnd: r.vector4,
+    noiseFrequency: r.vector4
+  },
 
-  map.set("EveSOFDataFactionColorSet", new Map([
-    ["Black", r.vector4],
-    ["Blue", r.vector4],
-    ["Booster", r.vector4],
-    ["Cyan", r.vector4],
-    ["Darkhull", r.vector4],
-    ["Fire", r.vector4],
-    ["Glass", r.vector4],
-    ["Green", r.vector4],
-    ["Hull", r.vector4],
-    ["Killmark", r.vector4],
-    ["Orange", r.vector4],
-    ["Primary", r.vector4],
-    ["PrimaryLight", r.vector4],
-    ["Reactor", r.vector4],
-    ["Red", r.vector4],
-    ["Secondary", r.vector4],
-    ["SecondaryLight", r.vector4],
-    ["Tertiary", r.vector4],
-    ["TertiaryLight", r.vector4],
-    ["White", r.vector4],
-    ["WhiteLight", r.vector4],
-    ["Yellow", r.vector4],
-  ]))
+  "EveSOFDataFaction": {
+    areas: r.array,
+    areaTypes: r.object,
+    colorSet: r.object,
+    children: r.array,
+    decals: r.array,
+    defaultPattern: r.object,
+    defaultPatternLayer1MaterialName: r.string,
+    description: r.string,
+    logoSet: r.object,
+    materialUsageMtl1: r.uint,
+    materialUsageMtl2: r.uint,
+    materialUsageMtl3: r.uint,
+    materialUsageMtl4: r.uint,
+    name: r.string,
+    planeSets: r.array,
+    resPathInsert: r.string,
+    spotlightSets: r.array,
+    spriteSets: r.array,
+    visibilityGroupSet: r.object
+  },
 
-  map.set("EveSOFDataFactionDecal", new Map([
-    ["groupIndex", r.uint],
-    ["isVisible", r.boolean],
-    ["name", r.string],
-    ["parameters", r.array],
-    ["shader", r.path],
-    ["textures", r.array]
-  ]))
+  "EveSOFDataFactionChild": {
+    groupIndex: r.uint,
+    name: r.string,
+    isVisible: r.boolean
+  },
 
-  map.set("EveSOFDataLogo", new Map([
-    ["textures", r.array]
-  ]))
+  "EveSOFDataFactionColorSet": {
+    Black: r.vector4,
+    Blue: r.vector4,
+    Booster: r.vector4,
+    Cyan: r.vector4,
+    Darkhull: r.vector4,
+    Fire: r.vector4,
+    Glass: r.vector4,
+    Green: r.vector4,
+    Hull: r.vector4,
+    Killmark: r.vector4,
+    Orange: r.vector4,
+    Primary: r.vector4,
+    PrimaryLight: r.vector4,
+    Reactor: r.vector4,
+    Red: r.vector4,
+    Secondary: r.vector4,
+    SecondaryLight: r.vector4,
+    Tertiary: r.vector4,
+    TertiaryLight: r.vector4,
+    White: r.vector4,
+    WhiteLight: r.vector4,
+    Yellow: r.vector4
+  },
 
-  map.set("EveSOFDataLogoSet", new Map([
-    ["Marking_01", r.object],
-    ["Marking_02", r.object],
-    ["Primary", r.object],
-    ["Secondary", r.object],
-    ["Tertiary", r.object]
-  ]))
+  "EveSOFDataFactionDecal": {
+    groupIndex: r.uint,
+    isVisible: r.boolean,
+    name: r.string,
+    parameters: r.array,
+    shader: r.path,
+    textures: r.array
+  },
 
-  map.set("EveSOFDataFactionPlaneSet", new Map([
-    ["color", r.vector4],
-    ["groupIndex", r.uint],
-    ["name", r.string],
-  ]))
+  "EveSOFDataLogo": {
+    textures: r.array
+  },
 
-  map.set("EveSOFDataFactionVisibilityGroupSet", new Map([
-    ["visibilityGroups", r.array],
-  ]))
+  "EveSOFDataLogoSet": {
+    Marking_01: r.object,
+    Marking_02: r.object,
+    Primary: r.object,
+    Secondary: r.object,
+    Tertiary: r.object
+  },
 
-  map.set("EveSOFDataGeneric", new Map([
-    ["areaShaderLocation", r.path],
-    ["areaShaders", r.array],
-    ["bannerShader", r.rawObject],
-    ["decalShaderLocation", r.path],
-    ["decalShaders", r.array],
-    ["damage", r.object],
-    ["genericWreckMaterial", r.object],
-    ["hullAreas", r.array],
-    ["hullDamage", r.object],
-    ["materialPrefixes", r.array],
-    ["patternMaterialPrefixes", r.array],
-    ["resPathDefaultAlliance", r.path],
-    ["resPathDefaultCeo", r.path],
-    ["resPathDefaultCorp", r.path],
-    ["shaderPrefixAnimated", r.string],
-    ["swarm", r.object],
-    ["variants", r.array],
-    ["visibilityGroups", r.array],
-  ]))
+  "EveSOFDataFactionPlaneSet": {
+    color: r.vector4,
+    groupIndex: r.uint,
+    name: r.string
+  },
 
-  map.set("EveSOFDataGenericDamage", new Map([
-    ["armorParticleAngle", r.float],
-    ["armorParticleColor0", r.vector4],
-    ["armorParticleColor1", r.vector4],
-    ["armorParticleColor2", r.vector4],
-    ["armorParticleColor3", r.vector4],
-    ["armorParticleDrag", r.float],
-    ["armorParticleMinMaxLifeTime", r.vector2],
-    ["armorParticleMinMaxSpeed", r.vector2],
-    ["armorParticleRate", r.float],
-    ["armorParticleSizes", r.vector4],
-    ["armorParticleTurbulenceAmplitude", r.float],
-    ["armorParticleTurbulenceFrequency", r.float],
-    ["armorParticleVelocityStretchRotation", r.float],
-    ["armorParticleTextureIndex", r.uint],
-    ["armorShader", r.string],
-    ["flickerPerlinAlpha", r.float],
-    ["flickerPerlinBeta", r.float],
-    ["flickerPerlinSpeed", r.float],
-    ["flickerPerlinN", r.uint],
-    ["shieldGeometryResFilePath", r.path],
-    ["shieldShaderEllipsoid", r.string],
-    ["shieldShaderHull", r.string],
-  ]))
+  "EveSOFDataFactionVisibilityGroupSet": {
+    visibilityGroups: r.array
+  },
 
-  map.set("EveSOFDataGenericDecalShader", new Map([
-    ["defaultTextures", r.array],
-    ["parameters", r.array],
-    ["parentTextures", r.array],
-    ["shader", r.string],
-  ]))
+  "EveSOFDataGeneric": {
+    areaShaderLocation: r.path,
+    areaShaders: r.array,
+    bannerShader: r.rawObject,
+    decalShaderLocation: r.path,
+    decalShaders: r.array,
+    damage: r.object,
+    genericWreckMaterial: r.object,
+    hullAreas: r.array,
+    hullDamage: r.object,
+    materialPrefixes: r.array,
+    patternMaterialPrefixes: r.array,
+    resPathDefaultAlliance: r.path,
+    resPathDefaultCeo: r.path,
+    resPathDefaultCorp: r.path,
+    shaderPrefixAnimated: r.string,
+    swarm: r.object,
+    variants: r.array,
+    visibilityGroups: r.array
+  },
 
-  map.set("EveSOFDataGenericHullDamage", new Map([
-    ["hullParticleAngle", r.float],
-    ["hullParticleColor0", r.vector4],
-    ["hullParticleColor1", r.vector4],
-    ["hullParticleColor2", r.vector4],
-    ["hullParticleColorMidpoint", r.float],
-    ["hullParticleDrag", r.float],
-    ["hullParticleMinMaxLifeTime", r.vector2],
-    ["hullParticleMinMaxSpeed", r.vector2],
-    ["hullParticleRate", r.float],
-    ["hullParticleSizes", r.vector4],
-    ["hullParticleTurbulenceAmplitude", r.float],
-    ["hullParticleTurbulenceFrequency", r.float],
-    ["hullParticleTextureIndex", r.uint],
-  ]))
+  "EveSOFDataGenericDamage": {
+    armorParticleAngle: r.float,
+    armorParticleColor0: r.vector4,
+    armorParticleColor1: r.vector4,
+    armorParticleColor2: r.vector4,
+    armorParticleColor3: r.vector4,
+    armorParticleDrag: r.float,
+    armorParticleMinMaxLifeTime: r.vector2,
+    armorParticleMinMaxSpeed: r.vector2,
+    armorParticleRate: r.float,
+    armorParticleSizes: r.vector4,
+    armorParticleTurbulenceAmplitude: r.float,
+    armorParticleTurbulenceFrequency: r.float,
+    armorParticleVelocityStretchRotation: r.float,
+    armorParticleTextureIndex: r.uint,
+    armorShader: r.string,
+    flickerPerlinAlpha: r.float,
+    flickerPerlinBeta: r.float,
+    flickerPerlinSpeed: r.float,
+    flickerPerlinN: r.uint,
+    shieldGeometryResFilePath: r.path,
+    shieldShaderEllipsoid: r.string,
+    shieldShaderHull: r.string
+  },
 
-  map.set("EveSOFDataGenericShader", new Map([
-    ["defaultParameters", r.array],
-    ["defaultTextures", r.array],
-    ["doGenerateDepthArea", r.boolean],
-    ["parameters", r.array],
-    ["shader", r.string],
-    ["transparencyTextureName", r.string],
-  ]))
+  "EveSOFDataGenericDecalShader": {
+    defaultTextures: r.array,
+    parameters: r.array,
+    parentTextures: r.array,
+    shader: r.string
+  },
 
-  map.set("EveSOFDataGenericString", new Map([
-    ["str", r.string],
-  ]))
+  "EveSOFDataGenericHullDamage": {
+    hullParticleAngle: r.float,
+    hullParticleColor0: r.vector4,
+    hullParticleColor1: r.vector4,
+    hullParticleColor2: r.vector4,
+    hullParticleColorMidpoint: r.float,
+    hullParticleDrag: r.float,
+    hullParticleMinMaxLifeTime: r.vector2,
+    hullParticleMinMaxSpeed: r.vector2,
+    hullParticleRate: r.float,
+    hullParticleSizes: r.vector4,
+    hullParticleTurbulenceAmplitude: r.float,
+    hullParticleTurbulenceFrequency: r.float,
+    hullParticleTextureIndex: r.uint
+  },
 
-  map.set("EveSOFDataGenericSwarm", new Map([
-    ["formationDistance", r.float],
-    ["maxDistance0", r.float],
-    ["maxDeceleration", r.float],
-    ["separationDistance", r.float],
-    ["wanderDistance", r.float],
-    ["wanderFluctuation", r.float],
-    ["wanderRadius", r.float],
-    ["weightAlign", r.float],
-    ["weightAnchor", r.float],
-    ["weightCohesion", r.float],
-    ["weightDeceleration", r.float],
-    ["weightFormation", r.float],
-    ["weightSeparation", r.float],
-  ]))
+  "EveSOFDataGenericShader": {
+    defaultParameters: r.array,
+    defaultTextures: r.array,
+    doGenerateDepthArea: r.boolean,
+    parameters: r.array,
+    shader: r.string,
+    transparencyTextureName: r.string
+  },
 
-  map.set("EveSOFDataGenericVariant", new Map([
-    ["hullArea", r.object],
-    ["isTransparent", r.boolean],
-    ["name", r.string],
-  ]))
+  "EveSOFDataGenericString": {
+    str: r.string
+  },
 
-  map.set("EveSOFDataHull", new Map([
-    ["additiveAreas", r.array],
-    ["animations", r.array],
-    ["audioPosition", r.vector3],
-    ["banners", r.array],
-    ["booster", r.object],
-    ["boundingSphere", r.vector4],
-    ["buildClass", r.uint],
-    ["castShadow", r.boolean],
-    ["category", r.string],
-    ["children", r.array],
-    ["controllers", r.array],
-    ["decalAreas", r.array],
-    ["decalSets", r.array],
-    ["defaultPattern", r.object],
-    ["depthAreas", r.array],
-    ["description", r.string],
-    ["distortionAreas", r.array],
-    ["enableDynamicBoundingSphere", r.boolean],
-    ["geometryResFilePath", r.path],
-    ["hazeSets", r.array],
-    ["hullDecals", r.array],
-    ["impactEffectType", r.uint],
-    ["instancedMeshes", r.array],
-    ["isSkinned", r.boolean],
-    ["lightSets", r.array],
-    ["locatorSets", r.array],
-    ["locatorTurrets", r.array],
-    ["name", r.string],
-    ["opaqueAreas", r.array],
-    ["planeSets", r.array],
-    ["modelRotationCurvePath", r.path],
-    ["shapeEllipsoidCenter", r.vector3],
-    ["shapeEllipsoidRadius", r.vector3],
-    ["soundEmitters", r.array],
-    ["spotlightSets", r.array],
-    ["spriteLineSets", r.array],
-    ["spriteSets", r.array],
-    ["transparentAreas", r.array],
-  ]))
+  "EveSOFDataGenericSwarm": {
+    formationDistance: r.float,
+    maxDistance0: r.float,
+    maxDeceleration: r.float,
+    separationDistance: r.float,
+    wanderDistance: r.float,
+    wanderFluctuation: r.float,
+    wanderRadius: r.float,
+    weightAlign: r.float,
+    weightAnchor: r.float,
+    weightCohesion: r.float,
+    weightDeceleration: r.float,
+    weightFormation: r.float,
+    weightSeparation: r.float
+  },
 
-  map.set("EveSOFDataHullAnimation", new Map([
-    ["endRate", r.float],
-    ["endRotationTime", r.float],
-    ["endRotationValue", r.vector4],
-    ["id", r.uint],
-    ["name", r.string],
-    ["startRate", r.float],
-    ["startRotationTime", r.float],
-    ["startRotationValue", r.vector4],
-  ]))
+  "EveSOFDataGenericVariant": {
+    hullArea: r.object,
+    isTransparent: r.boolean,
+    name: r.string
+  },
 
-  map.set("EveSOFDataHullArea", new Map([
-    ["areaType", r.uint],
-    ["blockedMaterials", r.uint],
-    ["count", r.uint],
-    ["index", r.uint],
-    ["name", r.string],
-    ["parameters", r.array],
-    ["shader", r.string],
-    ["textures", r.array],
-  ]))
+  "EveSOFDataHull": {
+    additiveAreas: r.array,
+    animations: r.array,
+    audioPosition: r.vector3,
+    banners: r.array,
+    booster: r.object,
+    boundingSphere: r.vector4,
+    buildClass: r.uint,
+    castShadow: r.boolean,
+    category: r.string,
+    children: r.array,
+    controllers: r.array,
+    decalAreas: r.array,
+    decalSets: r.array,
+    defaultPattern: r.object,
+    depthAreas: r.array,
+    description: r.string,
+    distortionAreas: r.array,
+    enableDynamicBoundingSphere: r.boolean,
+    geometryResFilePath: r.path,
+    hazeSets: r.array,
+    hullDecals: r.array,
+    impactEffectType: r.uint,
+    instancedMeshes: r.array,
+    isSkinned: r.boolean,
+    lightSets: r.array,
+    locatorSets: r.array,
+    locatorTurrets: r.array,
+    name: r.string,
+    opaqueAreas: r.array,
+    planeSets: r.array,
+    modelRotationCurvePath: r.path,
+    shapeEllipsoidCenter: r.vector3,
+    shapeEllipsoidRadius: r.vector3,
+    soundEmitters: r.array,
+    spotlightSets: r.array,
+    spriteLineSets: r.array,
+    spriteSets: r.array,
+    transparentAreas: r.array
+  },
 
-  map.set("EveSOFDataHullBanner", new Map([
-    ["angleX", r.float],
-    ["angleY", r.float],
-    ["angleZ", r.float],
-    ["boneIndex", r.uint],
-    ["lightOverride", r.object],
-    ["name", r.string],
-    ["position", r.vector3],
-    ["rotation", r.vector4],
-    ["scaling", r.vector3],
-    ["usage", r.uint],
-  ]))
+  "EveSOFDataHullAnimation": {
+    endRate: r.float,
+    endRotationTime: r.float,
+    endRotationValue: r.vector4,
+    id: r.uint,
+    name: r.string,
+    startRate: r.float,
+    startRotationTime: r.float,
+    startRotationValue: r.vector4
+  },
 
-  map.set("EveSOFDataHullBannerLight", new Map([]))
+  "EveSOFDataHullArea": {
+    areaType: r.uint,
+    blockedMaterials: r.uint,
+    count: r.uint,
+    index: r.uint,
+    name: r.string,
+    parameters: r.array,
+    shader: r.string,
+    textures: r.array
+  },
 
-  map.set("EveSOFDataHullBooster", new Map([
-    ["alwaysOn", r.boolean],
-    ["hasTrails", r.boolean],
-    ["items", r.array],
-  ]))
+  "EveSOFDataHullBanner": {
+    angleX: r.float,
+    angleY: r.float,
+    angleZ: r.float,
+    boneIndex: r.uint,
+    lightOverride: r.object,
+    name: r.string,
+    position: r.vector3,
+    rotation: r.vector4,
+    scaling: r.vector3,
+    usage: r.uint
+  },
 
-  map.set("EveSOFDataHullBoosterItem", new Map([
-    ["atlasIndex0", r.uint],
-    ["atlasIndex1", r.uint],
-    ["functionality", r.vector4],
-    ["hasTrail", r.boolean],
-    ["lightScale", r.float],
-    ["transform", r.matrix],
-  ]))
+  "EveSOFDataHullBannerLight": {
 
-  map.set("EveSOFDataHullChild", new Map([
-    ["groupIndex", r.uint],
-    ["id", r.uint],
-    ["lowestLodVisible", r.uint],
-    ["name", r.string],
-    ["redFilePath", r.string],
-    ["rotation", r.vector4],
-    ["scaling", r.vector3],
-    ["translation", r.vector3],
-  ]))
+  },
 
-  map.set("EveSOFDataHullController", new Map([
-    ["path", r.path],
-  ]))
+  "EveSOFDataHullBooster": {
+    alwaysOn: r.boolean,
+    hasTrails: r.boolean,
+    items: r.array
+  },
 
-  map.set("EveSOFDataHullDecalSet", new Map([
-    ["name", r.string],
-    ["items", r.array],
-    ["visibilityGroup", r.string],
-  ]))
+  "EveSOFDataHullBoosterItem": {
+    atlasIndex0: r.uint,
+    atlasIndex1: r.uint,
+    functionality: r.vector4,
+    hasTrail: r.boolean,
+    lightScale: r.float,
+    transform: r.matrix
+  },
 
-  map.set("EveSOFDataHullDecalSetItem", new Map([
-    ["name", r.string],
-    ["boneIndex", r.uint],
-    ["indexBuffer", r.indexBuffer],
-    ["glowColorType", r.uint],
-    ["logoType", r.uint],
-    ["meshIndex", r.uint],
-    ["parameters", r.array],
-    ["position", r.vector3],
-    ["rotation", r.vector4],
-    ["scaling", r.vector3],
-    ["textures", r.array],
-    ["usage", r.uint],
-    ["visibilityGroup", r.string],
-  ]))
+  "EveSOFDataHullChild": {
+    groupIndex: r.uint,
+    id: r.uint,
+    lowestLodVisible: r.uint,
+    name: r.string,
+    redFilePath: r.string,
+    rotation: r.vector4,
+    scaling: r.vector3,
+    translation: r.vector3
+  },
 
-  map.set("EveSOFDataHullHazeSet", new Map([
-    ["items", r.array],
-    ["name", r.string],
-    ["visibilityGroup", r.string],
-  ]))
+  "EveSOFDataHullController": {
+    path: r.path
+  },
 
-  map.set("EveSOFDataHullHazeSetItem", new Map([
-    ["boosterGainInfluence", r.boolean],
-    ["colorType", r.uint],
-    ["hazeBrightness", r.float],
-    ["hazeFalloff", r.float],
-    ["position", r.vector3],
-    ["rotation", r.vector4],
-    ["scaling", r.vector3],
-    ["sourceBrightness", r.float],
-    ["sourceSize", r.float],
-  ]))
+  "EveSOFDataHullDecalSet": {
+    name: r.string,
+    items: r.array,
+    visibilityGroup: r.string
+  },
 
-  map.set("EveSOFDataHullLightSet", new Map([
-    ["name", r.string],
-    ["items", r.array],
-    ["visibilityGroup", r.string]
-  ]))
+  "EveSOFDataHullDecalSetItem": {
+    name: r.string,
+    boneIndex: r.uint,
+    indexBuffer: r.indexBuffer,
+    glowColorType: r.uint,
+    logoType: r.uint,
+    meshIndex: r.uint,
+    parameters: r.array,
+    position: r.vector3,
+    rotation: r.vector4,
+    scaling: r.vector3,
+    textures: r.array,
+    usage: r.uint,
+    visibilityGroup: r.string
+  },
 
-  map.set("EveSOFDataHullLightSetItem", new Map([
-    ["name", r.string],
-    ["boneIndex", r.uint],
-    ["brightness", r.float],
-    ["innerRadius", r.float],
-    ["lightColor", r.vector4],
-    ["noiseAmplitude", r.float],
-    ["noiseFrequency", r.float],
-    ["noiseOctaves", r.float],
-    ["position", r.vector3],
-    ["radius", r.float],
-  ]))
+  "EveSOFDataHullHazeSet": {
+    items: r.array,
+    name: r.string,
+    visibilityGroup: r.string
+  },
 
-  map.set("EveSOFDataHullLightSetTexturedPointLight", new Map([
-    ["name", r.string],
-    ["brightness", r.float],
-    ["innerRadius", r.float],
-    ["noiseOctaves", r.float],
-    ["position", r.vector3],
-    ["radius", r.float],
-    ["texturePath", r.path]
-  ]))
+  "EveSOFDataHullHazeSetItem": {
+    boosterGainInfluence: r.boolean,
+    colorType: r.uint,
+    hazeBrightness: r.float,
+    hazeFalloff: r.float,
+    position: r.vector3,
+    rotation: r.vector4,
+    scaling: r.vector3,
+    sourceBrightness: r.float,
+    sourceSize: r.float
+  },
 
-  map.set("EveSOFDataHullLightSetSpotLight", new Map([
-    ["name", r.string],
-    ["boneIndex", r.uint],
-    ["brightness", r.float],
-    ["innerAngle", r.float],
-    ["innerRadius", r.float],
-    ["lightColor", r.color],
-    ["noiseAmplitude", r.float],
-    ["noiseFrequency", r.float],
-    ["outerAngle", r.float],
-    ["position", r.vector3],
-    ["radius", r.float],
-    ["rotation", r.vector4],
-  ]))
+  "EveSOFDataHullLightSet": {
+    name: r.string,
+    items: r.array,
+    visibilityGroup: r.string
+  },
 
-  map.set("EveSOFDataHullLocator", new Map([
-    ["name", r.string],
-    ["transform", r.matrix],
-  ]))
+  "EveSOFDataHullLightSetItem": {
+    name: r.string,
+    boneIndex: r.uint,
+    brightness: r.float,
+    innerRadius: r.float,
+    lightColor: r.vector4,
+    noiseAmplitude: r.float,
+    noiseFrequency: r.float,
+    noiseOctaves: r.float,
+    position: r.vector3,
+    radius: r.float
+  },
 
-  map.set("EveSOFDataHullLocatorSet", new Map([
-    ["name", r.string],
-    ["locators", r.array],
-  ]))
+  "EveSOFDataHullLightSetTexturedPointLight": {
+    name: r.string,
+    brightness: r.float,
+    innerRadius: r.float,
+    noiseOctaves: r.float,
+    position: r.vector3,
+    radius: r.float,
+    texturePath: r.path
+  },
 
-  map.set("EveSOFDataHullPlaneSet", new Map([
-    ["atlasSize", r.uint],
-    ["items", r.array],
-    ["layer1MapResPath", r.path],
-    ["layer2MapResPath", r.path],
-    ["maskMapResPath", r.path],
-    ["name", r.string],
-    ["planeData", r.vector4],
-    ["skinned", r.boolean],
-    ["usage", r.uint],
-  ]))
+  "EveSOFDataHullLightSetSpotLight": {
+    name: r.string,
+    boneIndex: r.uint,
+    brightness: r.float,
+    innerAngle: r.float,
+    innerRadius: r.float,
+    lightColor: r.color,
+    noiseAmplitude: r.float,
+    noiseFrequency: r.float,
+    outerAngle: r.float,
+    position: r.vector3,
+    radius: r.float,
+    rotation: r.vector4
+  },
 
-  map.set("EveSOFDataHullPlaneSetItem", new Map([
-    ["blinkRate", r.float],
-    ["blinkPhase", r.float],
-    ["blinkMode", r.uint],
-    ["boneIndex", r.uint],
-    ["color", r.vector4],
-    ["dutyCycle", r.float],
-    ["groupIndex", r.uint],
-    ["layer1Scroll", r.vector4],
-    ["layer1Transform", r.vector4],
-    ["layer2Scroll", r.vector4],
-    ["layer2Transform", r.vector4],
-    ["maskMapAtlasIndex", r.uint],
-    ["position", r.vector3],
-    ["rate", r.float],
-    ["rotation", r.vector4],
-    ["scaling", r.vector3],
-  ]))
+  "EveSOFDataHullLocator": {
+    name: r.string,
+    transform: r.matrix
+  },
 
-  map.set("EveSOFDataHullSpotlightSet", new Map([
-    ["coneTextureResPath", r.path],
-    ["glowTextureResPath", r.path],
-    ["items", r.array],
-    ["name", r.string],
-    ["skinned", r.boolean],
-    ["zOffset", r.float],
-  ]))
+  "EveSOFDataHullLocatorSet": {
+    name: r.string,
+    locators: r.array
+  },
 
-  map.set("EveSOFDataHullSpotlightSetItem", new Map([
-    ["boneIndex", r.uint],
-    ["boosterGainInfluence", r.boolean],
-    ["coneIntensity", r.float],
-    ["flareIntensity", r.float],
-    ["groupIndex", r.uint],
-    ["spriteScale", r.vector3],
-    ["spriteIntensity", r.float],
-    ["transform", r.matrix],
-  ]))
+  "EveSOFDataHullPlaneSet": {
+    atlasSize: r.uint,
+    items: r.array,
+    layer1MapResPath: r.path,
+    layer2MapResPath: r.path,
+    maskMapResPath: r.path,
+    name: r.string,
+    planeData: r.vector4,
+    skinned: r.boolean,
+    usage: r.uint
+  },
 
-  map.set("EveSOFDataHullSoundEmitter", new Map([
-    ["name", r.string],
-    ["position", r.vector3],
-    ["prefix", r.string]
-  ]))
+  "EveSOFDataHullPlaneSetItem": {
+    blinkRate: r.float,
+    blinkPhase: r.float,
+    blinkMode: r.uint,
+    boneIndex: r.uint,
+    color: r.vector4,
+    dutyCycle: r.float,
+    groupIndex: r.uint,
+    layer1Scroll: r.vector4,
+    layer1Transform: r.vector4,
+    layer2Scroll: r.vector4,
+    layer2Transform: r.vector4,
+    maskMapAtlasIndex: r.uint,
+    position: r.vector3,
+    rate: r.float,
+    rotation: r.vector4,
+    scaling: r.vector3
+  },
 
-  map.set("EveSOFDataHullSpriteLineSet", new Map([
-    ["items", r.array],
-    ["name", r.string],
-    ["skinned", r.boolean],
-    ["visibilityGroup", r.string],
-  ]))
+  "EveSOFDataHullSpotlightSet": {
+    coneTextureResPath: r.path,
+    glowTextureResPath: r.path,
+    items: r.array,
+    name: r.string,
+    skinned: r.boolean,
+    zOffset: r.float
+  },
 
-  map.set("EveSOFDataHullSpriteLineSetItem", new Map([
-    ["blinkRate", r.float],
-    ["blinkPhase", r.float],
-    ["blinkPhaseShift", r.float],
-    ["boneIndex", r.uint],
-    ["colorType", r.uint],
-    ["falloff", r.float],
-    ["groupIndex", r.uint],
-    ["intensity", r.float],
-    ["isCircle", r.boolean],
-    ["maxScale", r.float],
-    ["minScale", r.float],
-    ["position", r.vector3],
-    ["rotation", r.vector4],
-    ["scaling", r.vector3],
-    ["spacing", r.float],
-  ]))
+  "EveSOFDataHullSpotlightSetItem": {
+    boneIndex: r.uint,
+    boosterGainInfluence: r.boolean,
+    coneIntensity: r.float,
+    flareIntensity: r.float,
+    groupIndex: r.uint,
+    spriteScale: r.vector3,
+    spriteIntensity: r.float,
+    transform: r.matrix
+  },
 
-  map.set("EveSOFDataHullSpriteSet", new Map([
-    ["name", r.string],
-    ["items", r.array],
-    ["skinned", r.boolean],
-    ["visibilityGroup", r.string],
-  ]))
+  "EveSOFDataHullSoundEmitter": {
+    name: r.string,
+    position: r.vector3,
+    prefix: r.string
+  },
 
-  map.set("EveSOFDataHullSpriteSetItem", new Map([
-    ["blinkRate", r.float],
-    ["blinkPhase", r.float],
-    ["boneIndex", r.uint],
-    ["colorType", r.uint],
-    ["falloff", r.float],
-    ["groupIndex", r.uint],
-    ["intensity", r.float],
-    ["maxScale", r.float],
-    ["minScale", r.float],
-    ["position", r.vector3],
-  ]))
+  "EveSOFDataHullSpriteLineSet": {
+    items: r.array,
+    name: r.string,
+    skinned: r.boolean,
+    visibilityGroup: r.string
+  },
 
-  map.set("EveSOFDataInstancedMesh", new Map([
-    ["geometryResPath", r.path],
-    ["instances", r.structList(Instance)],
-    ["lowestLodVisible", r.uint],
-    ["name", r.string],
-    ["shader", r.string],
-    ["textures", r.array],
-  ]))
+  "EveSOFDataHullSpriteLineSetItem": {
+    blinkRate: r.float,
+    blinkPhase: r.float,
+    blinkPhaseShift: r.float,
+    boneIndex: r.uint,
+    colorType: r.uint,
+    falloff: r.float,
+    groupIndex: r.uint,
+    intensity: r.float,
+    isCircle: r.boolean,
+    maxScale: r.float,
+    minScale: r.float,
+    position: r.vector3,
+    rotation: r.vector4,
+    scaling: r.vector3,
+    spacing: r.float
+  },
 
-  map.set("EveSOFDataMaterial", new Map([
-    ["name", r.string],
-    ["parameters", r.array],
-  ]))
+  "EveSOFDataHullSpriteSet": {
+    name: r.string,
+    items: r.array,
+    skinned: r.boolean,
+    visibilityGroup: r.string
+  },
 
-  map.set("EveSOFDataParameter", new Map([
-    ["name", r.string],
-    ["value", r.vector4],
-  ]))
+  "EveSOFDataHullSpriteSetItem": {
+    blinkRate: r.float,
+    blinkPhase: r.float,
+    boneIndex: r.uint,
+    colorType: r.uint,
+    falloff: r.float,
+    groupIndex: r.uint,
+    intensity: r.float,
+    maxScale: r.float,
+    minScale: r.float,
+    position: r.vector3
+  },
 
-  map.set("EveSOFDataPattern", new Map([
-    ["name", r.string],
-    ["layer1", r.object],
-    ["layer2", r.object],
-    ["projections", r.array],
-  ]))
+  "EveSOFDataInstancedMesh": {
+    geometryResPath: r.path,
+    instances: r.structList(Instance),
+    lowestLodVisible: r.uint,
+    name: r.string,
+    shader: r.string,
+    textures: r.array
+  },
 
-  map.set("EveSOFDataPatternLayer", new Map([
-    ["isTargetMtl1", r.boolean],
-    ["isTargetMtl2", r.boolean],
-    ["isTargetMtl3", r.boolean],
-    ["isTargetMtl4", r.boolean],
-    ["materialSource", r.uint],
-    ["projectionTypeU", r.uint],
-    ["projectionTypeV", r.uint],
-    ["textureName", r.string],
-    ["textureResFilePath", r.path],
-  ]))
+  "EveSOFDataMaterial": {
+    name: r.string,
+    parameters: r.array
+  },
 
-  map.set("EveSOFDataPatternPerHull", new Map([
-    ["name", r.string],
-    ["transformLayer1", r.object],
-    ["transformLayer2", r.object],
-  ]))
+  "EveSOFDataParameter": {
+    name: r.string,
+    value: r.vector4
+  },
 
-  map.set("EveSOFDataPatternTransform", new Map([
-    ["isMirrored", r.boolean],
-    ["position", r.vector3],
-    ["rotation", r.vector4],
-    ["scaling", r.vector3],
-  ]))
+  "EveSOFDataPattern": {
+    name: r.string,
+    layer1: r.object,
+    layer2: r.object,
+    projections: r.array
+  },
 
-  map.set("EveSOFDataRace", new Map([
-    ["booster", r.object],
-    ["damage", r.object],
-    ["name", r.string],
-  ]))
+  "EveSOFDataPatternLayer": {
+    isTargetMtl1: r.boolean,
+    isTargetMtl2: r.boolean,
+    isTargetMtl3: r.boolean,
+    isTargetMtl4: r.boolean,
+    materialSource: r.uint,
+    projectionTypeU: r.uint,
+    projectionTypeV: r.uint,
+    textureName: r.string,
+    textureResFilePath: r.path
+  },
 
-  map.set("EveSOFDataRaceDamage", new Map([
-    ["armorImpactParameters", r.array],
-    ["armorImpactTextures", r.array],
-    ["shieldImpactParameters", r.array],
-    ["shieldImpactTextures", r.array],
-  ]))
+  "EveSOFDataPatternPerHull": {
+    name: r.string,
+    transformLayer1: r.object,
+    transformLayer2: r.object
+  },
 
-  map.set("EveSOFDataFactionSpotlightSet", new Map([
-    ["coneColor", r.vector4],
-    ["flareColor", r.vector4],
-    ["groupIndex", r.uint],
-    ["name", r.string],
-    ["spriteColor", r.vector4],
-  ]))
+  "EveSOFDataPatternTransform": {
+    isMirrored: r.boolean,
+    position: r.vector3,
+    rotation: r.vector4,
+    scaling: r.vector3
+  },
 
-  map.set("EveSOFDataTexture", new Map([
-    ["name", r.string],
-    ["resFilePath", r.string],
-  ]))
+  "EveSOFDataRace": {
+    booster: r.object,
+    damage: r.object,
+    name: r.string
+  },
 
-  map.set("EveSOFDataTransform", new Map([
-    ["boneIndex", r.uint],
-    ["position", r.vector3],
-    ["rotation", r.vector4],
-    ["scaling", r.vector3],
-  ]))
+  "EveSOFDataRaceDamage": {
+    armorImpactParameters: r.array,
+    armorImpactTextures: r.array,
+    shieldImpactParameters: r.array,
+    shieldImpactTextures: r.array
+  },
+
+  "EveSOFDataFactionSpotlightSet": {
+    coneColor: r.vector4,
+    flareColor: r.vector4,
+    groupIndex: r.uint,
+    name: r.string,
+    spriteColor: r.vector4
+  },
+
+  "EveSOFDataTexture": {
+    name: r.string,
+    resFilePath: r.string
+  },
+
+  "EveSOFDataTransform": {
+    boneIndex: r.uint,
+    position: r.vector3,
+    rotation: r.vector4,
+    scaling: r.vector3
+  }
+
 }
