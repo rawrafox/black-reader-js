@@ -5,7 +5,7 @@ export default {
   "TriColorSequencer": {
     functions: r.array,
     name: r.string,
-    value: r.vector4
+    value: r.color
   },
 
   "TriCurveSet": {
@@ -82,7 +82,7 @@ export default {
 
   "TriTransformParameter": {
     name: r.string,
-    rotation: r.vector4
+    rotation: r.quaternion
   },
 
   "TriValueBinding": {

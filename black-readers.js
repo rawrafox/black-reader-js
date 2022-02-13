@@ -101,15 +101,11 @@ export function byte(reader) {
   return reader.readU8()
 }
 
-export function color(reader) {
-  return [reader.readF32(), reader.readF32(), reader.readF32(), reader.readF32()]
-}
-
 export function float(reader) {
   return reader.readF32()
 }
 
-export function matrix(reader) {
+export function matrix4(reader) {
   var buffer = new ArrayBuffer(64)
 
   return [
@@ -159,6 +155,7 @@ export function object(reader, id = null) {
 
     if (properties.has(propertyName)) {
       try {
+
         let propertyReader = properties.get(propertyName)
 
         if (propertyReader.complexReader) {
@@ -179,8 +176,7 @@ export function object(reader, id = null) {
           debugContext.property(propertyName, value)
         }
       } catch (e) {
-        throw e
-
+        //throw e;
         if (e instanceof UnknownPropertyError) {
           throw e
         } else {
@@ -247,6 +243,28 @@ export function vector4(reader, result = new Float32Array(4)) {
   result[2] = reader.readF32()
   result[3] = reader.readF32()
   return result
+}
+
+export function color(reader, result = new Float32Array(4)) {
+  result[0] = reader.readF32()
+  result[1] = reader.readF32()
+  result[2] = reader.readF32()
+  result[3] = reader.readF32()
+  if (typeof reader.context.color == "function") {
+    return reader.context.color(result)
+  }
+  return result;
+}
+
+export function quaternion(reader, result = new Float32Array(4)) {
+  result[0] = reader.readF32()
+  result[1] = reader.readF32()
+  result[2] = reader.readF32()
+  result[3] = reader.readF32()
+  if (typeof reader.context.quaternion == "function") {
+    return reader.context.quaternion(result);
+  }
+  return result;
 }
 
 // Complicated

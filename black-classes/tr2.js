@@ -155,7 +155,7 @@ export default {
     minTheta: r.float,
     parentVelocityFactor: r.float,
     position: r.vector3,
-    rotation: r.vector4
+    rotation: r.quaternion
   },
 
   "Tr2PlaneConstraint": {
@@ -303,10 +303,10 @@ export default {
     angle: r.float,
     attractorPosition: r.vector3,
     attractorStrength: r.float,
-    color0: r.vector4,
-    color1: r.vector4,
-    color2: r.vector4,
-    color3: r.vector4,
+    color0: r.color,
+    color1: r.color,
+    color2: r.color,
+    color3: r.color,
     colorMidpoint: r.float,
     continuousEmitter: r.boolean,
     direction: r.vector3,
@@ -339,10 +339,10 @@ export default {
     angle: r.float,
     attractorPosition: r.vector3,
     attractorStrength: r.float,
-    color0: r.vector4,
-    color1: r.vector4,
-    color2: r.vector4,
-    color3: r.vector4,
+    color0: r.color,
+    color1: r.color,
+    color2: r.color,
+    color3: r.color,
     colorMidpoint: r.float,
     continuousEmitter: r.boolean,
     direction: r.vector3,
@@ -415,7 +415,7 @@ export default {
   },
 
   "Tr2InteriorLightSource": {
-    color: r.vector4,
+    color: r.color,
     coneAlphaInner: r.float,
     coneAlphaOuter: r.float,
     coneDirection: r.vector3,
@@ -450,7 +450,7 @@ export default {
     name: r.string,
     boneIndex: r.uint,
     brightness: r.float,
-    color: r.vector4,
+    color: r.color,
     innerRadius: r.float,
     noiseAmplitude: r.float,
     noiseFrequency: r.float,
@@ -516,13 +516,13 @@ export default {
 
   "Tr2Matrix4Parameter": {
     name: r.string,
-    value: r.matrix
+    value: r.matrix4
   },
 
   "Tr2SpotLight" : {
     name: r.string,
     brightness: r.float,
-    color: r.vector4,
+    color: r.color,
     innerAngle: r.float,
     innerRadius: r.float,
     noiseAmplitude: r.float,
@@ -530,7 +530,7 @@ export default {
     outerAngle: r.float,
     position: r.vector3,
     radius: r.float,
-    rotation: r.vector4
+    rotation: r.quaternion
   },
 
   "Tr2StaticEmitter": {
