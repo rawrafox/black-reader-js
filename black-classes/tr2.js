@@ -498,6 +498,7 @@ export default {
     depthAreas: r.array,
     distortionAreas: r.array,
     geometryRes: r.object,
+    name: r.string,
     opaqueAreas: r.array,
     pickableAreas: r.array,
     transparentAreas: r.array
