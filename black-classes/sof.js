@@ -24,7 +24,6 @@ class Instance {
   }
 }
 
-
 export default {
 
   "EveSOFData": {
@@ -71,20 +70,20 @@ export default {
   },
 
   "EveSOFDataBooster": {
-    glowColor: r.vector4,
+    glowColor: r.color,
     glowScale: r.float,
     gradient0ResPath: r.path,
     gradient1ResPath: r.path,
-    haloColor: r.vector4,
+    haloColor: r.color,
     haloScaleX: r.float,
     haloScaleY: r.float,
     lightFlickerAmplitude: r.float,
-    lightFlickerColor: r.vector4,
+    lightFlickerColor: r.color,
     lightFlickerFrequency: r.float,
     lightFlickerRadius: r.float,
-    lightColor: r.vector4,
+    lightColor: r.color,
     lightRadius: r.float,
-    lightWarpColor: r.vector4,
+    lightWarpColor: r.color,
     lightWarpRadius: r.float,
     shape0: r.object,
     shape1: r.object,
@@ -93,17 +92,17 @@ export default {
     shapeAtlasResPath: r.path,
     shapeAtlasWidth: r.uint,
     symHaloScale: r.float,
-    trailColor: r.vector4,
+    trailColor: r.color,
     trailSize: r.vector4,
     volumetric: r.boolean,
-    warpGlowColor: r.vector4,
-    warpHalpColor: r.vector4,
+    warpGlowColor: r.color,
+    warpHalpColor: r.color,
     warpShape0: r.object,
     warpShape1: r.object
   },
 
   "EveSOFDataBoosterShape": {
-    color: r.vector4,
+    color: r.color,
     noiseFunction: r.float,
     noiseSpeed: r.float,
     noiseAmplitureStart: r.vector4,
@@ -140,28 +139,28 @@ export default {
   },
 
   "EveSOFDataFactionColorSet": {
-    Black: r.vector4,
-    Blue: r.vector4,
-    Booster: r.vector4,
-    Cyan: r.vector4,
-    Darkhull: r.vector4,
-    Fire: r.vector4,
-    Glass: r.vector4,
-    Green: r.vector4,
-    Hull: r.vector4,
-    Killmark: r.vector4,
-    Orange: r.vector4,
-    Primary: r.vector4,
-    PrimaryLight: r.vector4,
-    Reactor: r.vector4,
-    Red: r.vector4,
-    Secondary: r.vector4,
-    SecondaryLight: r.vector4,
-    Tertiary: r.vector4,
-    TertiaryLight: r.vector4,
-    White: r.vector4,
-    WhiteLight: r.vector4,
-    Yellow: r.vector4
+    Black: r.color,
+    Blue: r.color,
+    Booster: r.color,
+    Cyan: r.color,
+    Darkhull: r.color,
+    Fire: r.color,
+    Glass: r.color,
+    Green: r.color,
+    Hull: r.color,
+    Killmark: r.color,
+    Orange: r.color,
+    Primary: r.color,
+    PrimaryLight: r.color,
+    Reactor: r.color,
+    Red: r.color,
+    Secondary: r.color,
+    SecondaryLight: r.color,
+    Tertiary: r.color,
+    TertiaryLight: r.color,
+    White: r.color,
+    WhiteLight: r.color,
+    Yellow: r.color
   },
 
   "EveSOFDataFactionDecal": {
@@ -186,7 +185,7 @@ export default {
   },
 
   "EveSOFDataFactionPlaneSet": {
-    color: r.vector4,
+    color: r.color,
     groupIndex: r.uint,
     name: r.string
   },
@@ -204,6 +203,7 @@ export default {
     damage: r.object,
     genericWreckMaterial: r.object,
     hullAreas: r.array,
+    hullCategories: r.array,
     hullDamage: r.object,
     materialPrefixes: r.array,
     patternMaterialPrefixes: r.array,
@@ -218,10 +218,10 @@ export default {
 
   "EveSOFDataGenericDamage": {
     armorParticleAngle: r.float,
-    armorParticleColor0: r.vector4,
-    armorParticleColor1: r.vector4,
-    armorParticleColor2: r.vector4,
-    armorParticleColor3: r.vector4,
+    armorParticleColor0: r.color,
+    armorParticleColor1: r.color,
+    armorParticleColor2: r.color,
+    armorParticleColor3: r.color,
     armorParticleDrag: r.float,
     armorParticleMinMaxLifeTime: r.vector2,
     armorParticleMinMaxSpeed: r.vector2,
@@ -250,9 +250,9 @@ export default {
 
   "EveSOFDataGenericHullDamage": {
     hullParticleAngle: r.float,
-    hullParticleColor0: r.vector4,
-    hullParticleColor1: r.vector4,
-    hullParticleColor2: r.vector4,
+    hullParticleColor0: r.color,
+    hullParticleColor1: r.color,
+    hullParticleColor2: r.color,
     hullParticleColorMidpoint: r.float,
     hullParticleDrag: r.float,
     hullParticleMinMaxLifeTime: r.vector2,
@@ -343,12 +343,12 @@ export default {
   "EveSOFDataHullAnimation": {
     endRate: r.float,
     endRotationTime: r.float,
-    endRotationValue: r.vector4,
+    endRotationValue: r.quaternion,
     id: r.uint,
     name: r.string,
     startRate: r.float,
     startRotationTime: r.float,
-    startRotationValue: r.vector4
+    startRotationValue: r.quaternion
   },
 
   "EveSOFDataHullArea": {
@@ -370,7 +370,7 @@ export default {
     lightOverride: r.object,
     name: r.string,
     position: r.vector3,
-    rotation: r.vector4,
+    rotation: r.quaternion,
     scaling: r.vector3,
     usage: r.uint
   },
@@ -391,7 +391,7 @@ export default {
     functionality: r.vector4,
     hasTrail: r.boolean,
     lightScale: r.float,
-    transform: r.matrix
+    transform: r.matrix4
   },
 
   "EveSOFDataHullChild": {
@@ -400,7 +400,7 @@ export default {
     lowestLodVisible: r.uint,
     name: r.string,
     redFilePath: r.string,
-    rotation: r.vector4,
+    rotation: r.quaternion,
     scaling: r.vector3,
     translation: r.vector3
   },
@@ -424,7 +424,7 @@ export default {
     meshIndex: r.uint,
     parameters: r.array,
     position: r.vector3,
-    rotation: r.vector4,
+    rotation: r.quaternion,
     scaling: r.vector3,
     textures: r.array,
     usage: r.uint,
@@ -434,16 +434,18 @@ export default {
   "EveSOFDataHullHazeSet": {
     items: r.array,
     name: r.string,
+    skinned: r.boolean,
     visibilityGroup: r.string
   },
 
   "EveSOFDataHullHazeSetItem": {
+    boneIndex: r.uint,
     boosterGainInfluence: r.boolean,
     colorType: r.uint,
     hazeBrightness: r.float,
     hazeFalloff: r.float,
     position: r.vector3,
-    rotation: r.vector4,
+    rotation: r.quaternion,
     scaling: r.vector3,
     sourceBrightness: r.float,
     sourceSize: r.float
@@ -460,7 +462,7 @@ export default {
     boneIndex: r.uint,
     brightness: r.float,
     innerRadius: r.float,
-    lightColor: r.vector4,
+    lightColor: r.color,
     noiseAmplitude: r.float,
     noiseFrequency: r.float,
     noiseOctaves: r.float,
@@ -490,12 +492,12 @@ export default {
     outerAngle: r.float,
     position: r.vector3,
     radius: r.float,
-    rotation: r.vector4
+    rotation: r.quaternion
   },
 
   "EveSOFDataHullLocator": {
     name: r.string,
-    transform: r.matrix
+    transform: r.matrix4
   },
 
   "EveSOFDataHullLocatorSet": {
@@ -520,7 +522,7 @@ export default {
     blinkPhase: r.float,
     blinkMode: r.uint,
     boneIndex: r.uint,
-    color: r.vector4,
+    color: r.color,
     dutyCycle: r.float,
     groupIndex: r.uint,
     layer1Scroll: r.vector4,
@@ -530,7 +532,7 @@ export default {
     maskMapAtlasIndex: r.uint,
     position: r.vector3,
     rate: r.float,
-    rotation: r.vector4,
+    rotation: r.quaternion,
     scaling: r.vector3
   },
 
@@ -551,13 +553,14 @@ export default {
     groupIndex: r.uint,
     spriteScale: r.vector3,
     spriteIntensity: r.float,
-    transform: r.matrix
+    transform: r.matrix4
   },
 
   "EveSOFDataHullSoundEmitter": {
     name: r.string,
     position: r.vector3,
-    prefix: r.string
+    prefix: r.string,
+    rotation: r.quaternion
   },
 
   "EveSOFDataHullSpriteLineSet": {
@@ -580,7 +583,7 @@ export default {
     maxScale: r.float,
     minScale: r.float,
     position: r.vector3,
-    rotation: r.vector4,
+    rotation: r.quaternion,
     scaling: r.vector3,
     spacing: r.float
   },
@@ -606,6 +609,7 @@ export default {
   },
 
   "EveSOFDataInstancedMesh": {
+    displayModifier: r.uint,
     geometryResPath: r.path,
     instances: r.structList(Instance),
     lowestLodVisible: r.uint,
@@ -652,7 +656,7 @@ export default {
   "EveSOFDataPatternTransform": {
     isMirrored: r.boolean,
     position: r.vector3,
-    rotation: r.vector4,
+    rotation: r.quaternion,
     scaling: r.vector3
   },
 
@@ -670,11 +674,11 @@ export default {
   },
 
   "EveSOFDataFactionSpotlightSet": {
-    coneColor: r.vector4,
-    flareColor: r.vector4,
+    coneColor: r.color,
+    flareColor: r.color,
     groupIndex: r.uint,
     name: r.string,
-    spriteColor: r.vector4
+    spriteColor: r.color
   },
 
   "EveSOFDataTexture": {
@@ -685,8 +689,12 @@ export default {
   "EveSOFDataTransform": {
     boneIndex: r.uint,
     position: r.vector3,
-    rotation: r.vector4,
+    rotation: r.quaternion,
     scaling: r.vector3
+  },
+
+  "EveSOFDataVisibilityGroup" :{
+    name: r.string
   }
 
 }

@@ -124,7 +124,7 @@ export default {
     maxSpeed: r.float,
     noiseScale: r.float,
     noiseScaleCurve: r.object,
-    rotationAroundParent: r.vector4,
+    rotationAroundParent: r.quaternion,
     translationFromParent: r.float,
     yaw: r.float,
     zoomCurve: r.object
@@ -144,7 +144,7 @@ export default {
     effect: r.object,
     name: r.string,
     preTesselationLevel: r.uint,
-    rotation: r.vector4,
+    rotation: r.quaternion,
     scaling: r.vector3,
     translation: r.vector3
   },
@@ -155,7 +155,7 @@ export default {
     controllers: r.array,
     display: r.boolean,
     displayFilter: r.object,
-    localTransform: r.matrix,
+    localTransform: r.matrix4,
     name: r.string,
     curveSets: r.array,
     hideOnLowQuality: r.boolean,
@@ -163,7 +163,7 @@ export default {
     lights: r.array,
     observers: r.array,
     objects: r.array,
-    rotation: r.vector4,
+    rotation: r.quaternion,
     scaling: r.vector3,
     staticTransform: r.boolean,
     transformModifiers: r.array,
@@ -192,9 +192,9 @@ export default {
     localExplosionInterval: r.float,
     localExplosionIntervalFactor: r.float,
     localExplosionShared: r.object,
-    localTransform: r.matrix,
+    localTransform: r.matrix4,
     name: r.string,
-    rotation: r.vector4,
+    rotation: r.quaternion,
     scaling: r.vector3
   },
 
@@ -205,20 +205,20 @@ export default {
   "EveChildInstanceContainer" : {
     source: r.object,
     scaling: r.vector3,
-    localTransform: r.matrix
+    localTransform: r.matrix4
   },
 
   "EveChildLineSet": {
     name: r.string,
     additiveBatches: r.boolean,
-    animColor: r.vector4,
-    baseColor: r.vector4,
+    animColor: r.color,
+    baseColor: r.color,
     brightness: r.float,
     display: r.boolean,
     lines: r.array,
     lineSet: r.object,
     minScreenSize: r.float,
-    rotation: r.vector4,
+    rotation: r.quaternion,
     scrollSpeed: r.float,
     translation: r.vector3,
   },
@@ -228,17 +228,17 @@ export default {
     linkStrengthCurves: r.array,
     mesh: r.object,
     name: r.string,
-    rotation: r.vector4
+    rotation: r.quaternion
   },
 
   "EveChildMesh": {
     display: r.boolean,
-    localTransform: r.matrix,
+    localTransform: r.matrix4,
     lowestLodVisible: r.uint,
     mesh: r.object,
     minScreenSize: r.float,
     name: r.string,
-    rotation: r.vector4,
+    rotation: r.quaternion,
     scaling: r.vector3,
     sortValueOffset: r.float,
     staticTransform: r.boolean,
@@ -265,14 +265,14 @@ export default {
 
   "EveChildParticleSystem": {
     display: r.boolean,
-    localTransform: r.matrix,
+    localTransform: r.matrix4,
     lodSphereRadius: r.float,
     mesh: r.object,
     minScreenSize: r.float,
     name: r.string,
     particleEmitters: r.array,
     particleSystems: r.array,
-    rotation: r.vector4,
+    rotation: r.quaternion,
     scaling: r.vector3,
     translation: r.vector3,
     transformModifiers: r.array,
@@ -300,7 +300,7 @@ export default {
   },
 
   "EveChildModifierSRT": {
-    rotation: r.vector4,
+    rotation: r.quaternion,
     scaling: r.vector3,
     translation: r.vector3,
   },
@@ -313,10 +313,10 @@ export default {
     brightness: r.float,
     color: r.color,
     effect: r.object,
-    localTransform: r.matrix,
+    localTransform: r.matrix4,
     minScreenSize: r.float,
     name: r.string,
-    rotation: r.vector4,
+    rotation: r.quaternion,
     scaling: r.vector3,
     translation: r.vector3,
   },
@@ -345,7 +345,7 @@ export default {
   "EveCustomMask": {
     materialIndex: r.byte,
     position: r.vector3,
-    rotation: r.vector4,
+    rotation: r.quaternion,
     scaling: r.vector3,
     targetMaterials: r.vector4,
   },
@@ -361,7 +361,7 @@ export default {
     lights: r.array,
     name: r.string,
     observers: r.array,
-    rotation: r.vector4,
+    rotation: r.quaternion,
     rotationCurve: r.object,
     scaling: r.vector3,
     secondaryLightingEmissiveColor: r.color,
@@ -399,7 +399,7 @@ export default {
 
   "EveLocator2": {
     name: r.string,
-    transform: r.matrix,
+    transform: r.matrix4,
   },
 
   "EveMeshOverlayEffect": {
@@ -479,7 +479,7 @@ export default {
     maskAtlasID: r.uint,
     name: r.string,
     position: r.vector3,
-    rotation: r.vector4,
+    rotation: r.quaternion,
     scaling: r.vector3,
   },
     
@@ -493,7 +493,7 @@ export default {
     name: r.string,
     observers: r.array,
     position: r.vector3,
-    rotation: r.vector4,
+    rotation: r.quaternion,
     rotationCurve: r.object,
     scaling: r.vector3,
     sortValueMultiplier: r.float,
@@ -549,7 +549,7 @@ export default {
     decalEffect: r.object,
     name: r.string,
     position: r.vector3,
-    rotation: r.vector4,
+    rotation: r.quaternion,
     scaling: r.vector3,
     indexBuffer: r.indexBuffer
   },
@@ -564,7 +564,7 @@ export default {
     envMapResPath: r.path,
     envMap1ResPath: r.path,
     envMap2ResPath: r.path,
-    envMapRotation: r.vector4,
+    envMapRotation: r.quaternion,
     externalParameters: r.array,
     fogColor: r.color,
     fogStart: r.float,
@@ -580,7 +580,7 @@ export default {
     shadowThreshold: r.float,
     shLightingManager: r.object,
     sunDiffuseColor: r.color,
-    sunDiffuseColorWithDynamicLights: r.vector4,
+    sunDiffuseColorWithDynamicLights: r.color,
     sunDirection: r.vector3,
     useSunDiffuseColorWithDynamicLights: r.boolean
   },
@@ -614,7 +614,7 @@ export default {
     name: r.string,
     spriteColor: r.color,
     spriteScale: r.vector3,
-    transform: r.matrix
+    transform: r.matrix4
   },
     
   "EveSpriteSet": {
@@ -708,7 +708,7 @@ export default {
     overrideBoundsMin: r.vector3,
     particleEmitters: r.array,
     particleSystems: r.array,
-    rotation: r.vector4,
+    rotation: r.quaternion,
     scaling: r.vector3,
     sortValueMultiplier: r.float,
     translation: r.vector3,
