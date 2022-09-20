@@ -1,5 +1,4 @@
 import * as r from "../black-readers.js"
-import { typeSymbol } from "../black";
 
 class Locator {
   constructor(position, direction) {

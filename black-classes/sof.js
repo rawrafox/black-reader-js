@@ -418,7 +418,8 @@ export default {
   "EveSOFDataHullDecalSetItem": {
     name: r.string,
     boneIndex: r.uint,
-    indexBuffer: r.indexBuffer,
+    indexBuffer: r.array,
+    indexBuffers: r.array,
     glowColorType: r.uint,
     logoType: r.uint,
     meshIndex: r.uint,
@@ -429,6 +430,15 @@ export default {
     textures: r.array,
     usage: r.uint,
     visibilityGroup: r.string
+  },
+
+  "EveSOFDataDecalIndexBuffer" : {
+      indexBuffer: r => {
+        const count = r.readU32() / 4;
+        const indexBuffer = new Uint32Array(count);
+        for (let i = 0; i < count; i++) indexBuffer[i] = r.readU32();
+        return indexBuffer;
+      }
   },
 
   "EveSOFDataHullHazeSet": {

@@ -85,8 +85,6 @@ export function read(view, context, debugContext = nullDebugContext) {
     debugContext.log(`${i}: ${strings[i]}`)
   }
 
-  let result = {}
-
   let commentReader = reader.readBinaryReader(reader.readU32())
   let commentCount = commentReader.readU16()
   let comments = []
