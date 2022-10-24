@@ -30,9 +30,45 @@ export default {
     faction: r.array,
     generic: r.object,
     hull: r.array,
+    layout: r.array,
     material: r.array,
     pattern: r.array,
     race: r.array
+  },
+
+  "EveSOFDataLayout" : {
+    name: r.string,
+    placements: r.array
+  },
+
+  "EveSOFDNADescriptor" : {
+    hull: r.string,
+    layout: r.string,
+    faction: r.string,
+  },
+
+  "EveSOFDataHullExtensionPlacementDistributionPlacement" : {
+    distributionConditions: r.array,
+  },
+
+  "EveSOFDataHullExtensionPlacementDistributionParentMatch" : {
+    matchHull: r.boolean,
+    matchFaction: r.boolean,
+    parentDescriptor: r.object,
+  },
+
+  "EveSOFDataHullExtensionPlacement" : {
+    descriptor: r.object,
+    distribution: r.object,
+    distributionConditions: r.array,
+    isInstanced: r.boolean,
+    locatorSetName: r.string,
+    matchHull: r.boolean,
+    matchFaction: r.boolean,
+    name: r.string,
+    offset: r.vector3,
+    parentDescriptor: r.object,
+    resPathDefaultCorp: r.string,
   },
 
   "EveSOFDataArea": {
@@ -307,6 +343,7 @@ export default {
     booster: r.object,
     boundingSphere: r.vector4,
     buildClass: r.uint,
+    buildFilter: r.uint,
     castShadow: r.boolean,
     category: r.string,
     children: r.array,
@@ -395,6 +432,7 @@ export default {
   },
 
   "EveSOFDataHullChild": {
+    buildFilter: r.uint,
     groupIndex: r.uint,
     id: r.uint,
     lowestLodVisible: r.uint,
@@ -406,6 +444,7 @@ export default {
   },
 
   "EveSOFDataHullController": {
+    buildFilter: r.uint,
     path: r.path
   },
 
