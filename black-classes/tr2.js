@@ -112,7 +112,8 @@ export default {
     attribute: r.string,
     delayBinding: r.boolean,
     path: r.path,
-    value: r.string
+    value: r.string,
+    destination: r.object
   },
 
   "Tr2ActionSpawnParticles": {
@@ -539,6 +540,14 @@ export default {
     particleSystem: r.object,
     geometryResourcePath: r.path,
     meshIndex: r.uint
+  },
+
+  "Tr2TexturedPointLight" : {
+    color: r.color,
+    innerRadius: r.float,
+    position: r.vector3,
+    radius: r.float,
+    texturePath: r.path,
   },
 
   "Tr2Texture2dLodParameter": {
