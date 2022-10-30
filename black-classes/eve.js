@@ -77,9 +77,11 @@ export default {
     lineSet: r.object,
     movementScale: r.float,
     movementSpeed: r.float,
+    name: r.string,
     objectScale: r.vector3,
     point1: r.vector3,
     point2: r.vector3,
+    rotation: r.quaternion,
     scaleEndpoints: r.boolean,
     scaleSegmentsByCompleteness: r.boolean,
     segments: r.uint,
@@ -109,7 +111,11 @@ export default {
     warpGlowColor: r.color,
     warpHaloColor: r.color
   },
-    
+
+  "EveCameraFxAttributes" : {
+    fxAttributes: r.array,
+  },
+
   "EveCamera": {
     fieldOfView: r.float,
     friction: r.float,
@@ -160,6 +166,7 @@ export default {
     hideOnLowQuality: r.boolean,
     inheritProperties: r.object,
     lights: r.array,
+    fxAttributes: r.array,
     observers: r.array,
     objects: r.array,
     rotation: r.quaternion,
@@ -171,10 +178,18 @@ export default {
 
   "EveChildEffectPropagator": {
     name: r.string,
+    durationPerEffect: r.float,
     effect: r.object,
+    effectScaling: r.vector3,
+    frequency: r.float,
+    localLocators: r.object,
+    locatorSetName: r.string,
     propagationType: r.uint,
     randScaleMax: r.float,
+    skipCleanup: r.boolean,
     stopToClearDelay: r.float,
+    stopAfterNumTriggers: r.uint,
+    triggerMethood: r.object,
     triggerSphereOffset:  r.vector3,
     triggerSphereRadiusCurve: r.object
   },
@@ -207,6 +222,10 @@ export default {
     localTransform: r.matrix4
   },
 
+  "EveLineChildContainer" : {
+    lines: r.array
+  },
+
   "EveChildLineSet": {
     name: r.string,
     additiveBatches: r.boolean,
@@ -237,6 +256,7 @@ export default {
     mesh: r.object,
     minScreenSize: r.float,
     name: r.string,
+    reflectionMode: r.uint,
     rotation: r.quaternion,
     scaling: r.vector3,
     sortValueOffset: r.float,
