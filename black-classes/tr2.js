@@ -637,6 +637,7 @@ export default {
 
   "Tr2PostProcess2": {
     bloom: r.object,
+    depthOfField: r.object,
     dynamicExposure: r.object,
     desaturate: r.object,
     fade: r.object,
@@ -649,8 +650,16 @@ export default {
     vignette: r.object
   },
 
-  "Tr2PPBloomEffect": {
+  "Tr2PPDepthOfFieldEffect" : {
+    focalDistance: r.float,
+    focalLength: r.float,
+    scale: r.float,
+  },
 
+  "Tr2PPBloomEffect": {
+    luminanceThreshold: r.float,
+    luminanceScale: r.float,
+    brightness: r.float
   },
 
   "Tr2PPDesaturateEffect": {
@@ -672,11 +681,13 @@ export default {
   },
 
   "Tr2PPFilmGrainEffect": {
-
+    intensity: r.float,
+    grainSize: r.float,
   },
 
   "Tr2PPFogEffect": {
     areaCenter: r.vector3,
+    backgroundOcclusion: r.float,
     blendAmount0: r.float,
     blendAmount1: r.float,
     blendAmount2: r.float,
@@ -689,6 +700,7 @@ export default {
     blendPower0: r.float,
     blendPower1: r.float,
     blendPower2: r.float,
+    brightnessAdjustmentAmount: r.float,
     color: r.color,
     colorInfluence: r.float,
     intensity: r.float,

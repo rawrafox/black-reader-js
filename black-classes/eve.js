@@ -601,6 +601,7 @@ export default {
     sunDiffuseColor: r.color,
     sunDiffuseColorWithDynamicLights: r.color,
     sunDirection: r.vector3,
+    reflectionIntensity: r.float,
     useSunDiffuseColorWithDynamicLights: r.boolean
   },
     
