@@ -57,6 +57,10 @@ export default {
     parentDescriptor: r.object,
   },
 
+  "EveSOFDataHullExtensionPlacementDistributionMapGraphicSettings" :{
+    displayFilter: r.object
+  },
+
   "EveSOFDataHullExtensionPlacement" : {
     descriptor: r.object,
     distribution: r.object,
@@ -409,7 +413,8 @@ export default {
     position: r.vector3,
     rotation: r.quaternion,
     scaling: r.vector3,
-    usage: r.uint
+    usage: r.uint,
+    visibilityGroup: r.string
   },
 
   "EveSOFDataHullBannerLight": {
