@@ -5,6 +5,8 @@ import ora from "ora";
 
 function replacer(context) {
   return function(key, value) {
+    if (value === null) return value;
+
     let id = value[idSymbol]
 
     if (id && context.references.has(id)) {
@@ -19,7 +21,7 @@ function replacer(context) {
       let type = value[typeSymbol]
       if (type) result["_type"] = type
       value.forEach((e, k) => {
-        result[k] = e.buffer instanceof ArrayBuffer && e.BYTES_PER_ELEMENT ? Array.from(e) : e;
+        result[k] = e && e.buffer instanceof ArrayBuffer && e.BYTES_PER_ELEMENT ? Array.from(e) : e
       })
       return result
     } else {
