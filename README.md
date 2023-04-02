@@ -10,6 +10,10 @@ Installation
 
 Usage
 -----
+Download all black files for an eve online client to a destination folder
+* node downloader [resFileIndexPath] [destFolder]
+* example: `node downloader c:/eve/evesharedcache/tq/resfileindex.txt ./input`
+
 Convert all black files from a source folder to a destination folder
 * node runner [sourceFolder] [destFolder]
 * example: `node runner ./input ./output`
@@ -17,3 +21,4 @@ Convert all black files from a source folder to a destination folder
 Convert a black file to a destination folder
 * node runner [sourceFileName.black] [destFolder]
 * example: `node runner ./input/data.black ./output`
+
