@@ -1,4 +1,17 @@
 import * as r from "../black-readers.js"
+import {typeSymbol} from "../black.js";
+
+class AudEventKey {
+  constructor(value, time) {
+    this[typeSymbol] = "AudEventKey";
+    this.value = value;
+    this.time = time;
+  }
+
+  static readStruct(reader){
+    return new AudEventKey(r.ushort(reader), r.float(reader));
+  }
+}
 
 class Locator {
   constructor(position, direction) {
@@ -769,6 +782,8 @@ export default {
     cyclingFireGroupCount: r.uint,
     firingEffectResPath: r.path,
     geometryResPath: r.path,
+    // Possibly should be an AudEventCurve containing a single key
+    idleToTargetingMovementAudioEvent: r.struct(AudEventKey),
     impactSize: r.float,
     laserMissBehaviour: r.boolean,
     locatorName: r.string,
@@ -782,6 +797,7 @@ export default {
     sysBonePitch02Factor: r.float,
     sysBonePitchOffset: r.float,
     turretEffect: r.object,
+    turretMovementObserver: r.object,
     updatePitchPose: r.boolean,
     useDynamicBounds: r.boolean,
     useRandomFiringDelay: r.boolean

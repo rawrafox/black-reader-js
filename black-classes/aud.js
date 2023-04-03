@@ -3,7 +3,9 @@ import * as r from "../black-readers.js"
 export default {
 
   "AudEmitter": {
-    name: r.string
+    name: r.string,
+    normalizeAttenuationScaling: r.boolean,
+    maxNormalizedScalingFactor: r.float
   },
 
   "AudEventKey": {
