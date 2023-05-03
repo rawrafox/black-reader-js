@@ -351,6 +351,7 @@ export default {
     castShadow: r.boolean,
     category: r.string,
     children: r.array,
+    childSets: r.array,
     controllers: r.array,
     decalAreas: r.array,
     decalSets: r.array,
@@ -446,6 +447,14 @@ export default {
     rotation: r.quaternion,
     scaling: r.vector3,
     translation: r.vector3
+  },
+
+  "EveSOFDataHullChildSet" : {
+    items: r.array
+  },
+
+  "EveSOFDataHullChildSetItem": {
+
   },
 
   "EveSOFDataHullController": {
