@@ -453,6 +453,7 @@ export default {
     brightness: r.float,
     color: r.color,
     innerRadius: r.float,
+    flags: r.string,
     noiseAmplitude: r.float,
     noiseFrequency: r.float,
     noiseOctaves: r.float,

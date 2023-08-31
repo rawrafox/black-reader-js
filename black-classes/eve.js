@@ -167,6 +167,17 @@ export default {
     translation: r.vector3
   },
 
+  "EveChildCloud2": {
+    effect: r.object,
+    reflectionEffect: r.object,
+    lights: r.array,
+    minScreenSize: r.float,
+    scaling: r.vector3,
+    translation: r.vector3,
+    reflectionMode: r.uint,
+    rotation: r.vector4,
+  },
+
   "EveChildContainer": {
     alwaysOn: r.boolean,
     boneIndex: r.uint,
