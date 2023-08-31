@@ -45,6 +45,7 @@ export default {
     hull: r.string,
     layout: r.string,
     faction: r.string,
+    race: r.string
   },
 
   "EveSOFDataHullExtensionPlacementDistributionPlacement" : {
