@@ -620,6 +620,7 @@ export default {
   },
 
   "EveSOFDataHullSoundEmitter": {
+    attenuationScalingFactor: r.float,
     name: r.string,
     position: r.vector3,
     prefix: r.string,
