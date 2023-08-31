@@ -49,7 +49,13 @@ export default {
   },
 
   "EveSOFDataHullExtensionPlacementDistributionPlacement" : {
+    name: r.string,
+    centerBias: r.float,
+    completeness: r.float,
     distributionConditions: r.array,
+    placementBias: r.vector3,
+    randomScaleMin: r.vector3,
+    randomScaleMax: r.vector3
   },
 
   "EveSOFDataHullExtensionPlacementDistributionParentMatch" : {
