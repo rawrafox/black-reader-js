@@ -530,6 +530,7 @@ export default {
     innerRadius: r.float,
     noiseAmplitude: r.float,
     noiseFrequency: r.float,
+    noiseOctaves: r.float,
     outerAngle: r.float,
     position: r.vector3,
     radius: r.float,

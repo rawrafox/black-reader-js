@@ -183,7 +183,7 @@ export default {
     boneIndex: r.uint,
     controllers: r.array,
     display: r.boolean,
-    displayFilter: r.object,
+    displayFilter: r.uint,
     localTransform: r.matrix4,
     name: r.string,
     curveSets: r.array,

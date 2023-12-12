@@ -38,48 +38,20 @@ export default {
 
   "EveSOFDataLayout" : {
     name: r.string,
-    placements: r.array
+    placements: r.array,
+    seed: r.uint,
+    randomizeSeedOnLoad: r.boolean
   },
 
   "EveSOFDNADescriptor" : {
     hull: r.string,
     layout: r.string,
     faction: r.string,
-    race: r.string
-  },
-
-  "EveSOFDataHullExtensionPlacementDistributionPlacement" : {
-    name: r.string,
-    centerBias: r.float,
-    completeness: r.float,
-    distributionConditions: r.array,
-    placementBias: r.vector3,
-    randomScaleMin: r.vector3,
-    randomScaleMax: r.vector3
-  },
-
-  "EveSOFDataHullExtensionPlacementDistributionParentMatch" : {
-    matchHull: r.boolean,
-    matchFaction: r.boolean,
-    parentDescriptor: r.object,
-  },
-
-  "EveSOFDataHullExtensionPlacementDistributionMapGraphicSettings" :{
-    displayFilter: r.object
-  },
-
-  "EveSOFDataHullExtensionPlacement" : {
-    descriptor: r.object,
-    distribution: r.object,
-    distributionConditions: r.array,
-    isInstanced: r.boolean,
-    locatorSetName: r.string,
-    matchHull: r.boolean,
-    matchFaction: r.boolean,
-    name: r.string,
-    offset: r.vector3,
-    parentDescriptor: r.object,
-    resPathDefaultCorp: r.string,
+    race: r.string,
+    material1: r.string,
+    material2: r.string,
+    material3: r.string,
+    material4: r.string
   },
 
   "EveSOFDataArea": {
@@ -192,8 +164,10 @@ export default {
     Cyan: r.color,
     Darkhull: r.color,
     Fire: r.color,
+    ForceField: r.color,
     Glass: r.color,
     Green: r.color,
+    Haze: r.color,
     Hull: r.color,
     Killmark: r.color,
     Orange: r.color,
@@ -501,6 +475,70 @@ export default {
       }
   },
 
+  "EveSOFDataDistributionDepletionCounter" : {
+      name: r.string,
+      value: r.uint
+  },
+
+  "EveSOFDataHullExtensionPlacementGroup" : {
+    name: r.string,
+    enabled: r.boolean,
+    distributionConditions: r.array,
+    depletionCounters: r.array,
+    placements: r.array
+  },
+
+  "EveSOFDataHullExtensionPlacementDistributionPlacement" : {
+    name: r.string,
+    cap: r.uint,
+    centerBias: r.float,
+    completeness: r.float,
+    distributionConditions: r.array,
+    occupyLocators: r.boolean,
+    placementBias: r.vector3,
+    randomScaleMin: r.vector3,
+    randomScaleMax: r.vector3,
+    randomRotationMaxSteps: r.vector3,
+    randomRotationStepSizeYPR: r.vector3,
+    uniformScale: r.boolean
+  },
+
+  "EveSOFDataHullExtensionPlacementDistributionDepletionCounter " : {
+    name: r.string,
+    depletionCounters: r.array
+  },
+
+  "EveSOFDataHullExtensionPlacementDistributionMapGraphicSettings" : {
+    name: r.string,
+    displayFilter: r.uint
+  },
+
+  "EveSOFDataHullExtensionPlacementDistributionParentMatch" : {
+    matchHull: r.boolean,
+    matchFaction: r.boolean,
+    parentDescriptor: r.object,
+  },
+
+  "EveSOFDataHullExtensionPlacementDistributionRandomChance" : {
+    name: r.string,
+    chanceOfUsage: r.float
+  },
+
+  "EveSOFDataHullExtensionPlacement" : {
+    descriptor: r.object,
+    distribution: r.object,
+    distributionConditions: r.array,
+    enabled: r.boolean,
+    isInstanced: r.boolean,
+    locatorSetName: r.string,
+    matchHull: r.boolean,
+    matchFaction: r.boolean,
+    name: r.string,
+    offset: r.vector3,
+    parentDescriptor: r.object,
+    resPathDefaultCorp: r.string
+  },
+
   "EveSOFDataHullHazeSet": {
     items: r.array,
     name: r.string,
@@ -573,6 +611,11 @@ export default {
   "EveSOFDataHullLocatorSet": {
     name: r.string,
     locators: r.array
+  },
+
+  "EveSOFDataHullLocatorSetGroup": {
+    name: r.string,
+    locatorSets: r.array
   },
 
   "EveSOFDataHullPlaneSet": {
