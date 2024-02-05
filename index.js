@@ -1,3 +1,1 @@
-require = require("esm")(module)
-
-module.exports = require("./black.js")
+export * from "./black.js";
