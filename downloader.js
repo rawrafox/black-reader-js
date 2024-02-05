@@ -1,11 +1,9 @@
 #!/usr/bin/env node
 
-require = require("esm")(module)
-
-let fs = require("fs")
-let http = require("http")
-let path = require("path")
-let zlib = require("zlib")
+import fs from "fs";
+import http from "http";
+import path from "path";
+import zlib from "zlib";
 
 let args = process.argv.slice(2)
 
