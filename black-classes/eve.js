@@ -202,20 +202,26 @@ export default {
 
   "EveChildEffectPropagator": {
     name: r.string,
+    completeness: r.float,
     durationPerEffect: r.float,
     effect: r.object,
     effectScaling: r.vector3,
     frequency: r.float,
     localLocators: r.object,
     locatorSetName: r.string,
+    keys: r.array,
+    maxLifeTime: r.float,
     propagationType: r.uint,
     randScaleMax: r.float,
+    replayAfterDelay: r.boolean,
     skipCleanup: r.boolean,
     stopToClearDelay: r.float,
     stopAfterNumTriggers: r.uint,
-    triggerMethood: r.object,
+    trigger: r.boolean,
+    triggerMethood: r.object,           // Error in definitions
     triggerSphereOffset:  r.vector3,
-    triggerSphereRadiusCurve: r.object
+    triggerSphereRadiusCurve: r.object,
+    turbulenceAmplitude: r.float,
   },
 
   "EveChildExplosion": {
@@ -320,6 +326,11 @@ export default {
     translation: r.vector3,
     transformModifiers: r.array,
     useDynamicLod: r.boolean
+  },
+
+  "EveChildProceduralContainer ":{
+    name: r.string,
+    selectionMethod: r.uint
   },
 
   "EveChildModifierAttachToBone": {

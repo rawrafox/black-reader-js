@@ -1,6 +1,33 @@
 import * as r from "../black-readers.js"
 import { typeSymbol } from "../black.js"
 
+class SamplerOverride {
+
+  name= "";
+  addressU=1;
+  addressV=1;
+  addressW=1;
+  filter=2;
+  loadBias=0.0;
+  maxAnisotropy=4;
+  maxMipLevel=0;
+  mipFilter=2;
+
+  static readStruct(reader){
+    const item = new this();
+    item.mipFilter = r.uint(reader);
+    item.maxAnisotropy = r.uint(reader);
+    item.name = r.string(reader);
+    item.maxMipLevel = r.uint(reader);
+    item.addressU = r.uint(reader);
+    item.addressV = r.uint(reader);
+    item.addressW = r.uint(reader);
+    item.filter = r.uint(reader);
+    item.loadBias = r.float(reader);
+    return item;
+  }
+}
+
 class ConstantParameter {
   constructor(name, value) {
     this[typeSymbol] = "Tr2Vector4Parameter"
@@ -188,6 +215,8 @@ export default {
 
   "Tr2CurveColor": {
     name: r.string,
+    timeScale: r.float,
+    timeOffset: r.float,
     r: r.rawObject,
     g: r.rawObject,
     b: r.rawObject,
@@ -287,7 +316,7 @@ export default {
     resources: r.array,
     constParameters: r.structList(ConstantParameter),
     options: r.structList(EffectOption),
-    samplerOverrides: (reader) => { throw "lulz" }
+    samplerOverrides: r.structList(SamplerOverride)
   },
 
   "Tr2DynamicEmitter": {
@@ -454,6 +483,7 @@ export default {
     color: r.color,
     innerRadius: r.float,
     flags: r.string,
+    lightProfilePath: r.path,
     noiseAmplitude: r.float,
     noiseFrequency: r.float,
     noiseOctaves: r.float,
