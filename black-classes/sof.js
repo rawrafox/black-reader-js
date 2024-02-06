@@ -181,7 +181,25 @@ export default {
     TertiaryLight: r.color,
     White: r.color,
     WhiteLight: r.color,
-    Yellow: r.color
+    Yellow: r.color,
+    PrimarySpotlight: r.color,
+    SecondarySpotlight: r.color,
+    TertiarySpotlight: r.color,
+    PrimaryHologram: r.color,
+    SecondaryHologram: r.color,
+    TertiaryHologram: r.color,
+    State0: r.color,
+    State1: r.color,
+    State2: r.color,
+    State3: r.color,
+    StateVulnerable: r.color,
+    StateInvulnerable: r.color,
+    PrimaryForceField: r.color,
+    SecondaryForceField: r.color,
+    PrimaryBanner: r.color,
+    PrimaryBillboard: r.color,
+    PrimaryFx: r.color,
+    SecondaryFx: r.color
   },
 
   "EveSOFDataFactionDecal": {
@@ -325,6 +343,7 @@ export default {
     animations: r.array,
     audioPosition: r.vector3,
     banners: r.array,
+    bannerSets: r.array,
     booster: r.object,
     boundingSphere: r.vector4,
     buildClass: r.uint,
@@ -356,11 +375,13 @@ export default {
     modelRotationCurvePath: r.path,
     shapeEllipsoidCenter: r.vector3,
     shapeEllipsoidRadius: r.vector3,
+    sof6: r.boolean,
     soundEmitters: r.array,
     spotlightSets: r.array,
     spriteLineSets: r.array,
     spriteSets: r.array,
-    transparentAreas: r.array
+    transparentAreas: r.array,
+    visibilityGroup: r.string
   },
 
   "EveSOFDataHullAnimation": {
@@ -399,6 +420,25 @@ export default {
     visibilityGroup: r.string
   },
 
+  "EveSOFDataHullBannerSet": {
+    name: r.string,
+    banners: r.array,
+    visibilityGroup: r.string
+  },
+
+  "EveSOFDataHullBannerSetItem": {
+    name: r.string,
+    angleX: r.float,
+    angleY: r.float,
+    boneIndex: r.uint,
+    position: r.vector3,
+    scaling: r.vector3,
+    rotation: r.quaternion,
+    usage: r.uint,
+    visibilityGroup: r.string,
+    maintainAspectRatio: r.boolean
+  },
+
   "EveSOFDataHullBannerLight": {
 
   },
@@ -431,11 +471,18 @@ export default {
   },
 
   "EveSOFDataHullChildSet" : {
-    items: r.array
+    name: r.string,
+    items: r.array,
+    visibilityGroup: r.string
   },
 
   "EveSOFDataHullChildSetItem": {
-
+    name: r.string,
+    redFilePath: r.path,
+    translation: r.vector3,
+    scaling: r.vector3,
+    rotation: r.quaternion,
+    buildFilter: r.uint
   },
 
   "EveSOFDataHullController": {
