@@ -1,5 +1,6 @@
 import * as r from "../black-readers.js"
 
+
 class Instance {
   constructor(data) {
     this.data = data
@@ -23,6 +24,7 @@ class Instance {
     return new Instance(data)
   }
 }
+
 
 export default {
 
@@ -194,12 +196,20 @@ export default {
     State3: r.color,
     StateVulnerable: r.color,
     StateInvulnerable: r.color,
-    PrimaryForceField: r.color,
-    SecondaryForceField: r.color,
+    PrimaryForcefield: r.color,
+    SecondaryForcefield: r.color,
     PrimaryBanner: r.color,
     PrimaryBillboard: r.color,
     PrimaryFx: r.color,
-    SecondaryFx: r.color
+    SecondaryFx: r.color,
+
+
+    // Unknown property order
+    PrimaryWarpFx: r.color,    // Double check the order of this entry
+    PrimaryAttackFX: r.color, // WARNING UPPERCASE X!
+    PrimarySiegeFX: r.color,
+    PrimaryDockedFX: r.color,
+
   },
 
   "EveSOFDataFactionDecal": {
@@ -431,17 +441,19 @@ export default {
     angleX: r.float,
     angleY: r.float,
     boneIndex: r.uint,
+    light: r.object,
     position: r.vector3,
     scaling: r.vector3,
-    rotation: r.quaternion,
+    rotation: r.quaternion, // Is this actually a vec 3??
     usage: r.uint,
-    visibilityGroup: r.string,
-    maintainAspectRatio: r.boolean
+    maintainAspectRatio: r.boolean,
   },
 
-  "EveSOFDataHullBannerLight": {
+
+  "EveSOFDataHullBannerLight" : {
 
   },
+
 
   "EveSOFDataHullBooster": {
     alwaysOn: r.boolean,
@@ -546,7 +558,7 @@ export default {
     randomScaleMin: r.vector3,
     randomScaleMax: r.vector3,
     randomRotationMaxSteps: r.vector3,
-    randomRotationStepSizeYPR: r.vector3,
+    randomRotationStepSizeYPR: r.quaternion,
     uniformScale: r.boolean
   },
 
@@ -599,8 +611,10 @@ export default {
     colorType: r.uint,
     hazeBrightness: r.float,
     hazeFalloff: r.float,
+    lights: r.array,
     position: r.vector3,
     rotation: r.quaternion,
+    saturation: r.float,
     scaling: r.vector3,
     sourceBrightness: r.float,
     sourceSize: r.float
@@ -674,7 +688,8 @@ export default {
     name: r.string,
     planeData: r.vector4,
     skinned: r.boolean,
-    usage: r.uint
+    usage: r.uint,
+    visibilityGroup: r.string
   },
 
   "EveSOFDataHullPlaneSetItem": {
@@ -683,17 +698,34 @@ export default {
     blinkMode: r.uint,
     boneIndex: r.uint,
     color: r.color,
+    colorType: r.uint,
     dutyCycle: r.float,
     groupIndex: r.uint,
+    intensity: r.float,
     layer1Scroll: r.vector4,
     layer1Transform: r.vector4,
     layer2Scroll: r.vector4,
     layer2Transform: r.vector4,
+    lights: r.array,
     maskMapAtlasIndex: r.uint,
     position: r.vector3,
     rate: r.float,
     rotation: r.quaternion,
+    saturation: r.float,
     scaling: r.vector3
+  },
+
+  "EveSOFDataPointLightAttachment": {
+    intensity: r.float,
+    innerScaleMultiplier: r.float,
+    lightProfilePath: r.path,
+    noiseAmplitude: r.float,
+    noiseFrequency: r.float,
+    noiseOctaves: r.uint,
+    outerScaleMultiplier: r.float,
+    translation: r.vector3,
+    rotation: r.quaternion,
+    saturation: r.float
   },
 
   "EveSOFDataHullSpotlightSet": {
@@ -702,18 +734,31 @@ export default {
     items: r.array,
     name: r.string,
     skinned: r.boolean,
-    zOffset: r.float
+    zOffset: r.float,
+    visibilityGroup: r.string
   },
 
   "EveSOFDataHullSpotlightSetItem": {
     boneIndex: r.uint,
     boosterGainInfluence: r.boolean,
+    colorType: r.uint,
     coneIntensity: r.float,
     flareIntensity: r.float,
     groupIndex: r.uint,
+    light: r.object,
     spriteScale: r.vector3,
     spriteIntensity: r.float,
     transform: r.matrix4
+  },
+
+  "EveSOFDataSpotLightAttachment": {
+      intensity: r.float,
+      innerAngleMultiplier: r.float,
+      innerScaleMultiplier: r.float,
+      outerScaleMultiplier: r.float,
+      outerAngleMultiplier: r.float,
+      translation: r.vector3,
+      saturation: r.float,
   },
 
   "EveSOFDataHullSoundEmitter": {
@@ -764,6 +809,7 @@ export default {
     falloff: r.float,
     groupIndex: r.uint,
     intensity: r.float,
+    light: r.object,
     maxScale: r.float,
     minScale: r.float,
     position: r.vector3
