@@ -34,7 +34,7 @@ class ConstantParameter {
     this.name = name
     this.value = value
   }
-  
+
   static readStruct(reader) {
     let name = r.string(reader)
 
@@ -106,11 +106,14 @@ export default {
   "Tr2ActionChildEffect": {
     childName: r.string,
     path: r.path,
-    removeOnStop: r.boolean
+    removeOnStop: r.boolean,
+    targetAnotherOwner: r.boolean
   },
 
   "Tr2ActionOverlay": {
-    path: r.path
+    path: r.path,
+    targetAnotherOwner: r.string,
+    removeOnStop: r.boolean
   },
 
   "Tr2ActionPlayCurveSet": {
@@ -128,6 +131,7 @@ export default {
   "Tr2ActionPlaySound": {
     bypassPrefix: r.boolean,
     emitter: r.string,
+    target: r.string,
     event: r.string,
   },
 
@@ -254,6 +258,8 @@ export default {
 
   "Tr2CurveEulerRotationExpression": {
     input1: r.float,
+	  input2: r.float,
+	  input3: r.float,
     inputs: r.array,
     name: r.string,
     expressionYaw: r.string,
@@ -290,10 +296,19 @@ export default {
 
   "Tr2CurveVector3Expression": {
     inputs: r.array,
+    input1: r.float,
+    input2: r.float,
+    input3: r.float,
     name: r.string,
     expressionX: r.string,
     expressionY: r.string,
     expressionZ: r.string
+  },
+
+  "Tr2ActionSetExternalControllerVariable": {
+    destinationOwner: r.string,
+    variable: r.string,
+    sourceVariable: r.string
   },
 
   "Tr2CurveSetRange": {
@@ -488,6 +503,7 @@ export default {
     noiseFrequency: r.float,
     noiseOctaves: r.float,
     position: r.vector3,
+	  rotation: r.quaternion,
     radius: r.float
   },
 
@@ -556,6 +572,7 @@ export default {
     name: r.string,
     brightness: r.float,
     color: r.color,
+	  lightProfilePath: r.string,
     innerAngle: r.float,
     innerRadius: r.float,
     noiseAmplitude: r.float,
@@ -565,6 +582,38 @@ export default {
     position: r.vector3,
     radius: r.float,
     rotation: r.quaternion
+  },
+
+  "Tr2CurveColorMixer": {
+    name: r.string,
+    color1: r.color,
+    color2: r.color,
+    saturation: r.float,
+    brightness: r.float
+  },
+
+  "Tr2AudioStretchAuto": {
+    sourceEmitter: r.object,
+    destinationEmitter: r.object,
+    stretchEmitter: r.object,
+    outburstEvent: r.string,
+  },
+
+  "Tr2AudioStretchBase": {
+    sourceEmitter: r.object,
+    destinationEmitter: r.object,
+    stretchEmitter: r.object,
+    outburstEvent: r.string,
+    impactEvent: r.string,
+    stretchEvent: r.string
+  },
+
+  "Tr2DynamicBinding": {
+    name: r.string,
+    destinationObjectPath: r.string,
+    destinationObjectAttribute: r.string,
+    sourceObjectPath: r.string,
+    sourceObjectAttribute: r.string,
   },
 
   "Tr2StaticEmitter": {

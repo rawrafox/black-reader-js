@@ -529,21 +529,27 @@ export default {
     scaling: r.vector3,
     textures: r.array,
     usage: r.uint,
-    visibilityGroup: r.string
+    visibilityGroup: r.string,
+    multiHullIndexBuffers: r.array
+  },
+
+  "EveSOFDataMultiHullDecalIndexBuffers": {
+    combinedGeometryResPath: r.path,
+    indexBuffers: r.array
   },
 
   "EveSOFDataDecalIndexBuffer" : {
-      indexBuffer: r => {
-        const count = r.readU32() / 4;
-        const indexBuffer = new Uint32Array(count);
-        for (let i = 0; i < count; i++) indexBuffer[i] = r.readU32();
-        return indexBuffer;
-      }
+    indexBuffer: r => {
+      const count = r.readU32() / 4;
+      const indexBuffer = new Uint32Array(count);
+      for (let i = 0; i < count; i++) indexBuffer[i] = r.readU32();
+      return indexBuffer;
+    }
   },
 
   "EveSOFDataDistributionDepletionCounter" : {
-      name: r.string,
-      value: r.uint
+    name: r.string,
+    value: r.uint
   },
 
   "EveSOFDataHullExtensionPlacementGroup" : {
@@ -602,7 +608,8 @@ export default {
     name: r.string,
     offset: r.vector3,
     parentDescriptor: r.object,
-    resPathDefaultCorp: r.string
+    resPathDefaultCorp: r.string,
+    extendsBoundingSphere: r.float
   },
 
   "EveSOFDataHullHazeSet": {
@@ -757,17 +764,18 @@ export default {
     light: r.object,
     spriteScale: r.vector3,
     spriteIntensity: r.float,
-    transform: r.matrix4
+    transform: r.matrix4,
+    saturation: r.float
   },
 
   "EveSOFDataSpotLightAttachment": {
-      intensity: r.float,
-      innerAngleMultiplier: r.float,
-      innerScaleMultiplier: r.float,
-      outerScaleMultiplier: r.float,
-      outerAngleMultiplier: r.float,
-      translation: r.vector3,
-      saturation: r.float,
+    intensity: r.float,
+    innerAngleMultiplier: r.float,
+    innerScaleMultiplier: r.float,
+    outerScaleMultiplier: r.float,
+    outerAngleMultiplier: r.float,
+    translation: r.vector3,
+    saturation: r.float,
   },
 
   "EveSOFDataHullSoundEmitter": {
@@ -801,7 +809,8 @@ export default {
     rotation: r.quaternion,
     saturation: r.float,
     scaling: r.vector3,
-    spacing: r.float
+    spacing: r.float,
+    light: r.object
   },
 
   "EveSOFDataHullSpriteSet": {
@@ -822,7 +831,9 @@ export default {
     light: r.object,
     maxScale: r.float,
     minScale: r.float,
-    position: r.vector3
+    position: r.vector3,
+    saturation: r.float,
+    multiHullIndexBuffers: r.array
   },
 
   "EveSOFDataInstancedMesh": {
@@ -911,7 +922,8 @@ export default {
   },
 
   "EveSOFDataVisibilityGroup" :{
-    name: r.string
+    name: r.string,
+    description: r.string
   }
 
 }

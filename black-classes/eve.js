@@ -18,7 +18,7 @@ class Locator {
     this.position = position
     this.direction = direction
   }
-  
+
   static readStruct(reader) {
     return new Locator(r.vector4(reader), r.vector4(reader))
   }
@@ -55,16 +55,16 @@ class Transition {
 }
 
 export default {
-  
+
   "EveAnimation": {
     name: r.string,
     loops: r.uint
   },
-  
+
   "EveAnimationCommand": {
     command: r.uint
   },
-  
+
   "EveAnimationState": {
     name: r.string,
     animation: r.object,
@@ -73,7 +73,7 @@ export default {
     initCommands: r.array,
     transitions: r.structList(Transition)
   },
-    
+
   "EveAnimationStateMachine": {
     name: r.string,
     autoPlayDefault: r.boolean,
@@ -100,7 +100,7 @@ export default {
     segments: r.uint,
     translation: r.vector3,
   },
-    
+
   "EveBoosterSet2": {
     alwaysOn: r.boolean,
     alwaysOnIntensity: r.float,
@@ -197,7 +197,8 @@ export default {
     scaling: r.vector3,
     staticTransform: r.boolean,
     transformModifiers: r.array,
-    translation: r.vector3
+    translation: r.vector3,
+    useStaticRotation: r.boolean
   },
 
   "EveChildEffectPropagator": {
@@ -222,6 +223,8 @@ export default {
     triggerSphereOffset:  r.vector3,
     triggerSphereRadiusCurve: r.object,
     turbulenceAmplitude: r.float,
+    randScaleMin: r.float,
+    numTriggers: r.uint
   },
 
   "EveChildExplosion": {
@@ -270,7 +273,7 @@ export default {
     scrollSpeed: r.float,
     translation: r.vector3,
   },
-  
+
   "EveChildLink": {
     linkStrengthBindings: r.array,
     linkStrengthCurves: r.array,
@@ -317,6 +320,7 @@ export default {
     localTransform: r.matrix4,
     lodSphereRadius: r.float,
     mesh: r.object,
+	  reflectionMode: r.uint,
     minScreenSize: r.float,
     name: r.string,
     particleEmitters: r.array,
@@ -338,15 +342,15 @@ export default {
   },
 
   "EveChildModifierBillboard2D":{
-    
+
    },
-    
+
   "EveChildModifierBillboard3D":{
     fixed: r.boolean
    },
-    
+
   "EveChildModifierCameraOrientedRotationConstrained": {
-    
+
    },
 
   "EveChildModifierHalo": {
@@ -360,10 +364,11 @@ export default {
   },
 
   "EveChildModifierTranslateWithCamera": {
-    
+
   },
 
   "EveChildQuad": {
+	  display: r.boolean,
     brightness: r.float,
     color: r.color,
     effect: r.object,
@@ -373,6 +378,7 @@ export default {
     rotation: r.quaternion,
     scaling: r.vector3,
     translation: r.vector3,
+	  viewRotation: r.float,
   },
 
   "EveConnector": {
@@ -463,6 +469,7 @@ export default {
     name: r.string,
     opaqueEffects: r.array,
     transparentEffects: r.array,
+    controllers: r.array
   },
 
   "EveMissile": {
@@ -488,7 +495,7 @@ export default {
     warheadLength: r.float,
     warheadRadius: r.float,
   },
-    
+
   "EveMobile": {
     attachments: r.array,
     boundingSphereCenter: r.vector3,
@@ -502,20 +509,20 @@ export default {
     observers: r.array,
     shadowEffect: r.object,
   },
-    
+
   "EveOccluder": {
     name: r.string,
     sprites: r.array,
   },
-    
+
   "EveParticleDirectForce": {
     force: r.vector3,
   },
-    
+
   "EveParticleDragForce": {
     drag: r.float,
   },
-    
+
   "EvePlaneSet": {
     effect: r.object,
     hideOnLowQuality: r.boolean,
@@ -523,7 +530,7 @@ export default {
     pickBufferID: r.byte,
     planes: r.array,
   },
-    
+
   "EvePlaneSetItem": {
     color: r.color,
     layer1Scroll: r.vector4,
@@ -536,7 +543,7 @@ export default {
     rotation: r.quaternion,
     scaling: r.vector3,
   },
-    
+
   "EveRootTransform": {
     boundingSphereRadius: r.float,
     children: r.array,
@@ -555,7 +562,7 @@ export default {
     translationCurve: r.object,
     useDistanceBasedScale: r.boolean,
   },
-    
+
   "EveShip2": {
     attachments: r.array,
     boosters: r.object,
@@ -576,7 +583,7 @@ export default {
     shapeEllipsoidRadius: r.vector3,
     translationCurve: r.object,
   },
-    
+
   "EveStation2": {
     attachments: r.array,
     boundingSphereCenter: r.vector3,
@@ -598,7 +605,7 @@ export default {
     shadowEffect: r.object,
     translationCurve: r.object,
   },
-    
+
   "EveSpaceObjectDecal": {
     decalEffect: r.object,
     name: r.string,
@@ -607,7 +614,7 @@ export default {
     scaling: r.vector3,
     indexBuffer: r.indexBuffer
   },
-    
+
   "EveSpaceScene": {
     ambientColor: r.color,
     backgroundEffect: r.object,
@@ -639,7 +646,7 @@ export default {
     reflectionIntensity: r.float,
     useSunDiffuseColorWithDynamicLights: r.boolean
   },
-    
+
   "EveSpherePin": {
     centerNormal: r.vector3,
     color: r.color,
@@ -654,7 +661,7 @@ export default {
     pinRotation: r.float,
     sortValueMultiplier: r.float
   },
-    
+
   "EveSpotlightSet": {
     coneEffect: r.object,
     glowEffect: r.object,
@@ -662,7 +669,7 @@ export default {
     name: r.string,
     spotlightItems: r.array
   },
-    
+
   "EveSpotlightSetItem": {
     coneColor: r.color,
     flareColor: r.color,
@@ -671,7 +678,7 @@ export default {
     spriteScale: r.vector3,
     transform: r.matrix4
   },
-    
+
   "EveSpriteSet": {
     effect: r.object,
     name: r.string,
@@ -679,7 +686,7 @@ export default {
     skinned: r.boolean,
     sprites: r.array
   },
-    
+
   "EveSpriteSetItem": {
     blinkPhase: r.float,
     blinkRate: r.float,
@@ -692,7 +699,7 @@ export default {
     position: r.vector3,
     warpColor: r.color
   },
-    
+
   "EveStarfield": {
     effect: r.object,
     maxDist: r.float,
@@ -703,7 +710,7 @@ export default {
     numStars: r.uint,
     seed: r.uint
   },
-    
+
   "EveStretch": {
     curveSets: r.array,
     dest: r.object,
@@ -717,9 +724,11 @@ export default {
     sourceLights: r.array,
     sourceObject: r.object,
     stretchObject: r.object,
-    useCurveLod: r.boolean
+    useCurveLod: r.boolean,
+    destLights: r.array,
+    audio: r.object
   },
-    
+
   "EveStretch2": {
     destinationEmitter: r.object,
     destinationLight: r.object,
@@ -729,6 +738,24 @@ export default {
     sourceEmitter: r.object,
     sourceLight: r.object,
     quadCount: r.uint
+  },
+
+  // "EveStretch3": {
+    // name: r.string,
+    // source: r.object,
+    // dest: r.object,
+    // destObject: r.object,
+    // sourceObject: r.object,
+    // stretchObject: r.object,
+    // length: r.object,
+    // moveProgression: r.object,
+    // controllers: r.array,
+    // curveSets: r.array,
+    // audio: r.object
+  // },
+
+  "EveSpaceObjectFxAttributes": {
+
   },
 
   "EveTacticalOverlay": {
@@ -741,12 +768,12 @@ export default {
     targetMaxSegments: r.float,
     velocityEffect: r.object
   },
-    
+
   "EveTrailsSet": {
     effect: r.object,
     geometryResPath: r.path
   },
-    
+
   "EveTransform": {
     children: r.array,
     curveSets: r.array,
@@ -772,7 +799,7 @@ export default {
     useLodLevel: r.boolean,
     visibilityThreshold: r.float
   },
-    
+
   "EveTurretFiringFX": {
     boneName: r.string,
     destinationObserver: r.object,
@@ -795,7 +822,7 @@ export default {
     stretch: r.array,
     useMuzzleTransform: r.boolean
   },
-    
+
   "EveTurretSet": {
     name: r.string,
     bottomClipHeight: r.float,
@@ -824,12 +851,12 @@ export default {
     useDynamicBounds: r.boolean,
     useRandomFiringDelay: r.boolean
   },
-    
+
   "EveUiObject": {
     boundingSphereRadius: r.float,
     name: r.string,
     mesh: r.object,
     modelScale: r.float
   }
-  
+
 }

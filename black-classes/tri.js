@@ -15,7 +15,8 @@ export default {
     playOnLoad: r.boolean,
     ranges: r.array,
     scale: r.float,
-    useSimTimeRebase: r.boolean
+    useSimTimeRebase: r.boolean,
+    useRealTime: r.boolean
   },
 
   "TriEventCurve": {
