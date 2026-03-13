@@ -111,8 +111,8 @@ export default {
   },
 
   "Tr2ActionOverlay": {
-    path: r.path,
-    targetAnotherOwner: r.string,
+    path: r.string,
+    targetAnotherOwner: r.boolean,
     removeOnStop: r.boolean
   },
 
@@ -572,7 +572,7 @@ export default {
     name: r.string,
     brightness: r.float,
     color: r.color,
-	  lightProfilePath: r.string,
+	  lightProfilePath: r.path,
     innerAngle: r.float,
     innerRadius: r.float,
     noiseAmplitude: r.float,

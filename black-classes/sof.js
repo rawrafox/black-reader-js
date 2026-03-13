@@ -102,7 +102,7 @@ export default {
     lightFlickerColor: r.color,
     lightFlickerFrequency: r.float,
     lightFlickerRadius: r.float,
-    lightColor: r.color,
+    lightColor: r.uint,
     lightRadius: r.float,
     lightWarpColor: r.color,
     lightWarpRadius: r.float,
@@ -608,8 +608,8 @@ export default {
     name: r.string,
     offset: r.vector3,
     parentDescriptor: r.object,
-    resPathDefaultCorp: r.string,
-    extendsBoundingSphere: r.float
+    resPathDefaultCorp: r.path,
+    extendsBoundingSphere: r.boolean
   },
 
   "EveSOFDataHullHazeSet": {
@@ -645,7 +645,7 @@ export default {
     boneIndex: r.uint,
     brightness: r.float,
     innerRadius: r.float,
-    lightColor: r.color,
+    lightColor: r.uint,
     noiseAmplitude: r.float,
     noiseFrequency: r.float,
     noiseOctaves: r.float,
@@ -669,7 +669,7 @@ export default {
     brightness: r.float,
     innerAngle: r.float,
     innerRadius: r.float,
-    lightColor: r.color,
+    lightColor: r.uint,
     noiseAmplitude: r.float,
     noiseFrequency: r.float,
     noiseOctaves: r.float,
