@@ -102,7 +102,7 @@ export default {
     lightFlickerColor: r.color,
     lightFlickerFrequency: r.float,
     lightFlickerRadius: r.float,
-    lightColor: r.uint,
+    lightColor: r.color,
     lightRadius: r.float,
     lightWarpColor: r.color,
     lightWarpRadius: r.float,
