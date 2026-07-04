@@ -14,13 +14,20 @@ class AudEventKey {
 }
 
 class Locator {
-  constructor(position, direction) {
+  constructor(position, direction, scale, boneIndex) {
     this.position = position
     this.direction = direction
+    this.scale = scale
+    this.boneIndex = boneIndex
   }
 
   static readStruct(reader) {
-    return new Locator(r.vector4(reader), r.vector4(reader))
+    return new Locator(
+      r.vector3(reader),
+      r.quaternion(reader),
+      r.vector3(reader),
+      reader.readI32()
+    )
   }
 }
 
@@ -129,6 +136,11 @@ export default {
     fxAttributes: r.array,
   },
 
+  "EveSpaceObjectFxAttributes": {
+    name: r.string,
+    source: r.object
+  },
+
   "EveCamera": {
     fieldOfView: r.float,
     friction: r.float,
@@ -198,7 +210,8 @@ export default {
     staticTransform: r.boolean,
     transformModifiers: r.array,
     translation: r.vector3,
-    useStaticRotation: r.boolean
+    useStaticRotation: r.boolean,
+    useStaticScale: r.boolean
   },
 
   "EveChildEffectPropagator": {
@@ -212,19 +225,22 @@ export default {
     locatorSetName: r.string,
     keys: r.array,
     maxLifeTime: r.float,
+    numTriggers: r.int64,
     propagationType: r.uint,
+    range: r.float,
     randScaleMax: r.float,
+    randScaleMin: r.float,
+    minRangeThreshold: r.float,
+    ClosenessPreference: r.float,
     replayAfterDelay: r.boolean,
     skipCleanup: r.boolean,
     stopToClearDelay: r.float,
-    stopAfterNumTriggers: r.uint,
+    stopAfterNumTriggers: r.float,
     trigger: r.boolean,
-    triggerMethood: r.object,           // Error in definitions
+    triggerMethood: r.uint,             // Binary spelling mistake
     triggerSphereOffset:  r.vector3,
     triggerSphereRadiusCurve: r.object,
-    turbulenceAmplitude: r.float,
-    randScaleMin: r.float,
-    numTriggers: r.uint
+    turbulenceAmplitude: r.float
   },
 
   "EveChildExplosion": {
@@ -252,7 +268,8 @@ export default {
   "EveChildInstanceContainer" : {
     source: r.object,
     scaling: r.vector3,
-    localTransform: r.matrix4
+    localTransform: r.matrix4,
+    useStaticRotation: r.boolean
   },
 
   "EveLineChildContainer" : {
@@ -284,6 +301,8 @@ export default {
 
   "EveChildMesh": {
     display: r.boolean,
+    castShadow: r.boolean,
+    lights: r.array,
     localTransform: r.matrix4,
     lowestLodVisible: r.uint,
     mesh: r.object,
@@ -296,6 +315,7 @@ export default {
     staticTransform: r.boolean,
     transformModifiers: r.array,
     translation: r.vector3,
+    updateAnimation: r.boolean,
     useSpaceObjectData: r.boolean,
     useSRT: r.boolean
   },
@@ -320,11 +340,11 @@ export default {
     localTransform: r.matrix4,
     lodSphereRadius: r.float,
     mesh: r.object,
-	  reflectionMode: r.uint,
     minScreenSize: r.float,
     name: r.string,
     particleEmitters: r.array,
     particleSystems: r.array,
+    reflectionMode: r.uint,
     rotation: r.quaternion,
     scaling: r.vector3,
     translation: r.vector3,
@@ -368,7 +388,7 @@ export default {
   },
 
   "EveChildQuad": {
-	  display: r.boolean,
+    display: r.boolean,
     brightness: r.float,
     color: r.color,
     effect: r.object,
@@ -378,7 +398,7 @@ export default {
     rotation: r.quaternion,
     scaling: r.vector3,
     translation: r.vector3,
-	  viewRotation: r.float,
+    viewRotation: r.float,
   },
 
   "EveConnector": {
@@ -755,7 +775,8 @@ export default {
   // },
 
   "EveSpaceObjectFxAttributes": {
-
+    name: r.string,
+    source: r.object
   },
 
   "EveTacticalOverlay": {

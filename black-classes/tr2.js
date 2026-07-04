@@ -78,11 +78,11 @@ class Key {
     result[typeSymbol] = "Tr2CurveScalarKey"
     result.time = reader.readF32()
     result.value = reader.readF32()
-    result.startTangent = reader.readF32()
-    result.endTangent = reader.readF32()
-    result.index = reader.readU16()
+    result.leftTangent = reader.readF32()
+    result.rightTangent = reader.readF32()
+    result.id = reader.readU16()
     result.interpolation = reader.readU8()
-    result.extrapolation = reader.readU8()
+    result.tangentType = reader.readU8()
 
     return result
   }
@@ -258,8 +258,9 @@ export default {
 
   "Tr2CurveEulerRotationExpression": {
     input1: r.float,
-	  input2: r.float,
-	  input3: r.float,
+    input2: r.float,
+    input3: r.float,
+    input4: r.float,
     inputs: r.array,
     name: r.string,
     expressionYaw: r.string,
@@ -273,13 +274,15 @@ export default {
     expression: r.string,
     input1: r.float,
     input2: r.float,
-    input3: r.float
+    input3: r.float,
+    input4: r.float
   },
 
   "Tr2ScalarExprKey": {
     input1: r.float,
     input2: r.float,
     input3: r.float,
+    input4: r.float,
     interpolation: r.uint,
     left: r.float,
     right: r.float,
@@ -295,10 +298,11 @@ export default {
   },
 
   "Tr2CurveVector3Expression": {
-    inputs: r.array,
     input1: r.float,
     input2: r.float,
     input3: r.float,
+    input4: r.float,
+    inputs: r.array,
     name: r.string,
     expressionX: r.string,
     expressionY: r.string,
@@ -374,7 +378,7 @@ export default {
     scaledByParent: r.boolean,
     textureIndex: r.uint,
     turbulenceAmplitude: r.float,
-    turbulenceFrequency: r.float,
+    turbulenceFrequency: r.uint,
     velocityStretchRotation: r.float
   },
 
@@ -410,7 +414,7 @@ export default {
     scaledByParent: r.boolean,
     textureIndex: r.uint,
     turbulenceAmplitude: r.float,
-    turbulenceFrequency: r.float,
+    turbulenceFrequency: r.uint,
     velocityStretchRotation: r.float
   },
 
@@ -503,8 +507,8 @@ export default {
     noiseFrequency: r.float,
     noiseOctaves: r.float,
     position: r.vector3,
-	  rotation: r.quaternion,
-    radius: r.float
+    radius: r.float,
+    rotation: r.quaternion
   },
 
   "Tr2LodResource": {
@@ -571,13 +575,15 @@ export default {
   "Tr2SpotLight" : {
     name: r.string,
     brightness: r.float,
+    castsShadows: r.float, // <---- WHAT IN THE WORLD
     color: r.color,
 	  lightProfilePath: r.path,
     innerAngle: r.float,
     innerRadius: r.float,
-    noiseAmplitude: r.float,
-    noiseFrequency: r.float,
-    noiseOctaves: r.float,
+    lightProfilePath: r.path,
+    //noiseAmplitude: r.float,
+    //noiseFrequency: r.float,
+    //noiseOctaves: r.float,
     outerAngle: r.float,
     position: r.vector3,
     radius: r.float,
@@ -586,8 +592,11 @@ export default {
 
   "Tr2CurveColorMixer": {
     name: r.string,
+    startCurve: r.object,
+    endCurve: r.object,
     color1: r.color,
     color2: r.color,
+    lerpValue: r.float,
     saturation: r.float,
     brightness: r.float
   },
@@ -841,6 +850,41 @@ export default {
 
   "Tr2SyncToAnimation": {
 
-  }
+  },
+
+    "Tr2CurveColorMixer": {
+        name: r.string,
+        startCurve: r.object,
+        endCurve: r.object,
+        color1: r.color,
+        color2: r.color,
+        lerpValue: r.float,
+        saturation: r.float,
+        brightness: r.float
+    },
+
+    "Tr2AudioStretchAuto": {
+        sourceEmitter: r.object,
+        destinationEmitter: r.object,
+        stretchEmitter: r.object,
+        outburstEvent: r.string,
+    },
+
+    "Tr2AudioStretchBase": {
+        sourceEmitter: r.object,
+        destinationEmitter: r.object,
+        stretchEmitter: r.object,
+        outburstEvent: r.string,
+        impactEvent: r.string,
+        stretchEvent: r.string
+    },
+
+    "Tr2DynamicBinding": {
+        name: r.string,
+        destinationObjectPath: r.string,
+        destinationObjectAttribute: r.string,
+        sourceObjectPath: r.string,
+        sourceObjectAttribute: r.string,
+    },
 
 }

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import fs from "fs";
-import http from "http";
+import https from "https";
 import path from "path";
 import zlib from "zlib";
 
@@ -11,7 +11,7 @@ if (args.length < 2) {
   throw "You need to pass a resfileindex.txt to the downloader, and a place to download to"
 }
 
-let index = fs.readFileSync(args[0], 'utf8').split("\r\n")
+let index = fs.readFileSync(args[0], 'utf8').split(/\r?\n/)
 let target = args[1]
 let pattern = /\.black$/
 
@@ -27,7 +27,7 @@ index = index.map(function (e) {
   let info = e.split(",")
 
   return {
-    path: info[0].replace("%20", " "),
+    path: info[0].replace(/%20/g, " "),
     cdn: "/" + info[1],
     hash: info[2],
     length: info[3],
@@ -35,13 +35,31 @@ index = index.map(function (e) {
   }
 })
 
-let agent = new http.Agent({ keepAlive: true, maxSockets: 10 })
+function isGzip(buffer) {
+  return buffer.length >= 2 && buffer[0] === 0x1f && buffer[1] === 0x8b
+}
+
+function readResponse(res) {
+  return new Promise((resolve, reject) => {
+    let chunks = []
+
+    res.on("data", chunk => chunks.push(chunk))
+    res.on("end", () => resolve(Buffer.concat(chunks)))
+    res.on("error", reject)
+  })
+}
+
+function decodeResource(buffer) {
+  return isGzip(buffer) ? zlib.gunzipSync(buffer) : buffer
+}
+
+let agent = new https.Agent({ keepAlive: true, maxSockets: 10 })
 
 for (let i = 0; i < index.length; i++) {
   let e = index[i]
 
   if (e && e.path.match(pattern)) {
-    http.get({ hostname: "resources.eveonline.com", path: e.cdn, agent: agent }, function (res) {
+    https.get({ hostname: "resources.eveonline.com", path: e.cdn, agent: agent }, async function (res) {
       const { statusCode } = res
 
       if (statusCode !== 200) {
@@ -53,14 +71,14 @@ for (let i = 0; i < index.length; i++) {
 
       fs.mkdirSync(path.dirname(filePath), { recursive: true })
 
-      var file = fs.createWriteStream(filePath)
-
-      res.pipe(zlib.createGunzip()).pipe(file)
-
-      file.on('finish', function() {
-        file.close()
+      try {
+        let buffer = decodeResource(await readResponse(res))
+        fs.writeFileSync(filePath, buffer)
         console.log("Completed %s", e.path)
-      })
+      } catch (error) {
+        console.error("Failed: %s", e.path)
+        console.error(error)
+      }
     }).on('error', (e) => {
       console.error("Failed: %s", e);
     })

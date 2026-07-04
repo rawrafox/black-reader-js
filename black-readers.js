@@ -105,6 +105,10 @@ export function float(reader) {
   return reader.readF32()
 }
 
+export function int64(reader) {
+  return reader.readI64()
+}
+
 export function matrix4(reader) {
   var buffer = new ArrayBuffer(64)
 
